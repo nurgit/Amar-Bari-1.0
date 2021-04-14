@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rent Managment</title>
+    <link rel="icon" href="./icon/brand.svg" />
+    <link rel="stylesheet" href="./css/bootstrap.min.css" />
+    <link rel="stylesheet" href="./css/rent.css" />
+  </head>
+  <body>
+    <script src="./js/jquery-3.5.1.min.js"></script>
+    <script src="./js/bootstrap.bundle.min.js"></script>
+
+    <div class="glass-bg"></div>
+
+    <div class="body-con">
+      <div class="object-1"></div>
+      <div class="object-2"></div>
+      <div class="object-3"></div>
+
+      <!-- don't touch this code from here -->
+      <input type="checkbox" name="" id="nav-toggle" />
+      <div class="toggle-con">
+        <label for="nav-toggle" class="toggler">
+          <img src="./icon/brand.svg" alt="" />
+        </label>
+      </div>
+      <div class="left dashboard">
+        <div class="brand">
+          <label for="nav-toggle" class="nav-close-btn">
+            <img src="./icon/cross.svg" alt="" />
+          </label>
+          <img src="./icon/brand.svg" alt="" />
+          <h4>amar bari</h4>
+        </div>
+
+        <div class="link-wrapper">
+          <a href="dashboard.html" class="link">
+            <div class="svg-bg">
+              <img src="./icon/Dashboard.svg" alt="" />
+            </div>
+
+            <span>dashboard</span>
+          </a>
+
+          <a href="account.html" class="link">
+            <div class="svg-bg">
+              <img src="./icon/Accounts.svg" alt="" />
+            </div>
+
+            <span>accounts </span>
+          </a>
+
+          <a href="building.html" class="link ">
+            <div class="svg-bg">
+              <img src="./icon/Buildings.svg" alt="" />
+            </div>
+
+            <span> buildings</span>
+          </a>
+
+          <a href="flats.html" class="link ">
+            <div class="svg-bg">
+              <img src="./icon/Flats.svg" alt="" />
+            </div>
+
+            <span>flats</span>
+          </a>
+
+          <a href="rent.html" class="link active">
+            <div class="svg-bg">
+                <img src="./icon/Taka-active.svg" alt="">
+              </svg>
+            </div>
+
+            <span> rent collection</span>
+          </a>
+        </div>
+        <a href="index.html" class="btn-log mobile-btn-log"
+          >logout
+
+        <img src="./icon/logout.svg" class="log-icon" alt="">
+        </a>
+        <div class="credit">
+          Powered By
+          <a
+            href="https://citsbd.com/?fbclid=IwAR2NtqYvbOZWAENAAKMCI7aIFLvJG7C_PO7UlvUL4-bnswRSAUt27kkrxfE"
+            target="_blank"
+            >Chowdhury It Solutions pvt Ltd.</a
+          >
+        </div>
+      </div>
+
+      <!--============ to here ==============-->
+
+
+      <!--              nav   end              -->
+      <!--              top bar          -->
+
+      <div class="right">
+        <div class="top-bar">
+          <!--         calendar      -->
+          <div class="calendar text-capitalize">
+            <div class="calendar-btn">
+              <h5 class="cal-month"></h5>
+              <img src="./icon/calendar.svg" class="cal-svg" alt="" />
+            </div>
+      
+            <div class="calendar-dropdown">
+              <div class="year">
+                <img class="left-arrow" src="./icon/calendar-left-arrow.svg" alt="" srcset="" />
+                <p></p>
+                <img
+                  src="./icon/calendar-right-arrow.svg"
+                  class="right-arrow"
+                  alt=""
+                />
+              </div>
+      
+              <div class="month-container row">
+                <div class="col-4 dropdown-months">jan</div>
+                <div class="col-4 dropdown-months">feb</div>
+                <div class="col-4 dropdown-months">mar</div>
+                <div class="col-4 dropdown-months">apr</div>
+                <div class="col-4 dropdown-months">may</div>
+                <div class="col-4 dropdown-months">jun</div>
+                <div class="col-4 dropdown-months">jul</div>
+                <div class="col-4 dropdown-months">aug</div>
+                <div class="col-4 dropdown-months">sep</div>
+                <div class="col-4 dropdown-months">oct</div>
+                <div class="col-4 dropdown-months">nov</div>
+                <div class="col-4 dropdown-months">dec</div>
+              </div>
+            </div>
+          </div>
+          <div class="top-bar-content">
+            <!--             dropdown      -->
+            <div class="dropdown">
+              <button
+                class="btn dropdown-toggle  "
+                type="button"
+                id="dropdownMenuButton"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                <a>
+                <img src="./icon/Uk Flag.svg" alt="" class="uk-flag" >
+
+                  english
+
+                <img src="./icon/dropdown.svg" alt=""  class="down-arrow">
+                </a>
+              </button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item  " href="#">
+                <img src="./icon/BD Flag.svg" alt="" class="bd-flag">
+
+                  bangla</a
+                >
+              </div>
+            </div>
+
+            <a href="index.html" class="btn-log"
+              >logout
+
+              <img src="./icon/logout.svg" alt="" class="log-icon"  >
+            </a>
+          </div>
+        </div>
+        <div class="tab-bar">
+            <div class="tab-container">
+                <!-- <div class="tab-btn text-uppercase tab-btn-active">bo1</div>
+                <div class="tab-btn text-uppercase">bo2</div>
+                <div class="tab-btn text-uppercase">bo3</div> -->
+            </div>
+
+            <div class="tab-container">
+              <div class="paid-btn  ">paid</div>
+              <div class="paid-btn  ">due</div>
+            </div>
+        </div>
+        <!--              top bar contents              -->
+
+        <div class="card-section row">
+          <div class="first-row col-12">
+            <p class="caption text-capitalize  col-12">info</p>
+            <div class="cards row active-tab">        
+              <div class="rent-card text-capitalize ">
+                <div class="box flate">
+                  <div class="box-label">flat no.</div>
+                  <div class="box-content  ">a100</div>
+                </div>
+
+                <div class="box name">
+                  <div class="box-label">tenant</div>
+                  <div class="box-content ">m.r.adnan</div>
+                </div>
+
+                <div class="box contact">
+                  <div class="box-label  ">contact</div>
+                  <div class="box-content  ">01234567891</div>
+                </div>
+
+                <div class="box">
+                  <div class="box-label">rent</div>
+                  <div class="box-content  ">10000</div>
+                </div>
+
+                <div class="  payment-box box paid">
+                  <div class="box-label "> 
+                    <p>paid</p> 
+                  </div>
+                  <input type="text"   placeholder="n/a" class="box-content paid-input">
+                </div>
+
+                <div class="  payment-box due due-payment-box box ">
+                  <div class="box-label">
+                    <p>due</p> 
+                  </div>
+                  <div class="box-content">n/a</div>
+                </div>
+
+                <div class="box date">
+                  <div class="box-label">date</div>
+                  <div class="box-content">05/02/21</div>
+                </div>
+
+                <div class="btn-box">
+                  <div class="save-btn">
+                    <img src="./icon/save.svg"  alt="" srcset="">
+                  </div>
+
+                  <label class="edit-btn" >
+                   <img src="./icon/edit-pen-colored.svg" alt="" srcset="">
+                      
+                  </div>
+
+              </div>
+
+              <div class="rent-card text-capitalize ">
+                <div class="box flate">
+                  <div class="box-label">flat no.</div>
+                  <div class="box-content  ">a100</div>
+                </div>
+
+                <div class="box name">
+                  <div class="box-label">tenant</div>
+                  <div class="box-content ">m.r.adnan</div>
+                </div>
+
+                <div class="box contact">
+                  <div class="box-label  ">contact</div>
+                  <div class="box-content  ">01234567891</div>
+                </div>
+
+                <div class="box">
+                  <div class="box-label">rent</div>
+                  <div class="box-content  ">10000</div>
+                </div>
+
+                <div class="  payment-box box">
+                  <div class="box-label "> 
+                    <p>paid</p> 
+                  </div>
+                  <input type="text"   placeholder="n/a" class="box-content paid-input">
+                </div>
+
+                <div class="  payment-box  due-payment-box box ">
+                  <div class="box-label">
+                    <p>due</p> 
+                  </div>
+                  <div class="box-content">n/a</div>
+                </div>
+
+                <div class="box date">
+                  <div class="box-label">date</div>
+                  <div class="box-content">05/02/21</div>
+                </div>
+
+                <div class="btn-box">
+                  <div class="save-btn">
+                    <img src="./icon/save.svg"  alt="" srcset="">
+                  </div>
+
+                  <label class="edit-btn" >
+                   <img src="./icon/edit-pen-colored.svg" alt="" srcset="">
+                      
+                  </div>
+
+              </div>
+
+              <div class="rent-card text-capitalize ">
+                <div class="box flate">
+                  <div class="box-label">flat no.</div>
+                  <div class="box-content  ">a100</div>
+                </div>
+
+                <div class="box name">
+                  <div class="box-label">tenant</div>
+                  <div class="box-content ">m.r.adnan</div>
+                </div>
+
+                <div class="box contact">
+                  <div class="box-label  ">contact</div>
+                  <div class="box-content  ">01234567891</div>
+                </div>
+
+                <div class="box">
+                  <div class="box-label">rent</div>
+                  <div class="box-content  ">10000</div>
+                </div>
+
+                <div class="  payment-box box">
+                  <div class="box-label "> 
+                    <p>paid</p> 
+                  </div>
+                  <input type="text"   placeholder="n/a" class="box-content paid-input">
+                </div>
+
+                <div class="  payment-box  due-payment-box box ">
+                  <div class="box-label">
+                    <p>due</p> 
+                  </div>
+                  <div class="box-content">n/a</div>
+                </div>
+
+                <div class="box date">
+                  <div class="box-label">date</div>
+                  <div class="box-content">05/02/21</div>
+                </div>
+
+                <div class="btn-box">
+                  <div class="save-btn">
+                    <img src="./icon/save.svg"  alt="" srcset="">
+                  </div>
+
+                  <label class="edit-btn" >
+                   <img src="./icon/edit-pen-colored.svg" alt="" srcset="">
+                      
+                  </div>
+
+              </div>
+            </div>
+
+            <div class="cards row ">        
+
+              <div class="rent-card text-capitalize ">
+                <div class="box flate">
+                  <div class="box-label">flat no.</div>
+                  <div class="box-content  ">a100</div>
+                </div>
+
+                <div class="box name">
+                  <div class="box-label">tenant</div>
+                  <div class="box-content ">m.r.adnan</div>
+                </div>
+
+                <div class="box contact">
+                  <div class="box-label  ">contact</div>
+                  <div class="box-content  ">01234567891</div>
+                </div>
+
+                <div class="box">
+                  <div class="box-label">rent</div>
+                  <div class="box-content  ">10000</div>
+                </div>
+
+                <div class="  payment-box box">
+                  <div class="box-label "> 
+                    <p>paid</p> 
+                  </div>
+                  <input type="text"   placeholder="n/a" class="box-content paid-input">
+                </div>
+
+                <div class="  payment-box  due-payment-box box ">
+                  <div class="box-label">
+                    <p>due</p> 
+                  </div>
+                  <div class="box-content">n/a</div>
+                </div>
+
+                <div class="box date">
+                  <div class="box-label">date</div>
+                  <div class="box-content">05/02/21</div>
+                </div>
+
+                <div class="btn-box">
+                  <div class="save-btn">
+                    <img src="./icon/save.svg"  alt="" srcset="">
+                  </div>
+
+                  <label class="edit-btn" >
+                   <img src="./icon/edit-pen-colored.svg" alt="" srcset="">
+                      
+                  </div>
+
+              </div>
+
+              <div class="rent-card text-capitalize ">
+                <div class="box flate">
+                  <div class="box-label">flat no.</div>
+                  <div class="box-content  ">a100</div>
+                </div>
+
+                <div class="box name">
+                  <div class="box-label">tenant</div>
+                  <div class="box-content ">m.r.adnan</div>
+                </div>
+
+                <div class="box contact">
+                  <div class="box-label  ">contact</div>
+                  <div class="box-content  ">01234567891</div>
+                </div>
+
+                <div class="box">
+                  <div class="box-label">rent</div>
+                  <div class="box-content  ">10000</div>
+                </div>
+
+                <div class="  payment-box box paid">
+                  <div class="box-label "> 
+                    <p>paid</p> 
+                  </div>
+                  <input type="text"   placeholder="n/a" class="box-content paid-input">
+                </div>
+
+                <div class="  payment-box due due-payment-box box ">
+                  <div class="box-label">
+                    <p>due</p> 
+                  </div>
+                  <div class="box-content">n/a</div>
+                </div>
+
+                <div class="box date">
+                  <div class="box-label">date</div>
+                  <div class="box-content">05/02/21</div>
+                </div>
+
+                <div class="btn-box">
+                  <div class="save-btn">
+                    <img src="./icon/save.svg"  alt="" srcset="">
+                  </div>
+
+                  <label class="edit-btn" >
+                   <img src="./icon/edit-pen-colored.svg" alt="" srcset="">
+                      
+                  </div>
+
+              </div>
+
+              <div class="rent-card text-capitalize ">
+                <div class="box flate">
+                  <div class="box-label">flat no.</div>
+                  <div class="box-content  ">a100</div>
+                </div>
+
+                <div class="box name">
+                  <div class="box-label">tenant</div>
+                  <div class="box-content ">m.r.adnan</div>
+                </div>
+
+                <div class="box contact">
+                  <div class="box-label  ">contact</div>
+                  <div class="box-content  ">01234567891</div>
+                </div>
+
+                <div class="box">
+                  <div class="box-label">rent</div>
+                  <div class="box-content  ">10000</div>
+                </div>
+
+                <div class="  payment-box box">
+                  <div class="box-label "> 
+                    <p>paid</p> 
+                  </div>
+                  <input type="text"   placeholder="n/a" class="box-content paid-input">
+                </div>
+
+                <div class="  payment-box  due-payment-box box ">
+                  <div class="box-label">
+                    <p>due</p> 
+                  </div>
+                  <div class="box-content">n/a</div>
+                </div>
+
+                <div class="box date">
+                  <div class="box-label">date</div>
+                  <div class="box-content">05/02/21</div>
+                </div>
+
+                <div class="btn-box">
+                  <div class="save-btn">
+                    <img src="./icon/save.svg"  alt="" srcset="">
+                  </div>
+
+                  <label class="edit-btn" >
+                   <img src="./icon/edit-pen-colored.svg" alt="" srcset="">
+                      
+                  </div>
+
+              </div>
+            </div>
+
+            <div class="cards row ">        
+
+              <div class="rent-card text-capitalize ">
+                <div class="box flate">
+                  <div class="box-label">flat no.</div>
+                  <div class="box-content  ">a100</div>
+                </div>
+
+                <div class="box name">
+                  <div class="box-label">tenant</div>
+                  <div class="box-content ">m.r.adnan</div>
+                </div>
+
+                <div class="box contact">
+                  <div class="box-label  ">contact</div>
+                  <div class="box-content  ">01234567891</div>
+                </div>
+
+                <div class="box">
+                  <div class="box-label">rent</div>
+                  <div class="box-content  ">10000</div>
+                </div>
+
+                <div class="  payment-box box">
+                  <div class="box-label "> 
+                    <p>paid</p> 
+                  </div>
+                  <input type="text"   placeholder="n/a" class="box-content paid-input">
+                </div>
+
+                <div class="  payment-box  due-payment-box box ">
+                  <div class="box-label">
+                    <p>due</p> 
+                  </div>
+                  <div class="box-content">n/a</div>
+                </div>
+
+                <div class="box date">
+                  <div class="box-label">date</div>
+                  <div class="box-content">05/02/21</div>
+                </div>
+
+                <div class="btn-box">
+                  <div class="save-btn">
+                    <img src="./icon/save.svg"  alt="" srcset="">
+                  </div>
+
+                  <label class="edit-btn" >
+                   <img src="./icon/edit-pen-colored.svg" alt="" srcset="">
+                      
+                  </div>
+
+              </div>
+
+              <div class="rent-card text-capitalize ">
+                <div class="box flate">
+                  <div class="box-label">flat no.</div>
+                  <div class="box-content  ">a100</div>
+                </div>
+
+                <div class="box name">
+                  <div class="box-label">tenant</div>
+                  <div class="box-content ">m.r.adnan</div>
+                </div>
+
+                <div class="box contact">
+                  <div class="box-label  ">contact</div>
+                  <div class="box-content  ">01234567891</div>
+                </div>
+
+                <div class="box">
+                  <div class="box-label">rent</div>
+                  <div class="box-content  ">10000</div>
+                </div>
+
+                <div class="  payment-box box paid">
+                  <div class="box-label "> 
+                    <p>paid</p> 
+                  </div>
+                  <input type="text"   placeholder="n/a" class="box-content paid-input">
+                </div>
+
+                <div class="  payment-box due due-payment-box box ">
+                  <div class="box-label">
+                    <p>due</p> 
+                  </div>
+                  <div class="box-content">n/a</div>
+                </div>
+
+                <div class="box date">
+                  <div class="box-label">date</div>
+                  <div class="box-content">05/02/21</div>
+                </div>
+
+                <div class="btn-box">
+                  <div class="save-btn">
+                    <img src="./icon/save.svg"  alt="" srcset="">
+                  </div>
+
+                  <label class="edit-btn" >
+                   <img src="./icon/edit-pen-colored.svg" alt="" srcset="">
+                      
+                  </div>
+
+              </div>
+
+              <div class="rent-card text-capitalize ">
+                <div class="box flate">
+                  <div class="box-label">flat no.</div>
+                  <div class="box-content  ">a100</div>
+                </div>
+
+                <div class="box name">
+                  <div class="box-label">tenant</div>
+                  <div class="box-content ">m.r.adnan</div>
+                </div>
+
+                <div class="box contact">
+                  <div class="box-label  ">contact</div>
+                  <div class="box-content  ">01234567891</div>
+                </div>
+
+                <div class="box">
+                  <div class="box-label">rent</div>
+                  <div class="box-content  ">10000</div>
+                </div>
+
+                <div class="  payment-box box">
+                  <div class="box-label "> 
+                    <p>paid</p> 
+                  </div>
+                  <input type="text"   placeholder="n/a" class="box-content paid-input">
+                </div>
+
+                <div class="  payment-box  due-payment-box box ">
+                  <div class="box-label">
+                    <p>due</p> 
+                  </div>
+                  <div class="box-content">n/a</div>
+                </div>
+
+                <div class="box date">
+                  <div class="box-label">date</div>
+                  <div class="box-content">05/02/21</div>
+                </div>
+
+                <div class="btn-box">
+                  <div class="save-btn">
+                    <img src="./icon/save.svg"  alt="" srcset="">
+                  </div>
+
+                  <label class="edit-btn" >
+                   <img src="./icon/edit-pen-colored.svg" alt="" srcset="">
+                      
+                  </div>
+
+              </div>
+            </div>
+
+            <div class="cards row ">        
+
+              <div class="rent-card text-capitalize ">
+                <div class="box flate">
+                  <div class="box-label">flat no.</div>
+                  <div class="box-content  ">a100</div>
+                </div>
+
+                <div class="box name">
+                  <div class="box-label">tenant</div>
+                  <div class="box-content ">m.r.adnan</div>
+                </div>
+
+                <div class="box contact">
+                  <div class="box-label  ">contact</div>
+                  <div class="box-content  ">01234567891</div>
+                </div>
+
+                <div class="box">
+                  <div class="box-label">rent</div>
+                  <div class="box-content  ">10000</div>
+                </div>
+
+                <div class="  payment-box box">
+                  <div class="box-label "> 
+                    <p>paid</p> 
+                  </div>
+                  <input type="text"   placeholder="n/a" class="box-content paid-input">
+                </div>
+
+                <div class="  payment-box  due-payment-box box ">
+                  <div class="box-label">
+                    <p>due</p> 
+                  </div>
+                  <div class="box-content">n/a</div>
+                </div>
+
+                <div class="box date">
+                  <div class="box-label">date</div>
+                  <div class="box-content">05/02/21</div>
+                </div>
+
+                <div class="btn-box">
+                  <div class="save-btn">
+                    <img src="./icon/save.svg"  alt="" srcset="">
+                  </div>
+
+                  <label class="edit-btn" >
+                   <img src="./icon/edit-pen-colored.svg" alt="" srcset="">
+                      
+                  </div>
+
+              </div>
+
+              <div class="rent-card text-capitalize ">
+                <div class="box flate">
+                  <div class="box-label">flat no.</div>
+                  <div class="box-content  ">a100</div>
+                </div>
+
+                <div class="box name">
+                  <div class="box-label">tenant</div>
+                  <div class="box-content ">m.r.adnan</div>
+                </div>
+
+                <div class="box contact">
+                  <div class="box-label  ">contact</div>
+                  <div class="box-content  ">01234567891</div>
+                </div>
+
+                <div class="box">
+                  <div class="box-label">rent</div>
+                  <div class="box-content  ">10000</div>
+                </div>
+
+                <div class="  payment-box box paid">
+                  <div class="box-label "> 
+                    <p>paid</p> 
+                  </div>
+                  <input type="text"   placeholder="n/a" class="box-content paid-input">
+                </div>
+
+                <div class="  payment-box due due-payment-box box ">
+                  <div class="box-label">
+                    <p>due</p> 
+                  </div>
+                  <div class="box-content">n/a</div>
+                </div>
+
+                <div class="box date">
+                  <div class="box-label">date</div>
+                  <div class="box-content">05/02/21</div>
+                </div>
+
+                <div class="btn-box">
+                  <div class="save-btn">
+                    <img src="./icon/save.svg"  alt="" srcset="">
+                  </div>
+
+                  <label class="edit-btn" >
+                   <img src="./icon/edit-pen-colored.svg" alt="" srcset="">
+                      
+                  </div>
+
+              </div>
+
+              <div class="rent-card text-capitalize ">
+                <div class="box flate">
+                  <div class="box-label">flat no.</div>
+                  <div class="box-content  ">a100</div>
+                </div>
+
+                <div class="box name">
+                  <div class="box-label">tenant</div>
+                  <div class="box-content ">m.r.adnan</div>
+                </div>
+
+                <div class="box contact">
+                  <div class="box-label  ">contact</div>
+                  <div class="box-content  ">01234567891</div>
+                </div>
+
+                <div class="box">
+                  <div class="box-label">rent</div>
+                  <div class="box-content  ">10000</div>
+                </div>
+
+                <div class="  payment-box box">
+                  <div class="box-label "> 
+                    <p>paid</p> 
+                  </div>
+                  <input type="text"   placeholder="n/a" class="box-content paid-input">
+                </div>
+
+                <div class="  payment-box  due-payment-box box ">
+                  <div class="box-label">
+                    <p>due</p> 
+                  </div>
+                  <div class="box-content">n/a</div>
+                </div>
+
+                <div class="box date">
+                  <div class="box-label">date</div>
+                  <div class="box-content">05/02/21</div>
+                </div>
+
+                <div class="btn-box">
+                  <div class="save-btn">
+                    <img src="./icon/save.svg"  alt="" srcset="">
+                  </div>
+
+                  <label class="edit-btn" >
+                   <img src="./icon/edit-pen-colored.svg" alt="" srcset="">
+                      
+                  </div>
+
+              </div>
+            </div>
+
+            <div class="cards row ">        
+
+              <div class="rent-card text-capitalize ">
+                <div class="box flate">
+                  <div class="box-label">flat no.</div>
+                  <div class="box-content  ">a100</div>
+                </div>
+
+                <div class="box name">
+                  <div class="box-label">tenant</div>
+                  <div class="box-content ">m.r.adnan</div>
+                </div>
+
+                <div class="box contact">
+                  <div class="box-label  ">contact</div>
+                  <div class="box-content  ">01234567891</div>
+                </div>
+
+                <div class="box">
+                  <div class="box-label">rent</div>
+                  <div class="box-content  ">10000</div>
+                </div>
+
+                <div class="  payment-box box">
+                  <div class="box-label "> 
+                    <p>paid</p> 
+                  </div>
+                  <input type="text"   placeholder="n/a" class="box-content paid-input">
+                </div>
+
+                <div class="  payment-box  due-payment-box box ">
+                  <div class="box-label">
+                    <p>due</p> 
+                  </div>
+                  <div class="box-content">n/a</div>
+                </div>
+
+                <div class="box date">
+                  <div class="box-label">date</div>
+                  <div class="box-content">05/02/21</div>
+                </div>
+
+                <div class="btn-box">
+                  <div class="save-btn">
+                    <img src="./icon/save.svg"  alt="" srcset="">
+                  </div>
+
+                  <label class="edit-btn" >
+                   <img src="./icon/edit-pen-colored.svg" alt="" srcset="">
+                      
+                  </div>
+
+              </div>
+
+              <div class="rent-card text-capitalize ">
+                <div class="box flate">
+                  <div class="box-label">flat no.</div>
+                  <div class="box-content  ">a100</div>
+                </div>
+
+                <div class="box name">
+                  <div class="box-label">tenant</div>
+                  <div class="box-content ">m.r.adnan</div>
+                </div>
+
+                <div class="box contact">
+                  <div class="box-label  ">contact</div>
+                  <div class="box-content  ">01234567891</div>
+                </div>
+
+                <div class="box">
+                  <div class="box-label">rent</div>
+                  <div class="box-content  ">10000</div>
+                </div>
+
+                <div class="  payment-box box paid">
+                  <div class="box-label "> 
+                    <p>paid</p> 
+                  </div>
+                  <input type="text"   placeholder="n/a" class="box-content paid-input">
+                </div>
+
+                <div class="  payment-box due due-payment-box box ">
+                  <div class="box-label">
+                    <p>due</p> 
+                  </div>
+                  <div class="box-content">n/a</div>
+                </div>
+
+                <div class="box date">
+                  <div class="box-label">date</div>
+                  <div class="box-content">05/02/21</div>
+                </div>
+
+                <div class="btn-box">
+                  <div class="save-btn">
+                    <img src="./icon/save.svg"  alt="" srcset="">
+                  </div>
+
+                  <label class="edit-btn" >
+                   <img src="./icon/edit-pen-colored.svg" alt="" srcset="">
+                      
+                  </div>
+
+              </div>
+
+              <div class="rent-card text-capitalize ">
+                <div class="box flate">
+                  <div class="box-label">flat no.</div>
+                  <div class="box-content  ">a100</div>
+                </div>
+
+                <div class="box name">
+                  <div class="box-label">tenant</div>
+                  <div class="box-content ">m.r.adnan</div>
+                </div>
+
+                <div class="box contact">
+                  <div class="box-label  ">contact</div>
+                  <div class="box-content  ">01234567891</div>
+                </div>
+
+                <div class="box">
+                  <div class="box-label">rent</div>
+                  <div class="box-content  ">10000</div>
+                </div>
+
+                <div class="  payment-box box">
+                  <div class="box-label "> 
+                    <p>paid</p> 
+                  </div>
+                  <input type="text"   placeholder="n/a" class="box-content paid-input">
+                </div>
+
+                <div class="  payment-box  due-payment-box box ">
+                  <div class="box-label">
+                    <p>due</p> 
+                  </div>
+                  <div class="box-content">n/a</div>
+                </div>
+
+                <div class="box date">
+                  <div class="box-label">date</div>
+                  <div class="box-content">05/02/21</div>
+                </div>
+
+                <div class="btn-box">
+                  <div class="save-btn">
+                    <img src="./icon/save.svg"  alt="" srcset="">
+                  </div>
+
+                  <label class="edit-btn" >
+                   <img src="./icon/edit-pen-colored.svg" alt="" srcset="">
+                      
+                  </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="./js/rent.js"></script>
+  </body>
+</html>
