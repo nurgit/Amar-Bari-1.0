@@ -2,7 +2,7 @@
 
         <!-- ===== nav bar ===== -->
         <nav class="navbar navbar-light navbar-expand-md">
-          <a class="text-capitalize navbar-brand">
+          <a href="{{route('/')}}"  class="text-capitalize navbar-brand" >
             <img src="users/icon/brand.svg" alt="" />
             Accumulator
           </a>

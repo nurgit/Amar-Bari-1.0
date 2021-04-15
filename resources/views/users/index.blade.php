@@ -296,7 +296,7 @@
 
       <div class="footer-bt-left">
         <h1 class="sub-text">want to order?</h1>
-        <a href="contact.html" class="main-text text-uppercase">
+        <a href="{{route('/contact')}}" class="main-text text-uppercase">
           let's talk
           <img src="users/icon/footer-svg.svg" class="footer-link" alt="" />
         </a>
