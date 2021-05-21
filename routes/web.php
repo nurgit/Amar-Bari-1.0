@@ -25,6 +25,7 @@ Route::get('/', [HomeController::class, 'index'])->name('/');
 Route::get('/contact', [HomeController::class, 'contact'])->name('/contact');
 Route::get('/login', [UserAuthController::class, 'login'])->name('/login');
 Route::post('/loginCheck', [UserAuthController::class, 'loginCheck'])->name('loginCheck');
+Route::get('/logout',[UserAuthController::class, 'logout'])->name('/logout');
 
 Route::post('/create',[UserAuthController::class, 'create'])->name('auth.create');
 
@@ -33,4 +34,4 @@ Route::post('/create',[UserAuthController::class, 'create'])->name('auth.create'
 //     route::get('dashbord',[AdminController::class,'index'])->name('admin.dashbord');
 // });
 
-Route::get('admin/dashbord',[AdminController::class,'index'])->name('admin.dashbord');
+Route::get('admin/dashbord',[AdminController::class,'index'])->name('/admin/dashbord');

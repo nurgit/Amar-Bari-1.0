@@ -12,27 +12,36 @@ class UserAuthController extends Controller
         return view('auth.login');
      }
 
-public function loginCheck(Request $request){
-     //return $request->input();
+    public function loginCheck(Request $request){
+        //return $request->input();
 
-     $request->validate([
-        'email' => ['required', 'email'],
-        'password' => ['required',  'min:5','max:12', ],
-    ]);
+        $request->validate([
+            'email' => ['required', 'email'],
+            'password' => ['required',  'min:5','max:12', ],
+        ]);
 
-    $userInfo=User::where('email','=', $request->email)->first();
-    if(! $userInfo){
-        return back()->with('failLog', 'We do not recogonize your email address');
-    }else{
-        if(Hash::check($request->password, $userInfo->password)){
-            $request->session()->put('LoggedUser',$userInfo->id);
-            return redirect('admin/dashbord');
-           /// return route('admin.dashbord');
+        $userInfo=User::where('email','=', $request->email)->first();
+        if(! $userInfo){
+            return back()->with('failLog', 'We do not recogonize your email address');
         }else{
-            return back()->with('failLog','incorret password');
+            if(Hash::check($request->password, $userInfo->password)){
+                $request->session()->put('LoggedUser',$userInfo->id);
+                return redirect('admin/dashbord');
+            /// return route('admin.dashbord');
+            }else{
+                return back()->with('failLog','incorret password');
+            }
         }
     }
-}
+    public function logout(){
+        if(session()->has('LoggedUser')){
+            session()->pull('LoggedUser');
+            return redirect('/login');
+        }
+
+
+
+    }
 
 
 

@@ -24,7 +24,7 @@
                             <tr>
                                 <td>{{$LoggedUserInfo['name']}}</td>
                                 <td>{{$LoggedUserInfo['email']}}</td>
-                                <td><a href="">Logout</a></td>
+                                <td><a href="{{route('/logout')}}">Logout</a></td>
                             </tr>
                         </tbody>
                     </table>
