@@ -30,41 +30,61 @@
             </div>
 
             <div class="input-container">
-              <form action="" class="row mb-2">
+              <form action="{{route('loginCheck')}}" class="row mb-2" method="POST">
+
+                @csrf
                 <div class="col-12 input-con login-input">
                   <input
                     type="email"
-                    name=""
+                    name="email"
                     id=" acc-input"
                     class="form-input"
                     required
+                    value="{{ old('email') }}"
                   />
                   <label for="acc-input" class="label">email</label>
+                  <span for="acc-input"class="text-danger">@error('email'){{$message}} @enderror</span>
                 </div>
+
                 <div class="col-12 input-con login-input">
                   <input
                     type="password"
                     class="form-input"
-                    name=""
+                    name="password"
                     id=" acc-input"
                     required
+
                   />
                   <label for="acc-input" class="label">password</label>
+                  <span for="acc-input"class="text-danger">@error('password'){{$message}} @enderror</span>
                 </div>
-              </form>
+              
             </div>
 
             <div class="left-footer text-center">
-              <a href="dashboard.html" class="log-btn">
-                <p>login</p>
-              </a>
-
+              {{-- <a href="dashboard.html" class="log-btn"> --}}
+                <button type="submit"  class="log-btn" ><p>login</p></button>
+                
+              {{-- </a> --}}
+            </form>
               <p>
                 Don’t have an account?
                 <span class="option" data-toggle="modal" data-target="#log-modal"
-                  >Create One</span
-                >
+                  >Create One</span>
+
               </p>
+              @if (Session::get('success'))
+              <div class="alert alert-success">
+                {{Session::get('success')}}
+              </div>
+              @endif
+
+              @if (Session::get('fail'))
+              <div class="alert alert-danger">
+                {{Session::get('fail')}}
+              </div>
+              @endif
+
             </div>
           </div>
 
@@ -78,11 +98,13 @@
         <div class="modal-dialog">
           <div class="modal-content add-modal-content">
             <div class="modal-body">
-              <form action="" class="row form mb-2 mb-md-4">
-                <div class="col-12 input-con">
+
+              <form action="{{route('auth.create')}}" method="POST" class="row form mb-2 mb-md-4" >
+               @csrf
+                <div class="col-12 col-lg-6 input-con">
                   <input
                     type="text"
-                    name=""
+                    name="name"
                     id=" acc-input"
                     class="form-input"
                     required
@@ -93,55 +115,77 @@
                 <div class="col-12 col-lg-6 input-con half-input">
                   <input
                     type="text"
-                    name=""
+                    name="username"
                     id=" acc-input"
                     class="form-input"
                     required
+                    value="{{ old('name') }}"
                   />
+                 
                   <label for="acc-input" class="label text-capitalize"
                     >user name</label
                   >
-                </div>
-
-                <div class="col-12 col-lg-6 half-input input-con">
-                  <input
-                    type="text"
-                    name=""
-                    id=" acc-input"
-                    class="form-input"
-                    required
-                  />
-                  <label for="acc-input" class="label">contact</label>
+                  <span for="acc-input"class="text-danger">@error('name'){{$message}} @enderror</span>
                 </div>
 
                 <div class="col-12 col-lg-6 input-con half-input">
                   <input
                     type="text"
-                    name=""
+                    name="email"
                     id=" acc-input"
                     class="form-input"
                     required
+                    value="{{ old('email') }}"
                   />
                   <label for="acc-input" class="label text-capitalize"
-                    >password</label
+                    >email</label
                   >
+                  <span class="text-danger">@error('email'){{$message}} @enderror</span>
                 </div>
-
+ 
                 <div class="col-12 col-lg-6 half-input input-con">
                   <input
                     type="text"
-                    name=""
+                    name="phone"
+                    id=" acc-input"
+                    class="form-input"
+                    required
+                    value="{{ old('phone') }}"
+                  />
+                  <label for="acc-input" class="label">phone</label>
+
+                  <span class="text-danger">@error('phone'){{$message}} @enderror</span>
+                </div>
+
+                <div class="col-12 col-lg-6 input-con half-input">
+                  <input
+                    type="password"
+                    name="password"
+                    id=" acc-input"
+                    class="form-input"
+                    required
+             
+                  />
+                  <label for="acc-input" class="label text-capitalize"
+                    >password</label>
+                    <span class="text-danger">@error('password'){{$message}} @enderror</span>
+                </div>
+                <div class="col-12 col-lg-6 half-input input-con">
+                  <input
+                    type="password"
+                    name="confirmPassword"
                     id=" acc-input"
                     class="form-input"
                     required
                   />
                   <label for="acc-input" class="label">confirm password</label>
+                  <span class="text-danger">@error('password'){{$message}} @enderror</span>
                 </div>
-              </form>
+              
               <div class="btn-modal">
-                <button type="button" class="confirm text-capitalize">
+                <button type="submit" class="confirm text-capitalize">
                   <p>confirm</p>
-
+                
                   <svg
                     width="21"
                     height="20"
@@ -199,6 +243,7 @@
                   <span></span>
                 </div>
               </div>
+            </form>
             </div>
           </div>
         </div>

@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\UserAuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,4 +21,7 @@ use App\Http\Controllers\HomeController;
 
 Route::get('/', [HomeController::class, 'index'])->name('/');
 Route::get('/contact', [HomeController::class, 'contact'])->name('/contact');
-Route::get('/login', [HomeController::class, 'login'])->name('/login');
+Route::get('/login', [UserAuthController::class, 'login'])->name('/login');
+Route::post('/loginCheck', [UserAuthController::class, 'loginCheck'])->name('loginCheck');
+
+Route::post('/create',[UserAuthController::class, 'create'])->name('auth.create');
