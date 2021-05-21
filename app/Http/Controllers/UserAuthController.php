@@ -26,13 +26,25 @@ class UserAuthController extends Controller
         }else{
             if(Hash::check($request->password, $userInfo->password)){
                 $request->session()->put('LoggedUser',$userInfo->id);
-                return redirect('admin/dashbord');
+                //return redirect('admin/dashbord');
             /// return route('admin.dashbord');
+
+            if($userInfo->role_id==1){  
+                return redirect('owner/dashboard');
+            }elseif($userInfo->role_id==2){
+                return redirect('manager/dashboard');
+            }elseif($userInfo->role_id==3){
+                return redirect('renter/dashboard');
+            }elseif($userInfo->role_id==4){
+                return redirect('admin/dashboard');
+            }
             }else{
                 return back()->with('failLog','incorret password');
             }
         }
     }
+
+    
     public function logout(){
         if(session()->has('LoggedUser')){
             session()->pull('LoggedUser');

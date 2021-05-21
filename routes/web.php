@@ -3,6 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserAuthController;
+use App\Http\Controllers\Owner\OwnerController;
+use App\Http\Controllers\Manager\ManagerController;
+use App\Http\Controllers\Renter\RenterController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin;
 use GuzzleHttp\Middleware;
@@ -27,7 +30,6 @@ Route::get('/contact', [HomeController::class, 'contact'])->name('/contact');
 Route::get('/login', [UserAuthController::class, 'login'])->name('/login');
 Route::post('/loginCheck', [UserAuthController::class, 'loginCheck'])->name('loginCheck');
 Route::get('/logout',[UserAuthController::class, 'logout'])->name('/logout');
-
 Route::post('/create',[UserAuthController::class, 'create'])->name('auth.create');
 
 
@@ -36,8 +38,19 @@ Route::post('/create',[UserAuthController::class, 'create'])->name('auth.create'
 // });
 
 
-Route::group(['middleware'=>['AuthCheck']], function(){
-   
-    Route::get('admin/dashbord',[AdminController::class,'index'])->name('admin.dashbord');
-
+Route::group([ 'prefix'=>'owner', 'middleware'=>['AuthCheck']], function(){
+    Route::get('dashboard',[OwnerController::class,'index'])->name('owner.dashboard');
 });
+
+Route::group([ 'prefix'=>'manager', 'middleware'=>['AuthCheck']], function(){
+    Route::get('dashboard',[ManagerController::class,'index'])->name('manager.dashboard');
+});
+
+Route::group([ 'prefix'=>'renter', 'middleware'=>['AuthCheck']], function(){
+    Route::get('dashboard',[RenterController::class,'index'])->name('renter.dashboard');
+});
+
+Route::group([ 'prefix'=>'admin', 'middleware'=>['AuthCheck']], function(){
+    Route::get('dashboard',[AdminController::class,'index'])->name('admin.dashboard');
+});
+

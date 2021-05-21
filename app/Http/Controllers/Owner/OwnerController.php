@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Owner;
 use App\Models\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class AdminController extends Controller
+class OwnerController extends Controller
 {
     //
     public function index(){
         $data=['LoggedUserInfo'=>User::where('id','=',session('LoggedUser'))-> first()];
-        return view('admin.index', $data);
+        return view('owner.index',$data);
     }
 }
