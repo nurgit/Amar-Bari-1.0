@@ -27,9 +27,16 @@
               <p>
                 Log in with your data that you entered during your registration.
               </p>
+
+
             </div>
 
             <div class="input-container">
+              @if (Session::get('failLog'))
+              <div class="alert alert-danger">
+                {{Session::get('failLog')}}
+              </div>
+              @endif
               <form action="{{route('loginCheck')}}" class="row mb-2" method="POST">
 
                 @csrf

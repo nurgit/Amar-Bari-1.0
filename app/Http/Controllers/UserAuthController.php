@@ -22,9 +22,20 @@ public function loginCheck(Request $request){
 
     $userInfo=User::where('email','=', $request->email)->first();
     if(! $userInfo){
-        return back()->with('failLog', 'We do not recogonize email address');
+        return back()->with('failLog', 'We do not recogonize your email address');
+    }else{
+        if(Hash::check($request->password, $userInfo->password)){
+            $request->session()->put('LoggedUser',$userInfo->id);
+            return redirect('admin/dashbord');
+           /// return route('admin.dashbord');
+        }else{
+            return back()->with('failLog','incorret password');
+        }
     }
 }
+
+
+
 
      public function create(Request $request){
         //  return $request->input();

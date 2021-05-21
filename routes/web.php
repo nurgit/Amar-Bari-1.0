@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserAuthController;
+use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,3 +27,10 @@ Route::get('/login', [UserAuthController::class, 'login'])->name('/login');
 Route::post('/loginCheck', [UserAuthController::class, 'loginCheck'])->name('loginCheck');
 
 Route::post('/create',[UserAuthController::class, 'create'])->name('auth.create');
+
+
+// Route::group(['prefix'=>'admin', 'middleware'=>['auth','admin'], 'namespace'=>'admin'],function(){
+//     route::get('dashbord',[AdminController::class,'index'])->name('admin.dashbord');
+// });
+
+Route::get('admin/dashbord',[AdminController::class,'index'])->name('admin.dashbord');
