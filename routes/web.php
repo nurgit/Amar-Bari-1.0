@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserAuthController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin;
+use GuzzleHttp\Middleware;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,4 +35,9 @@ Route::post('/create',[UserAuthController::class, 'create'])->name('auth.create'
 //     route::get('dashbord',[AdminController::class,'index'])->name('admin.dashbord');
 // });
 
-Route::get('admin/dashbord',[AdminController::class,'index'])->name('/admin/dashbord');
+
+Route::group(['middleware'=>['AuthCheck']], function(){
+   
+    Route::get('admin/dashbord',[AdminController::class,'index'])->name('admin.dashbord');
+
+});
