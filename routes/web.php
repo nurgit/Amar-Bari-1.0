@@ -43,6 +43,7 @@ Route::get('/dltNotification',[DltController::class, 'index'])->name('dltNotific
 
 Route::group([ 'prefix'=>'owner', 'middleware'=>['Dlt','AuthCheck','Owner']], function(){
     Route::get('dashboard',[OwnerController::class,'index'])->name('owner.dashboard');
+    Route::get('account',[OwnerController::class,'account'])->name('account');
 });
 
 Route::group([ 'prefix'=>'manager', 'middleware'=>['AuthCheck']], function(){
@@ -55,5 +56,6 @@ Route::group([ 'prefix'=>'renter', 'middleware'=>['AuthCheck']], function(){
 
 Route::group([ 'prefix'=>'admin', 'middleware'=>['AuthCheck']], function(){
     Route::get('dashboard',[AdminController::class,'index'])->name('admin.dashboard');
+   
 });
 

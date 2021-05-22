@@ -12,4 +12,9 @@ class OwnerController extends Controller
         $data=['LoggedUserInfo'=>User::where('id','=',session('LoggedUser'))-> first()];
         return view('owner.dashboard',$data);
     }
+
+    public function account(){
+      //  $data=['LoggedUserInfo'=>User::where('id','=',session('LoggedUser'))-> first()];
+        return view('owner.account');
+    }
 }

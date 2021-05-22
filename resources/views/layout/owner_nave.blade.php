@@ -21,7 +21,7 @@
         <span>dashboard</span>
       </a>
 
-      <a href="account.html" class="link ">
+      <a href="{{route('account')}}" class="link ">
         <div class="svg-bg">
           <img src="{{asset('users/icon/Accounts.svg')}}" alt="" />
         </div>
