@@ -37,7 +37,7 @@
         <span> buildings</span>
       </a>
 
-      <a href="flats.html" class="link">
+      <a href="{{route('owner.flat')}}" class="link">
         <div class="svg-bg">
           <img src="{{asset('users/icon/Flats.svg')}}" alt="" />
         </div>
