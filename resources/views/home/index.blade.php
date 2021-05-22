@@ -1,6 +1,4 @@
-
 @extends('layout.home_layout')
-
 @section('header')
   <!DOCTYPE html>
   <html lang="en">
@@ -49,23 +47,23 @@
 
         <div class="box-container">
           <div class="box">
-            <img src="users/icon/wood.svg" alt="" />
+            <img src="{{asset('users/icon/wood.svg')}}" alt="" />
             <div class="box-bg"></div>
           </div>
 
           <div class="box">
-            <img src="users/icon/concreat.svg" alt="" />
+            <img src="{{asset('users/icon/concreat.svg')}}" alt="" />
             <div class="box-bg"></div>
           </div>
 
           <div class="box">
-            <img src="users/icon/glass.svg" alt="" />
+            <img src="{{asset('users/icon/glass.svg')}}" alt="" />
             <div class="box-bg"></div>
           </div>
         </div>
       </div>
 
-      <img src="users/icon/Main-Object.svg" class="right" alt="" />
+      <img src="{{asset('users/icon/Main-Object.svg')}}" class="right" alt="" />
     </div>
   </div>
 
@@ -96,7 +94,7 @@
       <div class="carousel-item active">
         <div class="item-container">
           <img
-            src="users/img/home.jpg"
+            src="{{asset('users/img/home.jpg')}}"
             class="slider-img"
             alt=""
             data-toggle="modal"
@@ -104,27 +102,7 @@
           />
 
           <img
-            src="users/img/Dashboard.jpg"
-            class="slider-img"
-            alt=""
-            data-toggle="modal"
-            data-target="#img-pop-modal"
-          />
-        </div>
-      </div>
-
-      <div class="carousel-item">
-        <div class="item-container">
-          <img
-            src="users/img/Acoounts-Main.jpg"
-            class="slider-img"
-            alt=""
-            data-toggle="modal"
-            data-target="#img-pop-modal"
-          />
-
-          <img
-            src="users/img/Buildings-Main.jpg"
+            src="{{asset('users/img/Dashboard.jpg')}}"
             class="slider-img"
             alt=""
             data-toggle="modal"
@@ -136,7 +114,7 @@
       <div class="carousel-item">
         <div class="item-container">
           <img
-            src="users/img/Flat-Main.jpg"
+            src="{{asset('users/img/Acoounts-Main.jpg')}}"
             class="slider-img"
             alt=""
             data-toggle="modal"
@@ -144,7 +122,27 @@
           />
 
           <img
-            src="users/img/RentCollection-Main.jpg"
+            src="{{asset('users/img/Buildings-Main.jpg')}}"
+            class="slider-img"
+            alt=""
+            data-toggle="modal"
+            data-target="#img-pop-modal"
+          />
+        </div>
+      </div>
+
+      <div class="carousel-item">
+        <div class="item-container">
+          <img
+            src="{{asset('users/img/Flat-Main.jpg')}}"
+            class="slider-img"
+            alt=""
+            data-toggle="modal"
+            data-target="#img-pop-modal"
+          />
+
+          <img
+            src="{{asset('users/img/RentCollection-Main.jpg')}}"
             class="slider-img"
             alt=""
             data-toggle="modal"
@@ -156,7 +154,7 @@
 
     <div class="arrow-con">
       <a href="#featurs" class="slider-arrow" data-slide="next">
-        <img src="users/icon/slider-arrow-right.svg" class="arrow" alt="" />
+        <img src="{{asset('users/icon/slider-arrow-right.svg')}}" class="arrow" alt="" />
       </a>
     </div>
   </div>
@@ -170,7 +168,7 @@
   >
     <div class="arrow-con">
       <a href="#featurs2" class="slider-arrow" data-slide="prev">
-        <img src="users/icon/slider-arrow-left.svg" class="arrow" alt="" />
+        <img src="{{asset('users/icon/slider-arrow-left.svg')}}" class="arrow" alt="" />
       </a>
     </div>
 
@@ -178,7 +176,7 @@
       <div class="carousel-item active">
         <div class="item-container">
           <img
-            src="users/img/home.jpg"
+            src="{{asset('users/img/home.jpg')}}"
             class="slider-img"
             alt=""
             data-toggle="modal"
@@ -190,7 +188,7 @@
       <div class="carousel-item">
         <div class="item-container">
           <img
-            src="users/img/Dashboard.jpg"
+            src="{{asset('users/img/Dashboard.jpg')}}"
             class="slider-img"
             alt=""
             data-toggle="modal"
@@ -202,7 +200,7 @@
       <div class="carousel-item">
         <div class="item-container">
           <img
-            src="users/img/Acoounts-Main.jpg"
+            src="{{asset('users/img/Acoounts-Main.jpg')}}"
             class="slider-img"
             alt=""
             data-toggle="modal"
@@ -214,7 +212,7 @@
       <div class="carousel-item">
         <div class="item-container">
           <img
-            src="users/img/Buildings-Main.jpg"
+            src="{{asset('users/img/Buildings-Main.jpg')}}"
             class="slider-img"
             alt=""
             data-toggle="modal"
@@ -226,7 +224,7 @@
       <div class="carousel-item">
         <div class="item-container">
           <img
-            src="users/img/Flat-Main.jpg"
+            src="{{asset('users/img/Flat-Main.jpg')}}"
             class="slider-img"
             alt=""
             data-toggle="modal"
@@ -238,7 +236,7 @@
       <div class="carousel-item">
         <div class="item-container">
           <img
-            src="users/img/RentCollection-Main.jpg"
+            src="{{asset('users/img/RentCollection-Main.jpg')}}"
             class="slider-img"
             alt=""
             data-toggle="modal"
@@ -250,7 +248,7 @@
 
     <div class="arrow-con">
       <a href="#featurs2" class="slider-arrow" data-slide="next">
-        <img src="users/icon/slider-arrow-right.svg" class="arrow" alt="" />
+        <img src="{{asset('users/icon/slider-arrow-right.svg')}}" class="arrow" alt="" />
       </a>
     </div>
   </div>
@@ -281,7 +279,7 @@
     <div class="footer-left">
       <div class="footer-brand">
         <h1>
-          <img src="users/icon/footer-brand.svg" alt="" srcset="" />
+          <img src="{{asset('users/icon/footer-brand.svg')}}" alt="" srcset="" />
           amar bari
         </h1>
         <div class="credit">
@@ -298,7 +296,7 @@
         <h1 class="sub-text">want to order?</h1>
         <a href="{{route('/contact')}}" class="main-text text-uppercase">
           let's talk
-          <img src="users/icon/footer-svg.svg" class="footer-link" alt="" />
+          <img src="{{asset('users/icon/footer-svg.svg')}}" class="footer-link" alt="" />
         </a>
       </div>
     </div>
@@ -332,7 +330,7 @@
 
   <!-- top btn -->
   <a href="#backtop" class="top-btn">
-  <img src="users/icon/top-arrow.svg" class="top-arrow" alt="" />
+  <img src="{{asset('users/icon/top-arrow.svg')}}" class="top-arrow" alt="" />
   </a>
   </div>
 
