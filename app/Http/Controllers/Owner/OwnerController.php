@@ -17,4 +17,20 @@ class OwnerController extends Controller
       //  $data=['LoggedUserInfo'=>User::where('id','=',session('LoggedUser'))-> first()];
         return view('owner.account');
     }
+
+    //building
+    public function building(){
+        $data=['LoggedUserInfo'=>User::where('id','=',session('LoggedUser'))-> first()];
+        return view('owner.building',$data);
+    }
+    //flats
+    public function flats(){
+        $data=['LoggedUserInfo'=>User::where('id','=',session('LoggedUser'))-> first()];
+        return view('owner.flats',$data);
+    }
+    //rent
+    public function rent(){
+        $data=['LoggedUserInfo'=>User::where('id','=',session('LoggedUser'))-> first()];
+        return view('owner.rent',$data);
+    }
 }

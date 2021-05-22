@@ -13,7 +13,7 @@
     </div>
 
     <div class="link-wrapper">
-      <a href="dashboard.html" class="link active">
+      <a href="{{route('owner.dashboard')}}" class="link active">
         <div class="svg-bg">
           <img src="{{asset('users/icon/Dashboard-active.svg')}}" alt="" />
         </div>
@@ -21,7 +21,7 @@
         <span>dashboard</span>
       </a>
 
-      <a href="{{route('account')}}" class="link ">
+      <a href="{{route('owner.account')}}" class="link ">
         <div class="svg-bg">
           <img src="{{asset('users/icon/Accounts.svg')}}" alt="" />
         </div>
@@ -29,7 +29,7 @@
         <span>accounts </span>
       </a>
 
-      <a href="building.html" class="link ">
+      <a href="{{route('owner.building')}}" class="link ">
         <div class="svg-bg">
           <img src="{{asset('users/icon/Buildings.svg')}}" alt="" />
         </div>
@@ -45,7 +45,7 @@
         <span>flats</span>
       </a>
 
-      <a href="rent.html" class="link">
+      <a href="{{route('owner.rent')}}" class="link">
         <div class="svg-bg">
             <img src="{{asset('users/icon/Taka.svg')}}" alt="">
           </svg>
