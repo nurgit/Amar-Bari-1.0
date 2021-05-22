@@ -7,6 +7,7 @@ use App\Http\Controllers\Owner\OwnerController;
 use App\Http\Controllers\Manager\ManagerController;
 use App\Http\Controllers\Renter\RenterController;
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\DltController;
 use App\Http\Controllers\Admin;
 use GuzzleHttp\Middleware;
 
@@ -33,12 +34,14 @@ Route::get('/logout',[UserAuthController::class, 'logout'])->name('/logout');
 Route::post('/create',[UserAuthController::class, 'create'])->name('auth.create');
 
 
+//dltNotification
+Route::get('/dltNotification',[DltController::class, 'index'])->name('dltNotification');
 // Route::group(['prefix'=>'admin', 'middleware'=>['auth','admin'], 'namespace'=>'admin'],function(){
 //     route::get('dashbord',[AdminController::class,'index'])->name('admin.dashbord');
 // });
 
 
-Route::group([ 'prefix'=>'owner', 'middleware'=>['AuthCheck']], function(){
+Route::group([ 'prefix'=>'owner', 'middleware'=>['Dlt','AuthCheck','Owner']], function(){
     Route::get('dashboard',[OwnerController::class,'index'])->name('owner.dashboard');
 });
 

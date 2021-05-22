@@ -80,15 +80,15 @@
                   >Create One</span>
 
               </p>
-              @if (Session::get('success'))
+              @if (Session::get('successCreateOne'))
               <div class="alert alert-success">
-                {{Session::get('success')}}
+                {{Session::get('successCreateOne')}}
               </div>
               @endif
 
-              @if (Session::get('fail'))
+              @if (Session::get('faillCreateOne'))
               <div class="alert alert-danger">
-                {{Session::get('fail')}}
+                {{Session::get('faillCreateOne')}}
               </div>
               @endif
 
@@ -115,8 +115,10 @@
                     id=" acc-input"
                     class="form-input"
                     required
+                    value="{{ old('name') }}"
                   />
                   <label for="acc-input" class="label">name</label>
+                  <span for="acc-input"class="text-danger">@error('username'){{$message}} @enderror</span>
                 </div>
 
                 <div class="col-12 col-lg-6 input-con half-input">
@@ -126,13 +128,13 @@
                     id=" acc-input"
                     class="form-input"
                     required
-                    value="{{ old('name') }}"
+                    value="{{ old('username') }}"
                   />
                  
                   <label for="acc-input" class="label text-capitalize"
                     >user name</label
                   >
-                  <span for="acc-input"class="text-danger">@error('name'){{$message}} @enderror</span>
+                  <span for="acc-input"class="text-danger">@error('username'){{$message}} @enderror</span>
                 </div>
 
                 <div class="col-12 col-lg-6 input-con half-input">

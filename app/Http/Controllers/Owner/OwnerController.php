@@ -7,9 +7,9 @@ use Illuminate\Http\Request;
 
 class OwnerController extends Controller
 {
-    //
+    //dashboard
     public function index(){
         $data=['LoggedUserInfo'=>User::where('id','=',session('LoggedUser'))-> first()];
-        return view('owner.index',$data);
+        return view('owner.dashboard',$data);
     }
 }

@@ -30,7 +30,16 @@ class UserAuthController extends Controller
             /// return route('admin.dashbord');
 
             if($userInfo->role_id==1){  
-                return redirect('owner/dashboard');
+
+                $dltUser=$userInfo->dlt;
+                if($dltUser==0){  
+                    return redirect('dltNotification');
+                    //return redirect('owner/dashboard');
+                
+                }elseif($dltUser ==1){
+                    return redirect('owner/dashboard');
+                }
+              
             }elseif($userInfo->role_id==2){
                 return redirect('manager/dashboard');
             }elseif($userInfo->role_id==3){
@@ -50,9 +59,6 @@ class UserAuthController extends Controller
             session()->pull('LoggedUser');
             return redirect('/login');
         }
-
-
-
     }
 
 
@@ -78,11 +84,13 @@ class UserAuthController extends Controller
         $user->password= Hash::make($request->password);
         $save=$user->save();
 
-        if( ! $save){
-            return back()->with('fail' , 'something went wrong, please try agane later');
-            
+        if( $save){
+          
+            return back()->with('successCreateOne' , 'new user has been added successfully');
         }else{
-            return back()->with('success' , 'new user has been added successfully');
+            //return back()->with('success' , 'new user has been added successfully');
+            
+            return back()->with('faillCreateOne' , 'something went wrong, please try agane later');
         }
      }
 }
