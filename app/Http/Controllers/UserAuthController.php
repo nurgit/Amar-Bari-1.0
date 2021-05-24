@@ -6,6 +6,8 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
+use Illuminate\Support\Facades\Redirect;
+
 class UserAuthController extends Controller
 {
     public function login(){
@@ -65,7 +67,7 @@ class UserAuthController extends Controller
 
 
     
-
+//Registation------------------------------------------------------------
 
      public function create(Request $request){
         //  return $request->input();
@@ -84,13 +86,14 @@ class UserAuthController extends Controller
         $user->password= Hash::make($request->password);
         $save=$user->save();
 
-        if( $save){
+        // if( $save){
           
-            return back()->with('successCreateOne' , 'new user has been added successfully');
-        }else{
-            //return back()->with('success' , 'new user has been added successfully');
+        //     return back()->with('successCreateOne' , 'new user has been added successfully');
             
-            return back()->with('faillCreateOne' , 'something went wrong, please try agane later');
-        }
+        // }else{
+        //     //return back()->with('success' , 'new user has been added successfully');
+            
+        //     return back()->with('faillCreateOne' , 'something went wrong, please try agane later');
+        // }
      }
 }

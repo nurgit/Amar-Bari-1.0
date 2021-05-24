@@ -13,6 +13,8 @@
         <link rel="stylesheet" href="{{asset('users/css/login.css')}}" />
       </head>
       <body>
+        @include('sweetalert::alert')
+
         <script src="{{asset('users/js/jquery-3.5.1.min.js')}}"></script>
         <script src="{{asset('users/js/bootstrap.bundle.min.js')}}"></script>
         <div class="section">
@@ -118,7 +120,7 @@
                     value="{{ old('name') }}"
                   />
                   <label for="acc-input" class="label">name</label>
-                  <span for="acc-input"class="text-danger">@error('username'){{$message}} @enderror</span>
+                  {{-- <span for="acc-input"class="text-danger">@error('username'){{$message}} @enderror</span> --}}
                 </div>
 
                 <div class="col-12 col-lg-6 input-con half-input">
@@ -134,7 +136,7 @@
                   <label for="acc-input" class="label text-capitalize"
                     >user name</label
                   >
-                  <span for="acc-input"class="text-danger">@error('username'){{$message}} @enderror</span>
+                  {{-- <span for="acc-input"class="text-danger">@error('username'){{$message}} @enderror</span> --}}
                 </div>
 
                 <div class="col-12 col-lg-6 input-con half-input">
@@ -149,7 +151,7 @@
                   <label for="acc-input" class="label text-capitalize"
                     >email</label
                   >
-                  <span class="text-danger">@error('email'){{$message}} @enderror</span>
+                  {{-- <span class="text-danger">@error('email'){{$message}} @enderror</span> --}}
                 </div>
  
                 <div class="col-12 col-lg-6 half-input input-con">
@@ -163,7 +165,7 @@
                   />
                   <label for="acc-input" class="label">phone</label>
 
-                  <span class="text-danger">@error('phone'){{$message}} @enderror</span>
+                  {{-- <span class="text-danger">@error('phone'){{$message}} @enderror</span> --}}
                 </div>
 
                 <div class="col-12 col-lg-6 input-con half-input">
@@ -177,7 +179,7 @@
                   />
                   <label for="acc-input" class="label text-capitalize"
                     >password</label>
-                    <span class="text-danger">@error('password'){{$message}} @enderror</span>
+                    {{-- <span class="text-danger">@error('password'){{$message}} @enderror</span> --}}
                 </div>
                 <div class="col-12 col-lg-6 half-input input-con">
                   <input
@@ -188,7 +190,7 @@
                     required
                   />
                   <label for="acc-input" class="label">confirm password</label>
-                  <span class="text-danger">@error('password'){{$message}} @enderror</span>
+                  {{-- <span class="text-danger">@error('password'){{$message}} @enderror</span> --}}
                 </div>
               
               <div class="btn-modal">

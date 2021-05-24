@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\DltController;
 use App\Http\Controllers\Admin;
 use GuzzleHttp\Middleware;
+//use RealRashid\SweetAlert\Facades\Alert;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,6 +27,9 @@ use GuzzleHttp\Middleware;
 //     return view('users.index');
 // });
 
+
+
+
 Route::get('/', [HomeController::class, 'index'])->name('/');
 Route::get('/contact', [HomeController::class, 'contact'])->name('/contact');
 Route::get('/login', [UserAuthController::class, 'login'])->name('/login');
@@ -39,7 +43,7 @@ Route::get('/dltNotification',[DltController::class, 'index'])->name('dltNotific
 // Route::group(['prefix'=>'admin', 'middleware'=>['auth','admin'], 'namespace'=>'admin'],function(){
 //     route::get('dashbord',[AdminController::class,'index'])->name('admin.dashbord');
 // });
-
+//Route::post('/post',[RenterController::class,'post'])->name('/posr');
 
 Route::group([ 'prefix'=>'owner', 'middleware'=>['Dlt','AuthCheck','Owner']], function(){
     Route::get('dashboard',[OwnerController::class,'index'])->name('owner.dashboard');
@@ -55,6 +59,7 @@ Route::group([ 'prefix'=>'manager', 'middleware'=>['AuthCheck']], function(){
 
 Route::group([ 'prefix'=>'renter', 'middleware'=>['AuthCheck']], function(){
     Route::get('dashboard',[RenterController::class,'index'])->name('renter.dashboard');
+    
 });
 
 Route::group([ 'prefix'=>'admin', 'middleware'=>['AuthCheck']], function(){

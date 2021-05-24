@@ -9,6 +9,7 @@
 
 </head>
 <body>
+    
     <div class="container">
         <div class="row">
             <div class="col-md-6 col-md-offset-3">
@@ -25,13 +26,20 @@
                                 <td>{{$LoggedUserInfo['name']}}</td>
                                 <td>{{$LoggedUserInfo['email']}}</td>
                                 <td><a href="{{route('/logout')}}">Logout</a></td>
+                                
                             </tr>
                         </tbody>
                     </table>
+
+                    <form action="/post" method="post">
+                        @csrf
+                    <input type="submit">
+                    </form>
                 </div>
                
             </div>
         </div>
     </div>
+    @include('sweetalert::alert')
 </body>
 </html>

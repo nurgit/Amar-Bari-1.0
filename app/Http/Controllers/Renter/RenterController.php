@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Renter;
 use App\Models\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class RenterController extends Controller
 {
@@ -12,4 +13,6 @@ class RenterController extends Controller
         $data=['LoggedUserInfo'=>User::where('id','=',session('LoggedUser'))-> first()];
         return view('renter.index', $data);
     }
+    
 }
+

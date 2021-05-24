@@ -11,6 +11,7 @@
           <link rel="icon" href="{{asset('users/icon/brand.svg')}}" />
           <link rel="stylesheet" href="{{asset('users/css/bootstrap.min.css')}}" />
           <link rel="stylesheet" href="{{asset('users/css/dashboard.css')}}" />
+          <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
         </head>
         <body>
           <script src="{{asset('users/js/jquery-3.5.1.min.js')}}"></script>
