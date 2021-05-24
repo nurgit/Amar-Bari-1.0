@@ -25,8 +25,8 @@ class CreateOwnersTable extends Migration
             $table->string('city');
             $table->string('address'); 
             $table->integer('status')->default(0);//0=inactive ,1= active 
-            $table->integer('dlt')->default(1);// 1=Owner, 2=Manager, 3=Renter, 4=Admin
-            
+            $table->integer('dlt')->default(1);// 0=dlt , 1=not dlt
+
             $table->timestamps();
         });
     }

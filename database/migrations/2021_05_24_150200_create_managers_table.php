@@ -15,6 +15,19 @@ class CreateManagersTable extends Migration
     {
         Schema::create('managers', function (Blueprint $table) {
             $table->id();
+
+            $table->string('username')->unique();
+            $table->string('email')->unique();
+            $table->string('occupation');
+            $table->string('home')->unique();
+            $table->string('district');
+            $table->string('city');
+            $table->string('address'); 
+            $table->integer('status')->default(0);//0=inactive ,1= active 
+            $table->integer('dlt')->default(1);// 0=dlt , 1=not dlt
+            $table->integer('owner_username');// for using foreign_key
+
+
             $table->timestamps();
         });
     }
