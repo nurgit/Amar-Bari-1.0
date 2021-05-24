@@ -17,7 +17,7 @@ class house extends Model
         'district',
         'status',
         'dlt',
-       // 'owner_username',
+        'owner_username',
         
     ];
 }

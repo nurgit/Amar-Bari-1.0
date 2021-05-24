@@ -15,6 +15,14 @@ class CreateFlatsTable extends Migration
     {
         Schema::create('flats', function (Blueprint $table) {
             $table->id();
+            $table->string('flat_no');
+            $table->string('house_id');
+            $table->integer('size');
+            $table->string('details');
+            $table->string(' rent'); 
+            $table->integer('status')->default(1);//0=inactive ,1= active 
+            $table->integer('dlt')->default(1);// 0=dlt , 1=not dlt
+
             $table->timestamps();
         });
     }
