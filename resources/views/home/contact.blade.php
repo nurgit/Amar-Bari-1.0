@@ -24,6 +24,11 @@
 @section('content')
           <div class="content ">
             <div class="left">
+              @if (Session::get('failLog'))
+              <div class="alert alert-danger">
+                {{Session::get('failLog')}}
+              </div>
+              @endif
               <div href="" class="main-text text-uppercase">let's talk</div>
               
               <div class="icon-con">

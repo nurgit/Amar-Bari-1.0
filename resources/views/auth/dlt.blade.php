@@ -12,7 +12,12 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6 col-md-offset-3">
-                <h4> Your Accout had deletaed</h4><hr>
+                <h4>  @if (Session::get('failLog'))
+                    <div class="alert alert-danger">
+                      {{Session::get('failLog')}}
+                    </div>
+                    @endif
+                </h4><hr>
                
             </div>
         </div>

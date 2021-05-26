@@ -23,32 +23,31 @@ class UserAuthController extends Controller
         ]);
 
         $userInfo=User::where('email','=', $request->email)->first();
-        if(! $userInfo){
+        if(! $userInfo){// 
             return back()->with('failLog', 'We do not recogonize your email address');
         }else{
-            if(Hash::check($request->password, $userInfo->password)){
+            if(Hash::check($request->password, $userInfo->password))    {
                 $request->session()->put('LoggedUser',$userInfo->id);
-                //return redirect('admin/dashbord');
-            /// return route('admin.dashbord');
+                if($userInfo->dlt==0){  //if accout delete 
+                    return redirect('/contact')->with('failLog', 'Your Accout Maybe Deletated. Please Contact Us.');
+                }elseif($userInfo->dlt ==1){//if accout not delete 
+                    if($userInfo->status==0){// If accout status Inacctive
+                        return redirect('/contact')->with('failLog', 'Your Accout Inacctive. Please Weate For Acctivation Or Contact Us.');;
+                    }elseif($userInfo->status ==1){// if accout status  Acctive
 
-            if($userInfo->role_id==1){  
-
-                $dltUser=$userInfo->dlt;
-                if($dltUser==0){  
-                    return redirect('dltNotification');
-                    //return redirect('owner/dashboard');
-                
-                }elseif($dltUser ==1){
-                    return redirect('owner/dashboard');
+                        // Role Id Check 
+                        if($userInfo->role_id==1){
+                            return redirect('owner/dashboard');
+                        }elseif($userInfo->role_id==2){
+                            return redirect('manager/dashboard');
+                        }elseif($userInfo->role_id==3){
+                            return redirect('renter/dashboard');
+                        }elseif($userInfo->role_id==4){
+                            return redirect('admin/dashboard');
+                        }
+                    } 
                 }
-              
-            }elseif($userInfo->role_id==2){
-                return redirect('manager/dashboard');
-            }elseif($userInfo->role_id==3){
-                return redirect('renter/dashboard');
-            }elseif($userInfo->role_id==4){
-                return redirect('admin/dashboard');
-            }
+
             }else{
                 return back()->with('failLog','incorret password');
             }
