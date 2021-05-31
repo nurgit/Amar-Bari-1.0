@@ -22,7 +22,7 @@ class CreateRentersTable extends Migration
             $table->string('phone');
             $table->string('NID');
             $table->string(' Permanent_address'); 
-            $table->integer('status')->default(0);//0=inactive ,1= active 
+            $table->integer('status')->default(1);//0=inactive ,1= active 
             $table->integer('dlt')->default(1);// 0=dlt , 1=not dlt
            
 

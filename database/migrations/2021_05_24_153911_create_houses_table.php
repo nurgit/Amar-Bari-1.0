@@ -21,7 +21,7 @@ class CreateHousesTable extends Migration
             $table->string('road_no');
             $table->string('city');
             $table->string(' district'); 
-            $table->integer('status')->default(0);//0=inactive ,1= active 
+            $table->integer('status')->default(1);//0=inactive ,1= active 
             $table->integer('dlt')->default(1);// 0=dlt , 1=not dlt
             $table->string('owner_username');//for owner foreign_key 
             $table->timestamps();
