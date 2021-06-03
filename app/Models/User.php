@@ -6,6 +6,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use App\Models\Manager;
 
 class User extends Authenticatable
 {
@@ -50,5 +51,8 @@ class User extends Authenticatable
     public function role()
     {
         return $this ->belongsTo('App\Role');
+    }
+    public function managers(){
+        return $this ->hasMany(Manager::class);
     }
 }

@@ -72,7 +72,7 @@ class UserAuthController extends Controller
         //  return $request->input();
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'username'=> ['required'],
+            'username'=> ['required','unique:users'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'phone' => ['required', 'string', 'min:11', 'max:13', 'unique:users'],
             'password' => ['required', 'string', 'min:5','max:12', ],

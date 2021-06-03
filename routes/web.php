@@ -48,6 +48,7 @@ Route::get('/dltNotification',[DltController::class, 'index'])->name('dltNotific
 Route::group([ 'prefix'=>'owner', 'middleware'=>['Dlt','AuthCheck','Owner']], function(){
     Route::get('dashboard',[OwnerController::class,'index'])->name('owner.dashboard');
     Route::get('account',[OwnerController::class,'account'])->name('owner.account');
+    Route::post('addManager',[OwnerController::class,'addManager'])->name('addManager');
     Route::get('building',[OwnerController::class,'building'])->name('owner.building');
     Route::get('flat',[OwnerController::class,'flat'])->name('owner.flat');
     Route::get('rent',[OwnerController::class,'rent'])->name('owner.rent');
