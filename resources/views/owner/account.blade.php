@@ -119,6 +119,8 @@
           {{Session::get('faillCreateOne')}}
         </div>
         @endif</p>
+        {{-- need Upgrade --}}
+        <span class="text-danger">@error('email'){{$message}} @enderror</span>/
       <div class="cards row">
 
         @if (count($managers)>0)

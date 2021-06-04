@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\house;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class HouseController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
