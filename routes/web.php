@@ -72,7 +72,7 @@ Route::group([ 'prefix'=>'owner', 'middleware'=>['Dlt','AuthCheck','Owner']], fu
     Route::get('flat',[FlatController::class,'flat'])->name('owner.flat');
     Route::post('addFlat',[FlatController::class,'addFlat'])->name('addFlat');
     Route::post('flat/destroy/{id}',[FlatController::class,'destroy'])->name('flat.destroy');
-    Route::post('flat/update/{id}',[FlatController::class,'destroy'])->name('flat.update');
+    Route::post('flat/update/{id}',[FlatController::class,'update'])->name('flat.update');
     
     //Rent Controller
     Route::get('rent',[RentController::class,'rent'])->name('owner.rent');

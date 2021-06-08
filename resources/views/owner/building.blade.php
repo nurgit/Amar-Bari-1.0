@@ -412,7 +412,8 @@
               <div class="btn-modal del-btn-modal">
 
                 <form action="{{route('building.destroy',$house->id)}}" method="POST" enctype="multipart/form-data">
-                <button type="submit" class="confirm text-capitalize">
+                @csrf
+                  <button type="submit" class="confirm text-capitalize">
                   <p>confirm</p>
 
                   <svg

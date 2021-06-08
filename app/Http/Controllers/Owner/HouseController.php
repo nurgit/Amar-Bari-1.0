@@ -43,6 +43,7 @@ class HouseController extends Controller
     $house->city=$request->city;
     $house->district=$request->district;
     $house->owner_username=$username;
+    
 
     $save=$house->save();
     if( $save){
@@ -61,9 +62,15 @@ class HouseController extends Controller
     public function destroy(house $house,$id)
         {
             $house=House::find($id);
+          
             $house->dlt=0;
-            $$house->save();
-            return redirect()->route('addBuilding')->with('successDestroy','destroy Your House Information');
+            $save=$house->save();
+
+            if( $save){
+                return back()->with('successCreateOne' , 'Building Information Update Successfully'); 
+            }else{   
+                return back()->with('faillCreateOne' , 'Building Information Update Fail');
+            }
         }
 
         public function update(Request $request, house $house,$id)
@@ -89,9 +96,9 @@ class HouseController extends Controller
 
             $save=$house->save();
             if( $save){
-                    return back()->with('successCreateOne' , 'new Manager has been added successfully'); 
+                    return back()->with('successCreateOne' , 'Building Information Update Successfully'); 
                 }else{   
-                    return back()->with('faillCreateOne' , 'something went wrong, please try agane later');
+                    return back()->with('faillCreateOne' , 'Building Information Update Fail');
                 }
 
         }
