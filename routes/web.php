@@ -3,10 +3,20 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserAuthController;
+
 use App\Http\Controllers\Owner\OwnerController;
+use App\Http\Controllers\Owner\FlatController;
+use App\Http\Controllers\Owner\HouseController;
+use App\Http\Controllers\Owner\AccountController;
+use App\Http\Controllers\Owner\RentController;
+
+
 use App\Http\Controllers\Manager\ManagerController;
+
 use App\Http\Controllers\Renter\RenterController;
+
 use App\Http\Controllers\Admin\AdminController;
+
 use App\Http\Controllers\DltController;
 use App\Http\Controllers\Admin;
 use GuzzleHttp\Middleware;
@@ -47,12 +57,25 @@ Route::get('/dltNotification',[DltController::class, 'index'])->name('dltNotific
 
 Route::group([ 'prefix'=>'owner', 'middleware'=>['Dlt','AuthCheck','Owner']], function(){
     Route::get('dashboard',[OwnerController::class,'index'])->name('owner.dashboard');
-    Route::get('account',[OwnerController::class,'account'])->name('owner.account');
-    Route::post('addManager',[OwnerController::class,'addManager'])->name('addManager');
-    Route::get('building',[OwnerController::class,'building'])->name('owner.building');
-    Route::post('addBuilding',[OwnerController::class,'addBuilding'])->name('addBuilding');
-    Route::get('flat',[OwnerController::class,'flat'])->name('owner.flat');
-    Route::get('rent',[OwnerController::class,'rent'])->name('owner.rent');
+   
+    //Account Controller
+    Route::get('account',[AccountController::class,'account'])->name('owner.account');
+    Route::post('addManager',[AccountController::class,'addManager'])->name('addManager');
+    
+    //House Controller
+    Route::get('building',[HouseController::class,'building'])->name('owner.building');
+    Route::post('addBuilding',[HouseController::class,'addBuilding'])->name('addBuilding');
+    Route::post('building/destroy/{id}',[HouseController::class,'destroy'])->name('building.destroy');
+    Route::post('building/update/{id}',[HouseController::class,'update'])->name('building.update');
+   
+    //Flat Controller
+    Route::get('flat',[FlatController::class,'flat'])->name('owner.flat');
+    Route::post('addFlat',[FlatController::class,'addFlat'])->name('addFlat');
+    Route::post('flat/destroy/{id}',[FlatController::class,'destroy'])->name('flat.destroy');
+    Route::post('flat/update/{id}',[FlatController::class,'destroy'])->name('flat.update');
+    
+    //Rent Controller
+    Route::get('rent',[RentController::class,'rent'])->name('owner.rent');
 });
 
 Route::group([ 'prefix'=>'manager', 'middleware'=>['AuthCheck']], function(){

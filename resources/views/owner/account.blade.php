@@ -11,7 +11,7 @@
           <link rel="icon" href="{{asset('users/icon/brand.svg')}}" />
           <link rel="stylesheet" href="{{asset('users/css/bootstrap.min.css')}}" />
           <link rel="stylesheet" href="{{asset('users/css/acc.css')}}" />
-          <link rel="stylesheet" href="{{asset('users/css/dashboard.css')}}" />
+          {{-- <link rel="stylesheet" href="{{asset('users/css/dashboard.css')}}" /> --}}
          
         </head>
         <body>

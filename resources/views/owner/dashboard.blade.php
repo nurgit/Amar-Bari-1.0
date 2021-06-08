@@ -48,74 +48,30 @@
   <div class="first-row col-12">
     <p class="caption text-capitalize col-12">buildings</p>
     <div class="cards row">
+      @if (count($houses)>0)
+        @foreach ($houses as $house)
+        <div class="card text-capitalize mr-4 mr-xl-5 mb-sm-4 mb-4">
+          <p class="building-no">B{{ $house->id}}</p>
+          <h1 class="name">
+            <span>{{$house->name}}</span>
+           
+          </h1>
+  
+          <p class="holder">holding: {{ $house->holding_no}}</p>
+  
+          <p class="body-text">
+            <span>floors:5</span>
+            <span>flats:10</span>
+          </p>
+  
+        <img src="{{asset('users/icon/building- 3D.svg')}}" alt="" class="card-building">
+        </div>
+            
+        @endforeach
+          
+      @endif
+   
 
-      <div class="card text-capitalize mr-4 mr-xl-5 mb-sm-4 mb-4">
-        <p class="building-no">b01</p>
-        <h1 class="name">
-          <span>ahsan</span>
-          villa
-        </h1>
-
-        <p class="holder">holding: 55/2</p>
-
-        <p class="body-text">
-          <span>floors:5</span>
-          <span>flats:10</span>
-        </p>
-
-      <img src="{{asset('users/icon/building- 3D.svg')}}" alt="" class="card-building">
-      </div>
-      
-      <div class="card text-capitalize mr-4 mr-xl-5 mb-sm-4 mb-4">
-        <p class="building-no">b01</p>
-        <h1 class="name">
-          <span>ahsan</span>
-          villa
-        </h1>
-
-        <p class="holder">holding: 55/2</p>
-
-        <p class="body-text">
-          <span>floors:5</span>
-          <span>flats:10</span>
-        </p>
-
-      <img src="{{asset('users/icon/building- 3D.svg')}}" alt="" class="card-building">
-      </div>
-
-      <div class="card text-capitalize mr-4 mr-xl-5 mb-sm-4 mb-4">
-        <p class="building-no">b01</p>
-        <h1 class="name">
-          <span>ahsan</span>
-          villa
-        </h1>
-
-        <p class="holder">holding: 55/2</p>
-
-        <p class="body-text">
-          <span>floors:5</span>
-          <span>flats:10</span>
-        </p>
-
-      <img src="{{asset('users/icon/building- 3D.svg')}}" alt="" class="card-building">
-      </div>
-
-      <div class="card text-capitalize mr-4 mr-xl-5 mb-sm-4 mb-4">
-        <p class="building-no">b01</p>
-        <h1 class="name">
-          <span>ahsan</span>
-          villa
-        </h1>
-
-        <p class="holder">holding: 55/2</p>
-
-        <p class="body-text">
-          <span>floors:5</span>
-          <span>flats:10</span>
-        </p>
-
-      <img src="{{asset('users/icon/building- 3D.svg')}}" alt="" class="card-building">
-      </div>
 
       
     </div>
