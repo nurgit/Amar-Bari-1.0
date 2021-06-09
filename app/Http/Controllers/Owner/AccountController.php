@@ -9,6 +9,8 @@ use App\Models\House;
 use App\Models\Manager;
 
 use Illuminate\Http\Request;
+use PharIo\Manifest\Manifest;
+
 class AccountController extends Controller
 {
     // Accout 
@@ -54,6 +56,49 @@ class AccountController extends Controller
                 
                 return back()->with('faillCreateOne' , 'something went wrong, please try agane later');
             }
+
+  }
+  //Edit Manager
+    public function editManager(Request $request,manager $manager,$id){
+        $manager=Manager::find($id);
+            
+        $request->validate([
+            //'username'=> ['required','unique:managers'],
+           // 'email' => ['required', 'string', 'email', 'max:255', 'unique:managers'],
+            'occupation' => ['required', 'string'],
+            //'home' => ['required', 'string','unique:managers'],
+            'district' => ['required', 'string'],
+            'city' => ['required', 'string'],
+            'address' => ['required', 'string'],
+        ]);
+       
+       // $manager->username=$request->username;
+       // $manager->email=$request->email;
+        $manager->occupation=$request->occupation;
+       // $manager->home=$request->home;
+        $manager->district=$request->district;
+        $manager->city=$request->city;
+        $manager->address=$request->address;
+        $save=$manager->save();
+
+        if( $save){
+            return back()->with('successCreateOne' , 'Manager Update Successfully'); 
+        }else{   
+            return back()->with('faillCreateOne' , 'Manager Update Fail');
+        }
+    }
+  //Destory Manager 
+  public function destroyManager(manager $manager,$id){
+    $manager=Manager::find($id);
+          
+    $manager->dlt=0;
+    $save=$manager->save();
+
+    if( $save){
+        return back()->with('successCreateOne' , 'Manager Deleted Successfully'); 
+    }else{   
+        return back()->with('faillCreateOne' , 'Manager Deleted Fail');
+    }
 
   }
 }
