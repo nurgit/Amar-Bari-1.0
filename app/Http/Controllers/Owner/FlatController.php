@@ -16,12 +16,14 @@ class FlatController extends Controller
 
 
     public function flat(){
-
+        $data=User::where('id','=',session('LoggedUser'))-> first();
         $flats=DB::table('flats')
         ->join('houses','flats.house_id','houses.id')
         ->join('users','houses.owner_username','users.username')
+         ->where('users.username',$data->username)
         ->get();
-        //select * from flat where house_id in (select house_id from houu)
+        return $flats;
+       // select * from 'flats' where house_id in (select house_id from house)
         // $f=$flat->username;
         
         // return $f;
@@ -34,20 +36,22 @@ class FlatController extends Controller
 //     }
 //}
         //$data=['LoggedUserInfo'=>User::where('id','=',session('LoggedUser'))-> first()];
-        $data=User::where('id','=',session('LoggedUser'))-> first();
-        $username=$data->username;
+       
+       
+        // $data=User::where('id','=',session('LoggedUser'))-> first();
+        // $username=$data->username;
 
-        $houses=House::where('owner_username','=',$username)-> get();
+        // $houses=House::where('owner_username','=',$username)-> get();
      
-        //arr[]
-        foreach ($houses as $house) {
-            $houseId=$house->id;
-            $flats=Flat::where('house_id','=', $houseId)->get();
+        // //arr[]
+        // foreach ($houses as $house) {
+        //     $houseId=$house->id;
+        //     $flats=Flat::where('house_id','=', $houseId)->get();
            
             
-            return $flats;
+        //     return $flats;
         //     return view('owner.flat',$flats);
-         }
+        // }
           
          
 
