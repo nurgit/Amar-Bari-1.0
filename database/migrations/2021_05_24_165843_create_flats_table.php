@@ -19,7 +19,7 @@ class CreateFlatsTable extends Migration
             $table->integer('house_id');
             $table->integer('size');
             $table->string('details');
-            $table->string(' rent'); 
+            $table->string('rent'); 
             $table->integer('status')->default(1);//0=inactive ,1= active 
             $table->integer('dlt')->default(1);// 0=dlt , 1=not dlt
 
