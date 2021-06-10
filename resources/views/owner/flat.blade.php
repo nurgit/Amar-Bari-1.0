@@ -44,216 +44,63 @@
     <div class="first-row col-12">
       <p class="caption text-capitalize col-12">flats</p>
       <div class="cards row">
-      <div class="card text-capitalize mr-4 mr-xl-5 mb-sm-4 mb-4">
-          <div class="top-section">
-            <h1 class="flat-no">a101</h1>
-            <p class="rent">rent: 10000</p>
+        @if (count($flats)>0)
+          @foreach ($flats as $flat)
+          <div class="card text-capitalize mr-4 mr-xl-5 mb-sm-4 mb-4">
+            <div class="top-section">
+              <h1 class="flat-no">{{$flat->flat_no}}</h1>
+              <p class="rent">rent:{{$flat->amount}} </p>
+            </div>
+  
+            <div class="mid-section">
+              <p class="size">size: {{$flat->size}}sqft</p>
+              <p class="name">{{$flat->username}}</p>
+              <p class="number">{{$flat->phone}}</p>
+            </div>
+  
+            <div class="bottom-card-section">
+            <button class="edit text-capitalize" data-toggle="modal" data-target="#acc-modal">
+              edit
+              <img src="{{asset('users/icon/edit-pen.svg')}}" alt="">
+            </button>
+            </div>
+  
+            <img src="{{asset('users/icon/Flat 3D.svg')}}" alt="" class="card-building">
+  
+            <div
+              class="delete-con"
+              data-toggle="modal"
+              data-target="#del-modal"
+            ></div>
+            <svg
+              class="delete-svg"
+              width="14"
+              height="19"
+              viewBox="0 0 14 19"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M1 16.8889C1 18.05 1.9 19 3 19H11C12.1 19 13 18.05 13 16.8889V4.22222H1V16.8889ZM3.46 9.37333L4.87 7.885L7 10.1228L9.12 7.885L10.53 9.37333L8.41 11.6111L10.53 13.8489L9.12 15.3372L7 13.0994L4.88 15.3372L3.47 13.8489L5.59 11.6111L3.46 9.37333ZM10.5 1.05556L9.5 0H4.5L3.5 1.05556H0V3.16667H14V1.05556H10.5Z"
+              />
+              <defs>
+                <linearGradient
+                  id="paintLinear"
+                  x1="0"
+                  y1="0"
+                  x2="36"
+                  y2="32"
+                  gradientUnits="userSpaceOnUse"
+                >
+                  <stop stop-color="#5EC5FF" />
+                  <stop offset="1" stop-color="#285AD8" />
+                </linearGradient>
+              </defs>
+            </svg>
           </div>
-
-          <div class="mid-section">
-            <p class="size">size: 700sqft</p>
-            <p class="name">adnan</p>
-            <p class="number">01234567891</p>
-          </div>
-
-          <div class="bottom-card-section">
-          <button class="edit text-capitalize" data-toggle="modal" data-target="#acc-modal">
-            edit
-            <img src="{{asset('users/icon/edit-pen.svg')}}" alt="">
-          </button>
-          </div>
-
-          <img src="{{asset('users/icon/Flat 3D.svg')}}" alt="" class="card-building">
-
-          <div
-            class="delete-con"
-            data-toggle="modal"
-            data-target="#del-modal"
-          ></div>
-          <svg
-            class="delete-svg"
-            width="14"
-            height="19"
-            viewBox="0 0 14 19"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M1 16.8889C1 18.05 1.9 19 3 19H11C12.1 19 13 18.05 13 16.8889V4.22222H1V16.8889ZM3.46 9.37333L4.87 7.885L7 10.1228L9.12 7.885L10.53 9.37333L8.41 11.6111L10.53 13.8489L9.12 15.3372L7 13.0994L4.88 15.3372L3.47 13.8489L5.59 11.6111L3.46 9.37333ZM10.5 1.05556L9.5 0H4.5L3.5 1.05556H0V3.16667H14V1.05556H10.5Z"
-            />
-            <defs>
-              <linearGradient
-                id="paintLinear"
-                x1="0"
-                y1="0"
-                x2="36"
-                y2="32"
-                gradientUnits="userSpaceOnUse"
-              >
-                <stop stop-color="#5EC5FF" />
-                <stop offset="1" stop-color="#285AD8" />
-              </linearGradient>
-            </defs>
-          </svg>
-        </div>
-
-        <div class="card text-capitalize mr-4 mr-xl-5 mb-sm-4 mb-4">
-          <div class="top-section">
-            <h1 class="flat-no">a101</h1>
-            <p class="rent">rent: 10000</p>
-          </div>
-
-          <div class="mid-section">
-            <p class="size">size: 700sqft</p>
-            <p class="name">adnan</p>
-            <p class="number">01234567891</p>
-          </div>
-
-          <div class="bottom-card-section">
-          <button class="edit text-capitalize" data-toggle="modal" data-target="#acc-modal">
-            edit
-            <img src="{{asset('users/icon/edit-pen.svg')}}" alt="">
-          </button>
-          </div>
-
-          <img src="{{asset('users/icon/Flat 3D.svg')}}" alt="" class="card-building">
-
-          <div
-            class="delete-con"
-            data-toggle="modal"
-            data-target="#del-modal"
-          ></div>
-          <svg
-            class="delete-svg"
-            width="14"
-            height="19"
-            viewBox="0 0 14 19"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M1 16.8889C1 18.05 1.9 19 3 19H11C12.1 19 13 18.05 13 16.8889V4.22222H1V16.8889ZM3.46 9.37333L4.87 7.885L7 10.1228L9.12 7.885L10.53 9.37333L8.41 11.6111L10.53 13.8489L9.12 15.3372L7 13.0994L4.88 15.3372L3.47 13.8489L5.59 11.6111L3.46 9.37333ZM10.5 1.05556L9.5 0H4.5L3.5 1.05556H0V3.16667H14V1.05556H10.5Z"
-            />
-            <defs>
-              <linearGradient
-                id="paintLinear"
-                x1="0"
-                y1="0"
-                x2="36"
-                y2="32"
-                gradientUnits="userSpaceOnUse"
-              >
-                <stop stop-color="#5EC5FF" />
-                <stop offset="1" stop-color="#285AD8" />
-              </linearGradient>
-            </defs>
-          </svg>
-        </div>
-
-        <div class="card text-capitalize mr-4 mr-xl-5 mb-sm-4 mb-4">
-          <div class="top-section">
-            <h1 class="flat-no">a101</h1>
-            <p class="rent">rent: 10000</p>
-          </div>
-
-          <div class="mid-section">
-            <p class="size">size: 700sqft</p>
-            <p class="name">adnan</p>
-            <p class="number">01234567891</p>
-          </div>
-
-          <div class="bottom-card-section">
-          <button class="edit text-capitalize" data-toggle="modal" data-target="#acc-modal">
-            edit
-            <img src="{{asset('users/icon/edit-pen.svg')}}" alt="">
-          </button>
-          </div>
-
-          <img src="{{asset('users/icon/Flat 3D.svg')}}" alt="" class="card-building">
-
-          <div
-            class="delete-con"
-            data-toggle="modal"
-            data-target="#del-modal"
-          ></div>
-          <svg
-            class="delete-svg"
-            width="14"
-            height="19"
-            viewBox="0 0 14 19"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M1 16.8889C1 18.05 1.9 19 3 19H11C12.1 19 13 18.05 13 16.8889V4.22222H1V16.8889ZM3.46 9.37333L4.87 7.885L7 10.1228L9.12 7.885L10.53 9.37333L8.41 11.6111L10.53 13.8489L9.12 15.3372L7 13.0994L4.88 15.3372L3.47 13.8489L5.59 11.6111L3.46 9.37333ZM10.5 1.05556L9.5 0H4.5L3.5 1.05556H0V3.16667H14V1.05556H10.5Z"
-            />
-            <defs>
-              <linearGradient
-                id="paintLinear"
-                x1="0"
-                y1="0"
-                x2="36"
-                y2="32"
-                gradientUnits="userSpaceOnUse"
-              >
-                <stop stop-color="#5EC5FF" />
-                <stop offset="1" stop-color="#285AD8" />
-              </linearGradient>
-            </defs>
-          </svg>
-        </div>
-
-        <div class="card text-capitalize mr-4 mr-xl-5 mb-sm-4 mb-4">
-          <div class="top-section">
-            <h1 class="flat-no">a101</h1>
-            <p class="rent">rent: 10000</p>
-          </div>
-
-          <div class="mid-section">
-            <p class="size">size: 700sqft</p>
-            <p class="name">adnan</p>
-            <p class="number">01234567891</p>
-          </div>
-
-          <div class="bottom-card-section">
-          <button class="edit text-capitalize" data-toggle="modal" data-target="#acc-modal">
-            edit
-            <img src="{{asset('users/icon/edit-pen.svg')}}" alt="">
-          </button>
-          </div>
-
-          <img src="{{asset('users/icon/Flat 3D.svg')}}" alt="" class="card-building">
-
-          <div
-            class="delete-con"
-            data-toggle="modal"
-            data-target="#del-modal"
-          ></div>
-          <svg
-            class="delete-svg"
-            width="14"
-            height="19"
-            viewBox="0 0 14 19"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M1 16.8889C1 18.05 1.9 19 3 19H11C12.1 19 13 18.05 13 16.8889V4.22222H1V16.8889ZM3.46 9.37333L4.87 7.885L7 10.1228L9.12 7.885L10.53 9.37333L8.41 11.6111L10.53 13.8489L9.12 15.3372L7 13.0994L4.88 15.3372L3.47 13.8489L5.59 11.6111L3.46 9.37333ZM10.5 1.05556L9.5 0H4.5L3.5 1.05556H0V3.16667H14V1.05556H10.5Z"
-            />
-            <defs>
-              <linearGradient
-                id="paintLinear"
-                x1="0"
-                y1="0"
-                x2="36"
-                y2="32"
-                gradientUnits="userSpaceOnUse"
-              >
-                <stop stop-color="#5EC5FF" />
-                <stop offset="1" stop-color="#285AD8" />
-              </linearGradient>
-            </defs>
-          </svg>
-        </div>
-
-        
-
+              
+          @endforeach
+            
+        @endif
 
         <div class="add mr-4 mr-xl-5 mb-sm-5 mb-4">
           <div
