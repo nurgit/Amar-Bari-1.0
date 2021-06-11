@@ -49,13 +49,13 @@
           <div class="card text-capitalize mr-4 mr-xl-5 mb-sm-4 mb-4">
             <div class="top-section">
               <h1 class="flat-no">{{$flat->flat_no}}</h1>
-              <p class="rent">rent:{{$flat->amount}} </p>
+              <p class="rent">rent:{{$flat->rent}} </p>
             </div>
   
             <div class="mid-section">
               <p class="size">size: {{$flat->size}}sqft</p>
-              <p class="name">{{$flat->username}}</p>
-              <p class="number">{{$flat->phone}}</p>
+              <p class="name">House Name:{{$flat->name}}</p>
+              <p class="number">Holding No:{{$flat->holding_no}}</p>
             </div>
   
             <div class="bottom-card-section">
