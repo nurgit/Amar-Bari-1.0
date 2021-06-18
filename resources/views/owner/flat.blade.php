@@ -48,7 +48,7 @@
           @foreach ($flats as $flat)
           <div class="card text-capitalize mr-4 mr-xl-5 mb-sm-4 mb-4">
             <div class="top-section">
-              <h1 class="flat-no">{{$flat->flat_no}}</h1>
+              <h1 class="flat-no">F:{{$flat->flat_no}}</h1>
               <p class="rent">rent:{{$flat->rent}} </p>
             </div>
   
@@ -118,10 +118,12 @@
 </div>
 </div>
 
+{{-- Add falat ------------------------------ --}}
 <div class="modal fade" id="acc-modal">
 <div class="modal-dialog">
   <div class="modal-content add-modal-content">
     <div class="modal-body">
+            
       <form action="" class="row form mb-2 mb-md-4">
 
         <div class="col-sm-12 col-lg-4 quad-input input-con">

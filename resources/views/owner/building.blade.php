@@ -57,7 +57,7 @@
 
                 @if ($house->dlt==1)
                   <div class="card text-capitalize mr-4 mr-xl-5 mb-sm-4 mb-4">
-                    <p class="building-no">B{{$house->id}}</p>
+                    <p class="building-no">B:{{$house->id}}</p>
                     <h1 class="name">
                       <span>{{$house->name}}</span>
                     
