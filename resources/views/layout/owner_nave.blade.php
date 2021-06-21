@@ -45,7 +45,7 @@
         <span>flats</span>
       </a>
 
-      <a href="{{route('owner.flat')}}" class="link">
+      <a href="{{route('owner.renter')}}" class="link">
         <div class="svg-bg">
           <img src="{{asset('users/icon/Flats.svg')}}" alt="" />
         </div>

@@ -8,12 +8,13 @@ use App\Http\Controllers\Owner\OwnerController;
 use App\Http\Controllers\Owner\FlatController;
 use App\Http\Controllers\Owner\HouseController;
 use App\Http\Controllers\Owner\AccountController;
+use App\Http\Controllers\Owner\RenterController;
 use App\Http\Controllers\Owner\RentController;
 
 
 use App\Http\Controllers\Manager\ManagerController;
 
-use App\Http\Controllers\Renter\RenterController;
+//use App\Http\Controllers\Renter\RenterController;
 
 use App\Http\Controllers\Admin\AdminController;
 
@@ -76,8 +77,13 @@ Route::group([ 'prefix'=>'owner', 'middleware'=>['Dlt','AuthCheck','Owner']], fu
     Route::post('flat/destroy/{id}',[FlatController::class,'destroy'])->name('flat.destroy');
     Route::post('flat/update/{id}',[FlatController::class,'update'])->name('flat.update');
     
+    //Renter Controller
+    Route::get('renter',[RenterController::class,'renter'])->name('owner.renter');
+
     //Rent Controller
     Route::get('rent',[RentController::class,'rent'])->name('owner.rent');
+
+
 });
 
 Route::group([ 'prefix'=>'manager', 'middleware'=>['AuthCheck']], function(){
