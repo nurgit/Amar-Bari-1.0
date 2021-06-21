@@ -121,7 +121,7 @@
 {{-- Add falat ------------------------------ --}}
 <div class="modal fade" id="acc-modal">
 <div class="modal-dialog">
-  <div class="modal-content add-modal-content">
+  <div class="modal-content add-modal-content"> 
     <div class="modal-body">
             
       <form action="" class="row form mb-2 mb-md-4">
