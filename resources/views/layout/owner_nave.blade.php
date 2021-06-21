@@ -45,6 +45,14 @@
         <span>flats</span>
       </a>
 
+      <a href="{{route('owner.flat')}}" class="link">
+        <div class="svg-bg">
+          <img src="{{asset('users/icon/Flats.svg')}}" alt="" />
+        </div>
+
+        <span>renter</span>
+      </a>
+
       <a href="{{route('owner.rent')}}" class="link">
         <div class="svg-bg">
             <img src="{{asset('users/icon/Taka.svg')}}" alt="">
@@ -53,6 +61,8 @@
 
         <span> rent collection</span>
       </a>
+
+      
     </div>
     <a href="index.html" class="btn-log mobile-btn-log"
       >logout
