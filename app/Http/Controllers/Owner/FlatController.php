@@ -21,7 +21,7 @@ class FlatController extends Controller
         ->join('houses','flats.house_id','houses.id')
         ->join('users','houses.owner_username','users.username')
          ->where('users.username',$data->username)
-         ->select('flats.flat_no','flats.size','flats.rent','houses.name','houses.holding_no')
+         ->select('flats.id','flats.flat_no','flats.house_id','flats.details','flats.size','flats.rent','houses.name','houses.holding_no')
         ->get();
        // return $flats;
         return view('owner.flat',compact('flats'));
@@ -77,23 +77,22 @@ class FlatController extends Controller
                 
             ]);
 
-            $owner=User::where('id','=',session('LoggedUser'))-> first();
-            $username=$owner->username;
+            // $owner=User::where('id','=',session('LoggedUser'))-> first();
+            // $username=$owner->username;
             $flat=Flat::find($id);
-            return $flat;
-            // $flat->flat_no=$request->flat_no;
-            // $flat->house_id=$request->house_id;
-            // $flat->size=$request->size;
-            // $flat->details=$request->details;
-            // $flat->rent=$request->rent;
+            $flat->flat_no=$request->flat_no;
+            $flat->house_id=$request->house_id;
+            $flat->size=$request->size;
+            $flat->details=$request->details;
+            $flat->rent=$request->rent;
         
 
-            // $save=$flat->save();
-            // if( $save){
-            //         return back()->with('successCreateOne' , 'Building Information Update Successfully'); 
-            //     }else{   
-            //         return back()->with('faillCreateOne' , 'Building Information Update Fail');
-            //     }
+            $save=$flat->save();
+            if( $save){
+                    return back()->with('successCreateOne' , 'Flat Information Update Successfully'); 
+                }else{   
+                    return back()->with('faillCreateOne' , 'Flat Information Update Fail');
+                }
 
          }
 

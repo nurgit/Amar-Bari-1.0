@@ -262,6 +262,7 @@
           </div>
         </div>
       </div> 
+      
     {{-- Edit building --}}
       @foreach ($houses as $house)
       <div class="modal fade" id="acc-edit-modal-{{$house->id}}">
