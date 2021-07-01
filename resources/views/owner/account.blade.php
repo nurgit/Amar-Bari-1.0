@@ -367,7 +367,7 @@
           <div class="modal-body">
             <form  action="{{route('account.manager.edit',$manager->id)}}" method="POST" class="row form mb-2 mb-md-4">
               @csrf
-              <div class="col-12 input-con" style="margin-bottom: 2%">
+              <div class="col-12 input-con" >
                 <input
                   type="text"
                   name="username"
@@ -379,7 +379,7 @@
                 <label for="acc-input" class="label">User Name</label>
               </div>
 
-              <div class="col-sm-12 col-lg-6 input-con half-input" style="margin-bottom:2%">
+              <div class="col-sm-12 col-lg-6 input-con half-input" >
                 <input
                   type="text"
                   name="email"
@@ -391,7 +391,7 @@
                 <label for="acc-input" class="label text-uppercase">Email</label>
               </div>
 
-              <div class="col-sm-12 col-lg-6 half-input input-con" style="margin-bottom:2%">
+              <div class="col-sm-12 col-lg-6 half-input input-con" >
                 <input
                   type="text"
                   name="occupation"
@@ -402,7 +402,7 @@
                 />
                 <label for="acc-input" class="label">Occupation</label>
               </div>
-              <div class="col-sm-12 col-lg-6 input-con half-input" style="margin-bottom:2%">
+              <div class="col-sm-12 col-lg-6 input-con half-input" >
                 <input
                   type="text"
                   name="home"
@@ -414,7 +414,7 @@
                 <label for="acc-input" class="label text-uppercase">Home</label>
               </div>
 
-              <div class="col-sm-12 col-lg-6 half-input input-con" style="margin-bottom:2%">
+              <div class="col-sm-12 col-lg-6 half-input input-con" >
                 <input
                   type="text"
                   name="district"
@@ -425,7 +425,7 @@
                 />
                 <label for="acc-input" class="label">District</label>
               </div>
-              <div class="col-sm-12 col-lg-6 input-con half-input" style="margin-bottom:2%">
+              <div class="col-sm-12 col-lg-6 input-con half-input" >
                 <input
                   type="text"
                   name="city"
@@ -437,7 +437,7 @@
                 <label for="acc-input" class="label text-uppercase">City</label>
               </div>
 
-              <div class="col-sm-12 col-lg-6 half-input input-con" style="margin-bottom:2%">
+              <div class="col-sm-12 col-lg-6 half-input input-con" >
                 <input
                   type="text"
                   name="address"

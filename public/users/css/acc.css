@@ -572,7 +572,7 @@ a:hover {
 .add-modal-content {
   width: 74.51vw;
   height: 74.63vh;
-  min-height: 450px;
+  min-height: 480px;
   box-shadow: 0 45px 100px rgb(0, 52, 131, 0.3);
   border-radius: 40px;
   border: none;
@@ -590,14 +590,12 @@ a:hover {
 
 .form {
   width: 88.58%;
-  height: 47%;
-  min-height: 250px;
-  max-height: 285px;
   justify-content: space-between;
 }
 
 .input-con {
   height: 53px;
+  margin-bottom: 40px;
   position: relative;
 }
 
@@ -644,7 +642,8 @@ input:focus + .label {
 
 /* =========== modal btn ===========  */
 .btn-modal {
-  width: 88.58%;
+  width: 100%;
+  margin: 25px 0 0 0;
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -857,8 +856,8 @@ input:focus + .label {
     padding: 0 !important;
   }
 
-  .form {
-    height: 280px;
+  .input-con {
+    margin-bottom: 26px;
   }
 
   .btn-modal {
@@ -869,6 +868,7 @@ input:focus + .label {
   .cancel {
     margin: 1.6em 0 0 0;
   }
+
   .btn-log {
     display: none;
   }
@@ -914,11 +914,6 @@ input:focus + .label {
     height: 100px;
     bottom: 48%;
     right: 16%;
-  }
-
-  .form {
-    height: 230px;
-    min-height: 230px;
   }
 
   .input-con {
@@ -1038,5 +1033,9 @@ input:focus + .label {
 
   .mobile-btn-log {
     margin: clamp(1em, 3.85vh, 3.85vh) 0 0 0;
+  }
+
+  .btn-modal {
+    margin: 6px 0 0 0;
   }
 }
