@@ -38,14 +38,15 @@
  <div class="card-section row">
           <div class="first-row col-12">
             <p class="caption text-capitalize col-12">building</p>
-            <p  style="width: 60%;" > @if (Session::get('successCreateOne'))
-              <div class="alert alert-success">
+            <p >
+               @if (Session::get('successCreateOne'))
+              <div style="margin-right: 17%"  class="alert alert-success">
                 {{Session::get('successCreateOne')}}
               </div>
               @endif
       
               @if (Session::get('faillCreateOne'))
-              <div class="alert alert-danger">
+              <div style="margin-right: 17%" class="alert alert-danger">
                 {{Session::get('faillCreateOne')}}
               </div>
               @endif</p>
@@ -262,7 +263,7 @@
           </div>
         </div>
       </div> 
-      
+
     {{-- Edit building --}}
       @foreach ($houses as $house)
       <div class="modal fade" id="acc-edit-modal-{{$house->id}}">

@@ -21,7 +21,7 @@ class FlatController extends Controller
         ->join('houses','flats.house_id','houses.id')
         ->join('users','houses.owner_username','users.username')
          ->where('users.username',$data->username)
-         ->select('flats.id','flats.flat_no','flats.house_id','flats.details','flats.size','flats.rent','houses.name','houses.holding_no')
+         ->select('flats.id','flats.flat_no','flats.house_id','flats.details','flats.size','flats.rent','flats.dlt','houses.name','houses.holding_no')
         ->get();
        // return $flats;
         return view('owner.flat',compact('flats'));
@@ -98,6 +98,18 @@ class FlatController extends Controller
 
     
 
-
+         public function destroy(house $house,$id)
+         {
+             $flat=Flat::find($id);
+           
+             $flat->dlt=0;
+             $save=$flat->save();
+ 
+             if( $save){
+                 return back()->with('successCreateOne' , 'Flat Information Deleted Successfully'); 
+             }else{   
+                 return back()->with('faillCreateOne' , 'Flat Information Deleted Fail');
+             }
+         }
 
 }
