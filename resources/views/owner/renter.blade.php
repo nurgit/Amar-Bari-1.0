@@ -35,6 +35,12 @@
 @section('content')
        <!--              top bar              -->
 
+       <div class="tab-container">
+        <div class="tab-btn text-uppercase tab-btn-active">bo1</div>
+        <div class="tab-btn text-uppercase">bo2</div>
+        <div class="tab-btn text-uppercase">bo3</div>
+    </div>
+
        <div class="card-section row">
         <div class="first-row col-12">
           <p class="caption text-capitalize col-12">flats</p>
