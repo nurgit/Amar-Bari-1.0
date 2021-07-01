@@ -324,7 +324,7 @@
         
 
         <div class="btn-modal">
-          <button type="button" class="confirm text-capitalize">
+          <button type="submit" class="confirm text-capitalize">
             <p>confirm</p>
   
             <svg

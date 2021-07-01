@@ -32,7 +32,7 @@ class UserAuthController extends Controller
                     return redirect('/contact')->with('failLog', 'Your Accout Maybe Deletated. Please Contact Us.');
                 }elseif($userInfo->dlt ==1){//if accout not delete 
                     if($userInfo->status==0){// If accout status Inacctive
-                        return redirect('/contact')->with('failLog', 'Your Accout Inacctive. Please Weate For Acctivation Or Contact Us.');;
+                        return redirect('/contact')->with('failLog', 'Your Accout Inacctive. Please Weate For Acctivation Or Contact Us.');
                     }elseif($userInfo->status ==1){// if accout status  Acctive
 
                         // Role Id Check 
@@ -85,14 +85,14 @@ class UserAuthController extends Controller
         $user->password= Hash::make($request->password);
         $save=$user->save();
 
-        // if( $save){
+         if( $save){
           
-        //     return back()->with('successCreateOne' , 'new user has been added successfully');
+            return redirect('/contact')->with('createSuccess', 'Your Accout your account created successfully. Please Weate For Acctivation Or Contact Us.');
             
-        // }else{
+         }else{
         //     //return back()->with('success' , 'new user has been added successfully');
             
-        //     return back()->with('faillCreateOne' , 'something went wrong, please try agane later');
-        // }
+            return back()->with('faillCreateOne' , 'something went wrong, please try agane later');
+         }
      }
 }

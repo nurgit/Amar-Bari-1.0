@@ -66,6 +66,38 @@ class FlatController extends Controller
     
         }
 
+        public function update(Request $request, flat $flat,$id)
+        {
+            $request->validate([
+                'flat_no'=> ['required','string'],
+                'house_id'=> ['required','integer'],
+                'size'=> ['required','integer' ],
+                'details'=> ['required', 'string'],
+                'rent'=> ['required', 'string'],
+                
+            ]);
+
+            $owner=User::where('id','=',session('LoggedUser'))-> first();
+            $username=$owner->username;
+            $flat=Flat::find($id);
+            return $flat;
+            // $flat->flat_no=$request->flat_no;
+            // $flat->house_id=$request->house_id;
+            // $flat->size=$request->size;
+            // $flat->details=$request->details;
+            // $flat->rent=$request->rent;
+        
+
+            // $save=$flat->save();
+            // if( $save){
+            //         return back()->with('successCreateOne' , 'Building Information Update Successfully'); 
+            //     }else{   
+            //         return back()->with('faillCreateOne' , 'Building Information Update Fail');
+            //     }
+
+         }
+
+    
 
 
 

@@ -152,18 +152,18 @@ a:hover {
   transition: clip-path 0.45s ease-out, opacity 0.2s ease-out;
 }
 
-.active > span {
+.active2 > span {
   clip-path: circle(100% at 50% 50%);
   box-shadow: 0px 0.5em 30px rgba(0, 43, 153, 0.35);
   opacity: 1;
 }
 
-.active:hover {
+.active2:hover {
   transform: translate(0, 0);
   box-shadow: none;
 }
 
-.active > p {
+.active2 > p {
   color: #fff;
 }
 
