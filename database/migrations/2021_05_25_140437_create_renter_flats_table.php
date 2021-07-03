@@ -17,9 +17,10 @@ class CreateRenterFlatsTable extends Migration
             $table->id();
 
             $table->string('flat_id');
-            $table->string('renter_username')->nullable();
-            $table->integer('start_date');
-            $table->string('leave_date');
+            $table->string('renter_username');
+            
+            $table->integer('start_date')->nullable();
+            $table->string('leave_date')->nullable();
             $table->integer('status')->default(1);//0=inactive ,1= active 
             $table->integer('dlt')->default(1);// 0=dlt , 1=not dlt
 
