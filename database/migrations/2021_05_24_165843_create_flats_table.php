@@ -16,7 +16,7 @@ class CreateFlatsTable extends Migration
         Schema::create('flats', function (Blueprint $table) {
             $table->id();
             $table->string('flat_no');
-            $table->integer('house_id');
+            $table->biginteger('house_id');
             $table->integer('size');
             $table->string('details')->nullable();
             $table->string('rent'); 

@@ -15,7 +15,6 @@ class CreateHousesTable extends Migration
     {
         Schema::create('houses', function (Blueprint $table) {
             $table->id();
-
             $table->string('name');
             $table->string('holding_no');
             $table->string('road_no');

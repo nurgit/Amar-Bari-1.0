@@ -79,7 +79,7 @@ Route::group([ 'prefix'=>'owner', 'middleware'=>['Dlt','AuthCheck','Owner']], fu
     
     //Renter Controller
     Route::get('renter',[RenterOwnerController::class,'renter'])->name('owner.renter');
-
+    Route::post('addRenter',[RenterOwnerController::class,'addRenter'])->name('owner.addrenter');
     //Rent Controller
     Route::get('rent',[RentController::class,'rent'])->name('owner.rent');
 

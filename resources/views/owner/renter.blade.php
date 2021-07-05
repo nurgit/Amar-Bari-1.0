@@ -51,7 +51,7 @@
     <div class="first-row col-12">
       <p class="caption text-capitalize col-12">Renter</p>
       
-              {{-- <p>
+              <p>
                 @if (Session::get('successCreateOne'))
                 <div style="margin-right: 17%" class="alert alert-success">
                   {{Session::get('successCreateOne')}}
@@ -63,26 +63,26 @@
                   {{Session::get('faillCreateOne')}}
                 </div>
                 @endif
-            </p> --}}
+            </p>
       
-      {{-- <div class="cards row active-tab">
-        @if (count($flats)>0)
-          @foreach ($flats as $flat)
-            @if ( $flat->dlt==1)
+      <div class="cards row active-tab">
+        @if (count($renters)>0)
+          @foreach ($renters as $renter)
+            @if ( $renter->dlt==1)
                 <div class="card text-capitalize mr-4 mr-xl-5 mb-sm-4 mb-4">
                   <div class="top-section">
-                    <h1 class="flat-no">F:{{$flat->flat_no}}</h1>
-                    <p class="rent">rent:{{$flat->rent}} </p>
+                    <h1 class="flat-no">Flat:{{$renter->flat_no}}</h1>
+                    <p class="rent">Holding No:{{$renter->holding_no}}</p>
                   </div>
 
                   <div class="mid-section">
-                    <p class="size">size: {{$flat->size}}sqft</p>
-                    <p class="name">House Name:{{$flat->name}}</p>
-                    <p class="number">Holding No:{{$flat->holding_no}}</p>
+                    <p class="size">Name: {{$renter->name}}</p>
+                    <p class="name">Phone:{{$renter->phone}}</p>
+                    <p class="number">Date:{{$renter->start_date}}</p>
                   </div>
 
                   <div class="bottom-card-section">
-                  <button class="edit text-capitalize" data-toggle="modal" data-target="#update-modal-{{$flat->id}}">
+                  <button class="edit text-capitalize" data-toggle="modal" data-target="#update-modal-{{$renter->id}}">
                     edit
                     <img src="{{asset('users/icon/edit-pen.svg')}}" alt="">
                   </button>
@@ -93,7 +93,7 @@
                   <div
                     class="delete-con"
                     data-toggle="modal"
-                    data-target="#del-modal-{{$flat->id}}"
+                    data-target="#del-modal-{{$renter->id}}"
                   ></div>
                   <svg
                     class="delete-svg"
@@ -141,73 +141,117 @@
     </div>
   </div>
 </div>
-</div> --}}
+</div> 
 
 
 {{-- Add falat ------------------------------ --}}
-{{-- <div class="modal fade" id="acc-modal">
+<div class="modal fade" id="acc-modal">
 <div class="modal-dialog">
   <div class="modal-content add-modal-content"> 
     <div class="modal-body">
             
-      <form  action="{{route('addFlat')}}"  method="POST" class="row form mb-2 mb-md-4">
+      <form  action="{{route('owner.addrenter')}}"  method="POST" class="row form mb-2 mb-md-4">
         @csrf
-        <div class="col-sm-12 col-lg-4 quad-input input-con">
-          <input
-            type="text"
-            name="flat_no"
-            id=" acc-input"
-            class="form-input"
-            required
-          />
-          <label for="acc-input" class="label">flat no</label>
-        </div>
-
-        <div class="col-sm-12 col-lg-4 quad-input input-con">
-          <input
-            type="text"
-            name="house_id"
-            id=" acc-input"
-            class="form-input"
-            required
-          />
-          <label for="acc-input" class="label">house Id </label>
-        </div>
-
-        <div class="col-sm-12 col-lg-4 quad-input input-con">
-          <input
-            type="text"
-            name="size"
-            id=" acc-input"
-            class="form-input"
-            required
-          />
-          <label for="acc-input" class="label">size</label>
-        </div>
-
-        <div class="col-12 col-lg-6 half-input input-con">
-          <input
-            type="text"
-            class="form-input"
-            name="details"
-            id=" acc-input"
-            required
-          />
-          <label for="acc-input" class="label">Details</label>
-        </div>
-
-        <div class="col-12 col-lg-6 half-input input-con">
-          <input
-            type="text"
-            class="form-input"
-            name="rent"
-            id=" acc-input"
-            required
-          />
-          <label for="acc-input" class="label">rent</label>
-        </div>
 
         
+        <div class="col-12 col-lg-6 half-input input-con">
+          <input
+            type="text"
+            class="form-input"
+            name="username"
+            id=" acc-input"
+            required
+          />
+          <label for="acc-input" class="label">Username</label>
+        </div>
+
+        <div class="col-12 col-lg-6 half-input input-con">
+          <input
+            type="text"
+            class="form-input"
+            name="name"
+            id=" acc-input"
+            required
+          />
+          <label for="acc-input" class="label">Name</label>
+        </div>
+
+
+        <div class="col-sm-12 col-lg-4 quad-input input-con">
+          <input
+            type="text"
+            name="email"
+            id=" acc-input"
+            class="form-input"
+            required
+          />
+          <label for="acc-input" class="label">Email</label>
+        </div>
+
+        <div class="col-sm-12 col-lg-4 quad-input input-con">
+          <input
+            type="text"
+            name="phone"
+            id=" acc-input"
+            class="form-input"
+            required
+          />
+          <label for="acc-input" class="label">Phone</label>
+        </div>
+
+        <div class="col-sm-12 col-lg-4 quad-input input-con">
+          <input
+            type="text"
+            name="NID"
+            id=" acc-input"
+            class="form-input"
+            required
+          />
+          <label for="acc-input" class="label">NID</label>
+        </div>
+
+
+        <div class="col-12 col-lg-6 half-input input-con">
+          <input
+            type="text"
+            class="form-input"
+            name="Permanent_address"
+            id=" acc-input"
+            required
+          />
+          <label for="acc-input" class="label">Permanent Addres</label>
+        </div>
+        <div class="col-12 col-lg-6 half-input input-con">
+          <input
+            type="text"
+            class="form-input"
+            name="flat_id"
+            id=" acc-input"
+            required
+          />
+          <label for="acc-input" class="label">Flat Id</label>
+        </div>
+        <div class="col-12 col-lg-6 half-input input-con">
+          <input
+            type="text"
+            class="form-input"
+            name="start_date"
+            id=" acc-input"
+            {{-- required --}}
+          />
+          <label for="acc-input" class="label">Start Date</label>
+        </div>
+        
+        <div class="col-12 col-lg-6 half-input input-con">
+          <input
+            type="text"
+            class="form-input"
+            name="leave_date"
+            id=" acc-input"
+           
+          />
+          <label for="acc-input" class="label">Leave Date</label>
+        </div>
 
         <div class="btn-modal">
           <button type="submit" class="confirm text-capitalize">
@@ -275,7 +319,7 @@
     </div>
   </div>
 </div>
-</div> --}}
+</div>
 
 
 {{-- Update  falat ------------------------------ --}}

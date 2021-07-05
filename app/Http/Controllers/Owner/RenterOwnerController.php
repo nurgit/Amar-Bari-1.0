@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\User;
+use App\Models\Renter;
+use App\Models\Renter_flat;
 
 class RenterOwnerController extends Controller
 {
@@ -19,9 +21,60 @@ class RenterOwnerController extends Controller
         ->join('houses','flats.house_id','houses.id')
         ->join('users','houses.owner_username','users.username')
          ->where('users.username',$data->username)
-         ->select('houses.holding_no','flats.flat_no','renters.name','renters.phone')
+         ->select('houses.holding_no','flats.flat_no','renters.id','renters.name','renters.phone','renters.dlt','renter_flats.start_date')
         ->get();
-        return $renters;
-        return view('owner.renter');
+        //return $renters;
+        return view('owner.renter', compact('renters'));
     }
+
+    public function addRenter(Request $request ){
+
+       // return $request;
+
+        $request->validate([
+            'username'=> ['required','string',],
+            'name'=> ['required','string'],
+            'email'=> ['required'],
+            'phone'=> ['required','string'],
+            'NID'=> ['required','string'],
+            'Permanent_address'=>['required','string'],
+
+            'flat_id'=> ['required',],
+            'start_date'=> ['string','nullable'],
+            'leave_date'=> ['string','nullable'],
+
+            
+        ]);
+    
+        //return $request->input();
+        $renter = new Renter();
+    
+        $renter->username=$request->username;
+        $renter->name=$request->name;
+        $renter->email=$request->email;
+        $renter->phone=$request->phone;
+        $renter->NID=$request->NID;
+        $renter->Permanent_address=$request->Permanent_address;
+        $renter_save=$renter->save();
+
+
+        $renter_flat= new Renter_flat(); 
+        $renter_flat->flat_id=$request->flat_id;
+        $renter_flat->renter_username=$request->username;
+        $renter_flat->start_date=$request->start_date;
+        $renter_flat->leave_date=$request->leave_date;
+        $renter_flat_save=$renter_flat->save();
+
+        //return $request;
+        if( $renter_save && $renter_flat_save){
+            
+                return back()->with('successCreateOne' , 'new Renter has been added successfully');
+                
+            }else{
+                //return back()->with('success' , 'new user has been added successfully');
+                
+                return back()->with('faillCreateOne' , 'something went wrong, please try agane later');
+            }
+    
+        }
 }
