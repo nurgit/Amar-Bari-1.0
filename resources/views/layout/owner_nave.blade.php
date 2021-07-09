@@ -4,18 +4,20 @@
 
  <!--   nav     --left dashboard            -->
  <div class="left dashboard">
-    <div class="brand">
-      <label for="nav-toggle" class="nav-close-btn">
-        <img src="{{asset('users/icon/cross.svg')}}" alt="" />
-      </label>
-      <img src="{{asset('users/icon/brand.svg')}}" alt="" />
-      <h4>amar bari</h4>
-    </div>
+      <a href="{{route('owner.dashboard')}}">
+        <div class="brand">
+          <label for="nav-toggle" class="nav-close-btn">
+            <img src="{{asset('users/icon/cross.svg')}}" alt="" />
+          </label>
+          <img src="{{asset('users/icon/brand.svg')}}" alt="" />
+          <h4>amar bari</h4>
+        </div>
+      </a>
 
     <div class="link-wrapper">
-      <a href="{{route('owner.dashboard')}}" class="link active">
+      <a href="{{route('owner.dashboard')}}" class="link ">
         <div class="svg-bg">
-          <img src="{{asset('users/icon/Dashboard-active.svg')}}" alt="" />
+          <img src="{{asset('users/icon/Dashboard.svg')}}" alt="" />
         </div>
 
         <span>dashboard</span>

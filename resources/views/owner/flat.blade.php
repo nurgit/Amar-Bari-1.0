@@ -644,6 +644,10 @@
         })
       })
     </script>
+    
+      <script src="{{asset('users/js/link.js')}}">
+  
+      </script>
 </body>
 </html>
 @endsection
