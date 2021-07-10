@@ -462,7 +462,7 @@
         <div class="modal-content add-modal-content"> 
           <div class="modal-body">
                   
-            <form  action="{{route('owner.addrenter')}}"  method="POST" class="row form mb-2 mb-md-4">
+            <form  action="{{route('owner.update',$renter->id)}}"  method="POST" class="row form mb-2 mb-md-4">
               @csrf
     
               
