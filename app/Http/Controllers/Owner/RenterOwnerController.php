@@ -21,10 +21,17 @@ class RenterOwnerController extends Controller
         ->join('houses','flats.house_id','houses.id')
         ->join('users','houses.owner_username','users.username')
          ->where('users.username',$data->username)
-         ->select('houses.holding_no','flats.flat_no','renters.id','renters.name','renters.username','renters.email','renters.phone','renters.NID','renters.Permanent_address','renters.dlt','renter_flats.start_date','renter_flats.leave_date','renter_flats.flat_id')
+         ->select('houses.holding_no','houses.name','flats.flat_no','flats.house_id','renters.id','renters.name','renters.username','renters.email','renters.phone','renters.NID','renters.Permanent_address','renters.dlt','renter_flats.start_date','renter_flats.leave_date','renter_flats.flat_id')
         ->get();
         //return $renters;
-        return view('owner.renter', compact('renters'));
+
+        $houses=DB::table('houses')
+        ->join('users','houses.owner_username','users.username')
+         ->where('users.username',$data->username)
+         ->select('houses.id','houses.name','houses.holding_no','houses.dlt')
+        ->get();
+        //return $houses;
+        return view('owner.renter', compact('renters','houses'));
     }
 
     public function addRenter(Request $request ){
@@ -39,7 +46,7 @@ class RenterOwnerController extends Controller
             'NID'=> ['required','string'],
             'Permanent_address'=>['required','string'],
 
-            'flat_id'=> ['required',],
+            'flat_id'=> ['required'],
             'start_date'=> ['string','nullable'],
             'leave_date'=> ['string','nullable'],
 
@@ -92,7 +99,7 @@ class RenterOwnerController extends Controller
              'NID'=> ['required','string'],
              'Permanent_address'=>['required','string'],
  
-             'flat_id'=> ['required',],
+             'flat_id'=> ['required'],
              'start_date'=> ['string','nullable'],
              'leave_date'=> ['string','nullable'],
  
