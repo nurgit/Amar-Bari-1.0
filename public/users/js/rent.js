@@ -98,35 +98,33 @@ const tabContainer = document.querySelectorAll('.tab-container');
 const input = document.querySelectorAll('.paid-input');
 const rentCard = document.querySelectorAll('.rent-card');
 const inputLabel = document.querySelectorAll('.edit-btn');
+const tabBtn = document.querySelectorAll('.tab-btn'); 
 // dynamic tabs
-for (let j = 0; j < tabs.length; j++) {
-  // empty element
-  const tab = document.createElement('div');
-  // btn text node
-  const tabNode = document.createTextNode(`b0${j+1}`);
-  tab.appendChild(tabNode);
-  tabContainer[0].appendChild(tab);
-  tab.classList.add('tab-btn','text-capitalize');
-}
+// for (let j = 0; j < tabs.length; j++) {
+//   // empty element
+//   const tab = document.createElement('div');
+//   // btn text node
+//   const tabNode = document.createTextNode(`b0${j+1}`);
+//   tab.appendChild(tabNode);
+//   tabContainer[0].appendChild(tab);
+//   tab.classList.add('tab-btn','text-capitalize');
+// }
 
 // tab click events
-const tabBtn = document.querySelectorAll('.tab-btn');
-tabBtn[0].classList.add('tab-btn-active')
-for (let i = 0;  i < tabs.length; i++) {
-  tabBtn[i].addEventListener('click', function () {
-    for (let j = 0; j < tabs.length; j++) {   
-      tabBtn[j].classList.remove('tab-btn-active');
-      if (j === i) {
-        tabBtn[j].classList.add('tab-btn-active');
+  tabBtn.forEach(function (btn) {
+    btn.addEventListener('click', function (e) {
+      for (let j = 0; j < tabs.length; j++) {
+        tabs[j].classList.remove('active-tab');
+      }
+  document.getElementById(e.currentTarget.dataset.target).classList.add('active-tab');
+
+      for (let i = 0; i < tabBtn.length; i++) {
+        tabBtn[i].classList.remove('tab-btn-active');
       }
 
-      tabs[j].classList.remove('active-tab');
-      if (j === i) {
-        tabs[j].classList.add('active-tab');
-      }
-    }
+      e.currentTarget.classList.add('tab-btn-active');
+    });
   });
-};
 
 // payment tab-btn function
 for (let h = 0; h < payBtn.length; h++) {

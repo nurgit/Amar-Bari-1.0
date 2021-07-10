@@ -156,9 +156,8 @@
     </div>
     <div class="tab-bar">
         <div class="tab-container">
-            <!-- <div class="tab-btn text-uppercase tab-btn-active">bo1</div>
-            <div class="tab-btn text-uppercase">bo2</div>
-            <div class="tab-btn text-uppercase">bo3</div> -->
+            <button class="tab-btn text-uppercase tab-btn-active" data-target="tab1-1">bo1</button>
+            <button class="tab-btn text-uppercase" data-target="tab2-2">bo2</button>
         </div>
 
         <div class="tab-container">
