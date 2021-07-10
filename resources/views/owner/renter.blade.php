@@ -283,7 +283,7 @@
       <div class="modal-content add-modal-content"> 
         <div class="modal-body">
                 
-          <form  action="{{route('owner.addrenter')}}"  method="POST" class="row form mb-2 mb-md-4">
+          <form  action="{{route('renter.addrenter')}}"  method="POST" class="row form mb-2 mb-md-4">
             @csrf
 
             
@@ -462,7 +462,7 @@
         <div class="modal-content add-modal-content"> 
           <div class="modal-body">
                   
-            <form  action="{{route('owner.update',$renter->id)}}"  method="POST" class="row form mb-2 mb-md-4">
+            <form  action="{{route('renter.update',$renter->id)}}"  method="POST" class="row form mb-2 mb-md-4">
               @csrf
     
               
@@ -653,12 +653,12 @@
   <div class="modal-dialog">
     <div class="modal-content del-modal-content">
       <div class="modal-body">
-        {{-- <p class="del-warning">
-          Building No: {{$flat->flat_no}} <br>Building Name: {{$flat->name}}<br> Building Holding No: {{$flat->holding_no}} <br>
-          You’re about to delete this flat. Do you want to continue?
-        </p> --}}
+        <p class="del-warning">
+          Renter Name: {{$renter->name}}<br> <br>
+          You’re about to delete this Renter. Do you want to continue?
+        </p>
         <div class="btn-modal del-btn-modal">
-          <form action="{{route('flat.destroy',$renter->id)}}" method="POST" enctype="multipart/form-data">
+          <form action="{{route('renter.destroy',$renter->id)}}" method="POST" enctype="multipart/form-data">
             @csrf
             <button type="submit" class="confirm text-capitalize">
               <p>confirm</p>

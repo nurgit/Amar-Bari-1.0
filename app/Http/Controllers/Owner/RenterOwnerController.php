@@ -100,29 +100,26 @@ class RenterOwnerController extends Controller
          ]);
      
          //return $request->input();
-         $renter = new Renter();
-     
+         $renter =Renter::find($id);
          $renter->username=$request->username;
          $renter->name=$request->name;
          $renter->email=$request->email;
          $renter->phone=$request->phone;
          $renter->NID=$request->NID;
          $renter->Permanent_address=$request->Permanent_address;
-         return $request;
-         $renter_save=$renter->save();
+        $renter_save=$renter->save();
  
- 
-         $renter_flat= new Renter_flat(); 
+         $renter_flat=Renter_flat::find($id); 
          $renter_flat->flat_id=$request->flat_id;
          $renter_flat->renter_username=$request->username;
          $renter_flat->start_date=$request->start_date;
          $renter_flat->leave_date=$request->leave_date;
          $renter_flat_save=$renter_flat->save();
- 
-         //return $request;
+         $renter_save=$renter->save();
+        // return $renter_flat;
          if( $renter_save && $renter_flat_save){
              
-                 return back()->with('successCreateOne' , 'new Renter has been added successfully');
+                 return back()->with('successCreateOne' , ' Renter has been Update successfully');
                  
              }else{
                  //return back()->with('success' , 'new user has been added successfully');
@@ -130,5 +127,23 @@ class RenterOwnerController extends Controller
                  return back()->with('faillCreateOne' , 'something went wrong, please try agane later');
              }
      
+     }
+
+
+     public function destroy(renter $renter,$id)
+     {
+         $renter=Renter::find($id);
+         $renter->dlt=0;
+         $save_renter=$renter->save();
+
+         $renter_flat=Renter_flat::find($id);
+         $renter_flat->dlt=0;
+         $save_renter_flat=$renter_flat->save();
+
+         if( $save_renter && $save_renter_flat ){
+             return back()->with('successCreateOne' , 'Renter Information Deleted Successfully'); 
+         }else{   
+             return back()->with('faillCreateOne' , 'Renter Information Deleted Fail');
+         }
      }
 }
