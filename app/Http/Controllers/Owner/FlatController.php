@@ -23,8 +23,14 @@ class FlatController extends Controller
          ->where('users.username',$data->username)
          ->select('flats.id','flats.flat_no','flats.house_id','flats.details','flats.size','flats.rent','flats.dlt','houses.name','houses.holding_no')
         ->get();
-       // return $flats;
-        return view('owner.flat',compact('flats'));
+
+        $houses=DB::table('houses')
+        ->join('users','houses.owner_username','users.username')
+         ->where('users.username',$data->username)
+         ->select('houses.id','houses.name','houses.holding_no','houses.dlt')
+        ->get();
+       //return $houses;
+        return view('owner.flat',compact('flats','houses'));
        
     }
 

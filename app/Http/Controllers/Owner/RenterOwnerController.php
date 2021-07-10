@@ -21,7 +21,7 @@ class RenterOwnerController extends Controller
         ->join('houses','flats.house_id','houses.id')
         ->join('users','houses.owner_username','users.username')
          ->where('users.username',$data->username)
-         ->select('houses.holding_no','flats.flat_no','renters.id','renters.name','renters.phone','renters.dlt','renter_flats.start_date')
+         ->select('houses.holding_no','flats.flat_no','renters.id','renters.name','renters.username','renters.email','renters.phone','renters.NID','renters.Permanent_address','renters.dlt','renter_flats.start_date','renter_flats.leave_date','renter_flats.flat_id')
         ->get();
         //return $renters;
         return view('owner.renter', compact('renters'));

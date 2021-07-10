@@ -37,13 +37,20 @@
 
         <!--              top bar              -->
         <div class="tab-bar">
+
+          
           <div class="tab-container">
+            <button class="tab-btn text-uppercase tab-btn-active" data-target="B-all">All</button>
+            <button class="tab-btn text-uppercase" data-target="tab1">bo1</button>
+        </div>
+
+          {{-- <div class="tab-container">
             
               <div class="tab-btn text-uppercase tab-btn-active">bo1</div>
               <div class="tab-btn text-uppercase">bo2</div>
               <div class="tab-btn text-uppercase">bo3</div>
 
-          </div>
+          </div> --}}
 
         </div>
 
@@ -65,7 +72,7 @@
                 @endif
             </p>
       
-      <div class="cards row active-tab">
+      <div class="cards row active-tab" id="B-all">
         @if (count($renters)>0)
           @foreach ($renters as $renter)
             @if ( $renter->dlt==1)
@@ -137,6 +144,132 @@
           </div>
         </div>
       </div>
+
+    {{-- just for check  --}}
+    <div class="cards row " id="tab1">
+      @if (count($renters)>0)
+        @foreach ($renters as $renter)
+          @if ( $renter->dlt==1)
+              <div class="card text-capitalize mr-4 mr-xl-5 mb-sm-4 mb-4">
+                <div class="top-section">
+                  <h1 class="flat-no">Flat:{{$renter->flat_no}}</h1>
+                  <p class="rent">Holding No:{{$renter->holding_no}}</p>
+                </div>
+
+                <div class="mid-section">
+                  <p class="size">Name: {{$renter->name}}</p>
+                  <p class="name">Phone:{{$renter->phone}}</p>
+                  <p class="number">Date:{{$renter->start_date}}</p>
+                </div>
+
+                <div class="bottom-card-section">
+                <button class="edit text-capitalize" data-toggle="modal" data-target="#update-modal-{{$renter->id}}">
+                  edit
+                  <img src="{{asset('users/icon/edit-pen.svg')}}" alt="">
+                </button>
+                </div>
+
+                <img src="{{asset('users/icon/Flat 3D.svg')}}" alt="" class="card-building">
+
+                <div
+                  class="delete-con"
+                  data-toggle="modal"
+                  data-target="#del-modal-{{$renter->id}}"
+                ></div>
+                <svg
+                  class="delete-svg"
+                  width="14"
+                  height="19"
+                  viewBox="0 0 14 19"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M1 16.8889C1 18.05 1.9 19 3 19H11C12.1 19 13 18.05 13 16.8889V4.22222H1V16.8889ZM3.46 9.37333L4.87 7.885L7 10.1228L9.12 7.885L10.53 9.37333L8.41 11.6111L10.53 13.8489L9.12 15.3372L7 13.0994L4.88 15.3372L3.47 13.8489L5.59 11.6111L3.46 9.37333ZM10.5 1.05556L9.5 0H4.5L3.5 1.05556H0V3.16667H14V1.05556H10.5Z"
+                  />
+                  <defs>
+                    <linearGradient
+                      id="paintLinear"
+                      x1="0"
+                      y1="0"
+                      x2="36"
+                      y2="32"
+                      gradientUnits="userSpaceOnUse"
+                    >
+                      <stop stop-color="#5EC5FF" />
+                      <stop offset="1" stop-color="#285AD8" />
+                    </linearGradient>
+                  </defs>
+                </svg>
+              </div>
+
+              <div class="card text-capitalize mr-4 mr-xl-5 mb-sm-4 mb-4">
+                <div class="top-section">
+                  <h1 class="flat-no">Flat:{{$renter->flat_no}}</h1>
+                  <p class="rent">Holding No:{{$renter->holding_no}}</p>
+                </div>
+
+                <div class="mid-section">
+                  <p class="size">Name: {{$renter->name}}</p>
+                  <p class="name">Phone:{{$renter->phone}}</p>
+                  <p class="number">Date:{{$renter->start_date}}</p>
+                </div>
+
+                <div class="bottom-card-section">
+                <button class="edit text-capitalize" data-toggle="modal" data-target="#update-modal-{{$renter->id}}">
+                  edit
+                  <img src="{{asset('users/icon/edit-pen.svg')}}" alt="">
+                </button>
+                </div>
+
+                <img src="{{asset('users/icon/Flat 3D.svg')}}" alt="" class="card-building">
+
+                <div
+                  class="delete-con"
+                  data-toggle="modal"
+                  data-target="#del-modal-{{$renter->id}}"
+                ></div>
+                <svg
+                  class="delete-svg"
+                  width="14"
+                  height="19"
+                  viewBox="0 0 14 19"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M1 16.8889C1 18.05 1.9 19 3 19H11C12.1 19 13 18.05 13 16.8889V4.22222H1V16.8889ZM3.46 9.37333L4.87 7.885L7 10.1228L9.12 7.885L10.53 9.37333L8.41 11.6111L10.53 13.8489L9.12 15.3372L7 13.0994L4.88 15.3372L3.47 13.8489L5.59 11.6111L3.46 9.37333ZM10.5 1.05556L9.5 0H4.5L3.5 1.05556H0V3.16667H14V1.05556H10.5Z"
+                  />
+                  <defs>
+                    <linearGradient
+                      id="paintLinear"
+                      x1="0"
+                      y1="0"
+                      x2="36"
+                      y2="32"
+                      gradientUnits="userSpaceOnUse"
+                    >
+                      <stop stop-color="#5EC5FF" />
+                      <stop offset="1" stop-color="#285AD8" />
+                    </linearGradient>
+                  </defs>
+                </svg>
+              </div>
+              
+          @endif
+        @endforeach
+          
+      @endif
+
+      <div class="add mr-4 mr-xl-5 mb-sm-5 mb-4">
+        <div
+          class="add-btn"
+          data-toggle="modal"
+          data-target="#acc-modal"
+        >
+        
+        <img src="{{asset('users/icon/Union.svg')}}" alt=""class="add-icon">
+        </div>
+      </div>
+    </div>
 
     </div>
   </div>
@@ -339,6 +472,7 @@
                   class="form-input"
                   name="username"
                   id=" acc-input"
+                  value="{{$renter->username}}"
                   required
                 />
                 <label for="acc-input" class="label">Username</label>
@@ -350,6 +484,7 @@
                   class="form-input"
                   name="name"
                   id=" acc-input"
+                  value="{{$renter->name}}"
                   required
                 />
                 <label for="acc-input" class="label">Name</label>
@@ -362,6 +497,7 @@
                   name="email"
                   id=" acc-input"
                   class="form-input"
+                  value="{{$renter->email}}"
                   required
                 />
                 <label for="acc-input" class="label">Email</label>
@@ -373,6 +509,7 @@
                   name="phone"
                   id=" acc-input"
                   class="form-input"
+                  value="{{$renter->phone}}"
                   required
                 />
                 <label for="acc-input" class="label">Phone</label>
@@ -384,6 +521,7 @@
                   name="NID"
                   id=" acc-input"
                   class="form-input"
+                  value="{{$renter->NID}}"
                   required
                 />
                 <label for="acc-input" class="label">NID</label>
@@ -396,6 +534,7 @@
                   class="form-input"
                   name="Permanent_address"
                   id=" acc-input"
+                  value="{{$renter->Permanent_address}}"
                   required
                 />
                 <label for="acc-input" class="label">Permanent Addres</label>
@@ -406,6 +545,7 @@
                   class="form-input"
                   name="flat_id"
                   id=" acc-input"
+                  value="{{$renter->flat_id}}"
                   required
                 />
                 <label for="acc-input" class="label">Flat Id</label>
@@ -416,6 +556,7 @@
                   class="form-input"
                   name="start_date"
                   id=" acc-input"
+                  value="{{$renter->start_date}}"
                   {{-- required --}}
                 />
                 <label for="acc-input" class="label">Start Date</label>
@@ -426,6 +567,7 @@
                   type="text"
                   class="form-input"
                   name="leave_date"
+                  value="{{$renter->leave_date}}"
                   id=" acc-input"
                 
                 />
