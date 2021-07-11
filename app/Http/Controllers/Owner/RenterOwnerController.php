@@ -31,7 +31,13 @@ class RenterOwnerController extends Controller
          ->select('houses.id','houses.name','houses.holding_no','houses.dlt')
         ->get();
         //return $houses;
-        return view('owner.renter', compact('renters','houses'));
+        $flats=DB::table('flats')
+        ->join('houses','flats.house_id','houses.id')
+        ->join('users','houses.owner_username','users.username')
+         ->where('users.username',$data->username)
+         ->select('flats.id','flats.flat_no','flats.house_id')
+         ->get();
+        return view('owner.renter', compact('renters','houses','flats'));
     }
 
     public function addRenter(Request $request ){
