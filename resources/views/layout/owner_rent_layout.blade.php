@@ -154,15 +154,5 @@
         </a>
       </div>
     </div>
-    <div class="tab-bar">
-        <div class="tab-container">
-            <button class="tab-btn text-uppercase tab-btn-active" data-target="tab1-1">bo1</button>
-            <button class="tab-btn text-uppercase" data-target="tab2-2">bo2</button>
-        </div>
 
-        <div class="tab-container">
-          <div class="paid-btn  ">paid</div>
-          <div class="paid-btn  ">due</div>
-        </div>
-    </div>
-              @yield('content')
+@yield('content')

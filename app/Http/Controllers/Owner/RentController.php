@@ -22,10 +22,11 @@ class RentController extends Controller
         ->join('houses','flats.house_id','houses.id')
         ->join('users','houses.owner_username','users.username')
         ->where('users.username',$data->username)
-        ->select('rents.id','rents.date','rents.amount','rents.dlt','renters.name','renters.phone','flats.flat_no','houses.name')
+        ->select('rents.id','rents.date','rents.amount','rents.dlt','renters.phone','flats.flat_no','houses.name','renters.name','flats.rent',)
         ->get();
+
         
-        return $rents;
+        //return $rents;
         $houses=DB::table('houses')
         ->join('users','houses.owner_username','users.username')
          ->where('users.username',$data->username)
