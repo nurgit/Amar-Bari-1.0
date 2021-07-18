@@ -35,8 +35,25 @@
 
 
 @section('content')
-    
 <div class="tab-bar">
+  <div class="tab-container">
+    <button class="tab-btn text-uppercase tab-btn-active" data-target="B-all">All</button>
+    @if (count($houses)>0)
+      @foreach ($houses as $house)
+        @if ($house->dlt==1)
+          <button class="tab-btn text-uppercase" data-target="{{$house->id}}">{{$house->name}}</button>   
+        @endif
+      @endforeach     
+    @endif
+</div>
+<div class="tab-container">
+  <div class="paid-btn  ">paid</div>
+  <div class="paid-btn  ">due</div>
+</div>
+
+</div>
+    
+{{-- <div class="tab-bar">
   <div class="tab-container">
       <button class="tab-btn text-uppercase tab-btn-active" data-target="tab1-1">bo1</button>
       <button class="tab-btn text-uppercase" data-target="tab2-2">bo2</button>
@@ -46,341 +63,154 @@
     <div class="paid-btn  ">paid</div>
     <div class="paid-btn  ">due</div>
   </div>
-</div>
+</div> --}}
 <!--              top bar contents              -->
 
         <div class="card-section row">
           <div class="first-row col-12">
             <p class="caption text-capitalize  col-12">info</p>
-            <div class="cards row active-tab" id="tab1-1">        
+            <div class="cards row active-tab" id="B-all">        
              @if (count($rents)>0)
                 @foreach ($rents as $rent)
-                <div class="rent-card text-capitalize ">
-                  <div class="box flate">
-                    <div class="box-label">flat no.</div>
-                    <div class="box-content  ">{{$rent->flat_no}}</div>
-                  </div>
-
-                  <div class="box name">
-                    <div class="box-label">tenant</div>
-                    <div class="box-content ">{{$rent->name}}</div>
-                  </div>
-
-                  <div class="box contact">
-                    <div class="box-label  ">contact</div>
-                    <div class="box-content  ">{{$rent->phone}}</div>
-                  </div>
-
-                  <div class="box">
-                    <div class="box-label">rent</div>
-                    <div class="box-content  ">{{$rent->rent}}</div>
-                  </div>
-
-                  <div class="  payment-box box paid">
-                    <div class="box-label "> 
-                      <p>paid</p> 
+                  @if ($rent->dlt==1)
+                  <div class="rent-card text-capitalize ">
+                    <div class="box flate">
+                      <div class="box-label">flat no.</div>
+                      <div class="box-content  ">{{$rent->flat_no}}</div>
                     </div>
-                    <input type="text"   placeholder="{{$rent->amount}}" class="box-content paid-input">
-                  </div>
-
-                  <div class="  payment-box due due-payment-box box ">
-                    <div class="box-label">
-                      <p>due</p> 
+  
+                    <div class="box name">
+                      <div class="box-label">tenant</div>
+                      <div class="box-content ">{{$rent->name}}</div>
                     </div>
-
-                    <div class="box-content">
-                      @php
-                          $flatRent=$rent->rent;
-                          $paid=$rent->amount;
-                          $due=$flatRent-$paid;
-                      @endphp
-                      {{$due}}</div>
-                  </div>
-
-                  <div class="box date">
-                    <div class="box-label">date</div>
-                    <div class="box-content">{{$rent->date}}</div>
-                  </div>
-
-                  <div class="btn-box">
-                    <div class="save-btn">
-                      <img src="{{asset('users/icon/save.svg')}}"  alt="" srcset="">
+  
+                    <div class="box contact">
+                      <div class="box-label  ">contact</div>
+                      <div class="box-content  ">{{$rent->phone}}</div>
                     </div>
-
-                    <label class="edit-btn" >
-                    <img src="{{asset('users/icon/edit-pen-colored.svg')}}" alt="" srcset="">
-                        
+  
+                    <div class="box">
+                      <div class="box-label">rent</div>
+                      <div class="box-content  ">{{$rent->rent}}</div>
                     </div>
-
-                </div>
-                  
-              @endforeach
+  
+                    <div class="  payment-box box paid">
+                      <div class="box-label "> 
+                        <p>paid</p> 
+                      </div>
+                      <input type="text"   placeholder="{{$rent->amount}}" class="box-content paid-input">
+                    </div>
+  
+                    <div class="  payment-box due due-payment-box box ">
+                      <div class="box-label">
+                        <p>due</p> 
+                      </div>
+  
+                      <div class="box-content">
+                        @php
+                            $flatRent=$rent->rent;
+                            $paid=$rent->amount;
+                            $due=$flatRent-$paid;
+                        @endphp
+                        {{$due}}</div>
+                    </div>
+  
+                    <div class="box date">
+                      <div class="box-label">date</div>
+                      <div class="box-content">{{$rent->date}}</div>
+                    </div>
+  
+                    <div class="btn-box">
+                      <div class="save-btn">
+                        <img src="{{asset('users/icon/save.svg')}}"  alt="" srcset="">
+                      </div>
+  
+                      <label class="edit-btn" >
+                      <img src="{{asset('users/icon/edit-pen-colored.svg')}}" alt="" srcset="">
+                          
+                      </div>
+  
+                  </div>
+                     
+                  @endif
+                
+                @endforeach
                  
              @endif
-
-              {{-- <div class="rent-card text-capitalize ">
-                <div class="box flate">
-                  <div class="box-label">flat no.</div>
-                  <div class="box-content  ">a100</div>
-                </div>
-
-                <div class="box name">
-                  <div class="box-label">tenant</div>
-                  <div class="box-content ">m.r.adnan</div>
-                </div>
-
-                <div class="box contact">
-                  <div class="box-label  ">contact</div>
-                  <div class="box-content  ">01234567891</div>
-                </div>
-
-                <div class="box">
-                  <div class="box-label">rent</div>
-                  <div class="box-content  ">10000</div>
-                </div>
-
-                <div class="  payment-box box">
-                  <div class="box-label "> 
-                    <p>paid</p> 
-                  </div>
-                  <input type="text"   placeholder="n/a" class="box-content paid-input">
-                </div>
-
-                <div class="  payment-box  due-payment-box box ">
-                  <div class="box-label">
-                    <p>due</p> 
-                  </div>
-                  <div class="box-content">n/a</div>
-                </div>
-
-                <div class="box date">
-                  <div class="box-label">date</div>
-                  <div class="box-content">05/02/21</div>
-                </div>
-
-                <div class="btn-box">
-                  <div class="save-btn">
-                    <img src="{{asset('users/icon/save.svg')}}"  alt="" srcset="">
-                  </div>
-
-                  <label class="edit-btn" >
-                   <img src="{{asset('users/icon/edit-pen-colored.svg')}}" alt="" srcset="">
-                      
-                  </div>
-
-              </div>
-
-              <div class="rent-card text-capitalize ">
-                <div class="box flate">
-                  <div class="box-label">flat no.</div>
-                  <div class="box-content  ">a100</div>
-                </div>
-
-                <div class="box name">
-                  <div class="box-label">tenant</div>
-                  <div class="box-content ">m.r.adnan</div>
-                </div>
-
-                <div class="box contact">
-                  <div class="box-label  ">contact</div>
-                  <div class="box-content  ">01234567891</div>
-                </div>
-
-                <div class="box">
-                  <div class="box-label">rent</div>
-                  <div class="box-content  ">10000</div>
-                </div>
-
-                <div class="  payment-box box">
-                  <div class="box-label "> 
-                    <p>paid</p> 
-                  </div>
-                  <input type="text"   placeholder="n/a" class="box-content paid-input">
-                </div>
-
-                <div class="  payment-box  due-payment-box box ">
-                  <div class="box-label">
-                    <p>due</p> 
-                  </div>
-                  <div class="box-content">n/a</div>
-                </div>
-
-                <div class="box date">
-                  <div class="box-label">date</div>
-                  <div class="box-content">05/02/21</div>
-                </div>
-
-                <div class="btn-box">
-                  <div class="save-btn">
-                    <img src="{{asset('users/icon/save.svg')}}"  alt="" srcset="">
-                  </div>
-
-                  <label class="edit-btn" >
-                   <img src="{{asset('users/icon/edit-pen-colored.svg')}}" alt="" srcset="">
-                      
-                  </div>
-
-              </div> --}}
             </div>
 
-            <div class="cards row " id="tab2-2">        
-
-              <div class="rent-card text-capitalize ">
-                <div class="box flate">
-                  <div class="box-label">flat no.</div>
-                  <div class="box-content  ">a100</div>
-                </div>
-
-                <div class="box name">
-                  <div class="box-label">tenant</div>
-                  <div class="box-content ">m.r.adnan</div>
-                </div>
-
-                <div class="box contact">
-                  <div class="box-label  ">contact</div>
-                  <div class="box-content  ">01234567891</div>
-                </div>
-
-                <div class="box">
-                  <div class="box-label">rent</div>
-                  <div class="box-content  ">10000</div>
-                </div>
-
-                <div class="  payment-box box">
-                  <div class="box-label "> 
-                    <p>paid</p> 
-                  </div>
-                  <input type="text"   placeholder="n/a" class="box-content paid-input">
-                </div>
-
-                <div class="  payment-box  due-payment-box box ">
-                  <div class="box-label">
-                    <p>due</p> 
-                  </div>
-                  <div class="box-content">n/a</div>
-                </div>
-
-                <div class="box date">
-                  <div class="box-label">date</div>
-                  <div class="box-content">05/02/21</div>
-                </div>
-
-                <div class="btn-box">
-                  <div class="save-btn">
-                    <img src="{{asset('users/icon/save.svg')}}"  alt="" srcset="">
-                  </div>
-
-                  <label class="edit-btn" >
-                   <img src="{{asset('users/icon/edit-pen-colored.svg')}}" alt="" srcset="">
+            @foreach ($houses as $house)
+            <div class="cards row " id="{{$house->id}}">        
+              @if (count($rents)>0)
+                 @foreach ($rents as $rent)
+                   @if ($rent->dlt==1   && $rent->id==$house->id)
+                   <div class="rent-card text-capitalize ">
+                     <div class="box flate">
+                       <div class="box-label">flat no.</div>
+                       <div class="box-content  ">{{$rent->flat_no}}</div>
+                     </div>
+   
+                     <div class="box name">
+                       <div class="box-label">tenant</div>
+                       <div class="box-content ">{{$rent->name}}</div>
+                     </div>
+   
+                     <div class="box contact">
+                       <div class="box-label  ">contact</div>
+                       <div class="box-content  ">{{$rent->phone}}</div>
+                     </div>
+   
+                     <div class="box">
+                       <div class="box-label">rent</div>
+                       <div class="box-content  ">{{$rent->rent}}</div>
+                     </div>
+   
+                     <div class="  payment-box box paid">
+                       <div class="box-label "> 
+                         <p>paid</p> 
+                       </div>
+                       <input type="text"   placeholder="{{$rent->amount}}" class="box-content paid-input">
+                     </div>
+   
+                     <div class="  payment-box due due-payment-box box ">
+                       <div class="box-label">
+                         <p>due</p> 
+                       </div>
+   
+                       <div class="box-content">
+                         @php
+                             $flatRent=$rent->rent;
+                             $paid=$rent->amount;
+                             $due=$flatRent-$paid;
+                         @endphp
+                         {{$due}}</div>
+                     </div>
+   
+                     <div class="box date">
+                       <div class="box-label">date</div>
+                       <div class="box-content">{{$rent->date}}</div>
+                     </div>
+   
+                     <div class="btn-box">
+                       <div class="save-btn">
+                         <img src="{{asset('users/icon/save.svg')}}"  alt="" srcset="">
+                       </div>
+   
+                       <label class="edit-btn" >
+                       <img src="{{asset('users/icon/edit-pen-colored.svg')}}" alt="" srcset="">
+                           
+                       </div>
+   
+                   </div>
                       
-                  </div>
-
-              </div>
-
-              <div class="rent-card text-capitalize ">
-                <div class="box flate">
-                  <div class="box-label">flat no.</div>
-                  <div class="box-content  ">a100</div>
-                </div>
-
-                <div class="box name">
-                  <div class="box-label">tenant</div>
-                  <div class="box-content ">m.r.adnan</div>
-                </div>
-
-                <div class="box contact">
-                  <div class="box-label  ">contact</div>
-                  <div class="box-content  ">01234567891</div>
-                </div>
-
-                <div class="box">
-                  <div class="box-label">rent</div>
-                  <div class="box-content  ">10000</div>
-                </div>
-
-                <div class="  payment-box box paid">
-                  <div class="box-label "> 
-                    <p>paid</p> 
-                  </div>
-                  <input type="text"   placeholder="n/a" class="box-content paid-input">
-                </div>
-
-                <div class="  payment-box due due-payment-box box ">
-                  <div class="box-label">
-                    <p>due</p> 
-                  </div>
-                  <div class="box-content">n/a</div>
-                </div>
-
-                <div class="box date">
-                  <div class="box-label">date</div>
-                  <div class="box-content">05/02/21</div>
-                </div>
-
-                <div class="btn-box">
-                  <div class="save-btn">
-                    <img src="{{asset('users/icon/save.svg')}}"  alt="" srcset="">
-                  </div>
-
-                  <label class="edit-btn" >
-                   <img src="{{asset('users/icon/edit-pen-colored.svg')}}" alt="" srcset="">
-                      
-                  </div>
-
-              </div>
-
-              <div class="rent-card text-capitalize ">
-                <div class="box flate">
-                  <div class="box-label">flat no.</div>
-                  <div class="box-content  ">a100</div>
-                </div>
-
-                <div class="box name">
-                  <div class="box-label">tenant</div>
-                  <div class="box-content ">m.r.adnan</div>
-                </div>
-
-                <div class="box contact">
-                  <div class="box-label  ">contact</div>
-                  <div class="box-content  ">01234567891</div>
-                </div>
-
-                <div class="box">
-                  <div class="box-label">rent</div>
-                  <div class="box-content  ">10000</div>
-                </div>
-
-                <div class="  payment-box box">
-                  <div class="box-label "> 
-                    <p>paid</p> 
-                  </div>
-                  <input type="text"   placeholder="n/a" class="box-content paid-input">
-                </div>
-
-                <div class="  payment-box  due-payment-box box ">
-                  <div class="box-label">
-                    <p>due</p> 
-                  </div>
-                  <div class="box-content">n/a</div>
-                </div>
-
-                <div class="box date">
-                  <div class="box-label">date</div>
-                  <div class="box-content">05/02/21</div>
-                </div>
-
-                <div class="btn-box">
-                  <div class="save-btn">
-                    <img src="{{asset('users/icon/save.svg')}}"  alt="" srcset="">
-                  </div>
-
-                  <label class="edit-btn" >
-                   <img src="{{asset('users/icon/edit-pen-colored.svg')}}" alt="" srcset="">
-                      
-                  </div>
-
-              </div>
-            </div>
+                   @endif
+                 
+                 @endforeach
+                  
+              @endif
+             </div>
+                
+            @endforeach
           </div>
         </div>
       </div>

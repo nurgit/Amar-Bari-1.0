@@ -56,7 +56,7 @@
           
         </div>
 
-        </div>
+      </div>
 
 <div class="card-section row">
     <div class="first-row col-12">
