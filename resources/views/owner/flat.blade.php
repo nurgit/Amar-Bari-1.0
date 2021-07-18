@@ -239,7 +239,7 @@
               </div>
       
               <div class="col-sm-12 col-lg-4 quad-input input-con">
-                <input
+                {{-- <input
                   type="text"
                   name="house_id"
                   id=" acc-input"
@@ -247,9 +247,16 @@
                   value="{{$house->id}}"
                   
                   required
-                  {{-- readonly --}}
-                />
-                <label for="acc-input" class="label">house ID:{{$house->id}} & house Name: {{$house->name}} </label>
+                  readonly
+                /> --}}
+                <select id="inputState" class="form-input" name="house_id">
+              
+                  <option selected value="">Please Choose your House ...</option>
+                  @foreach ($houses as $house)  
+                     <option value="{{$house->id}}"> {{$house->name}} </option>
+                  @endforeach
+                </select>
+                {{-- <label for="acc-input" class="label">house ID:{{$house->id}} & house Name: {{$house->name}} </label> --}}
               </div>
       
               <div class="col-sm-12 col-lg-4 quad-input input-con">
