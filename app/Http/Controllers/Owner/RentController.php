@@ -36,4 +36,34 @@ class RentController extends Controller
         return view('owner.rent', compact('rents','houses'));
         //return view('owner.rent',$data);
     }
+
+    public function update( Request $request, $id){
+      //return $request;
+      
+      $request->validate([
+          'amount'=>['required']
+      ]);
+   
+      $rent=Rent::find($id);
+      $rent->amount=$request->amount;
+      $save=$rent->save();
+      if( $save){
+             
+        return back()->with('successCreateOne' , ' Rent  has been Update successfully');
+        
+    }else{
+        //return back()->with('success' , 'new user has been added successfully');
+        
+        return back()->with('faillCreateOne' , 'something went wrong, please try agane later');
+    }
+
+      
+    }
+
+    public function add(){
+
+        
+        
+    }
+
 }

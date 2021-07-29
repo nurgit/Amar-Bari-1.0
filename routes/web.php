@@ -84,6 +84,7 @@ Route::group([ 'prefix'=>'owner', 'middleware'=>['Dlt','AuthCheck','Owner']], fu
     Route::post('destroy/{id}',[RenterOwnerController::class,'destroy'])->name('renter.destroy');
     //Rent Controller
     Route::get('rent',[RentController::class,'rent'])->name('owner.rent');
+    Route::post('rent/{id}',[RentController::class,'update'])->name('owner.rent.update');
 
 
 });

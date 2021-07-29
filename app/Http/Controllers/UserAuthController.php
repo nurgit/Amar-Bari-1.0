@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Owner;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -84,6 +85,14 @@ class UserAuthController extends Controller
         $user->phone=$request->phone;
         $user->password= Hash::make($request->password);
         $save=$user->save();
+        
+        $owner = new Owner();
+        $owner->name=$request->name;
+        $owner->username=$request->username;
+        $owner->email=$request->email;
+        $owner->phone=$request->phone;
+        $save=$owner->save();
+
 
          if( $save){
           
