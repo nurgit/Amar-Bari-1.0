@@ -15,14 +15,15 @@ class CreateOwnersTable extends Migration
     {
         Schema::create('owners', function (Blueprint $table) {
             $table->id();
-            
+            $table->string('name');
             $table->string('username')->unique();
             $table->string('email')->unique();
-            $table->string('occupation');
-            $table->string('home')->unique();
-            $table->string('district');
-            $table->string('city');
-            $table->string('address'); 
+            $table->string('phone')->unique();
+            $table->string('occupation')->nullable();
+            $table->string('home')->nullable();
+            $table->string('district')->nullable();
+            $table->string('city')->nullable();
+            $table->string('address')->nullable();
             $table->integer('status')->default(1);//0=inactive ,1= active 
             $table->integer('dlt')->default(1);// 0=dlt , 1=not dlt
 
