@@ -28,7 +28,7 @@ class Kernel extends ConsoleKernel
     {
         $schedule->command("command:rentAdd")
         ->everyMinute();   //$ php artisan schedule:work   ###for local host 
-                            //$ php artisan schedule:rub   ### for server 
+                            //$ php artisan schedule:run  ### for server 
     }
 
     /**

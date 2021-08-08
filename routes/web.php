@@ -10,6 +10,7 @@ use App\Http\Controllers\Owner\HouseController;
 use App\Http\Controllers\Owner\AccountController;
 use App\Http\Controllers\Owner\RenterOwnerController;
 use App\Http\Controllers\Owner\RentController;
+use App\Http\Controllers\Owner\UtilityController;
 
 
 use App\Http\Controllers\Manager\ManagerController;
@@ -82,6 +83,8 @@ Route::group([ 'prefix'=>'owner', 'middleware'=>['Dlt','AuthCheck','Owner']], fu
     Route::post('addRenter',[RenterOwnerController::class,'addRenter'])->name('renter.addrenter');
     Route::post('update/{id}',[RenterOwnerController::class,'update'])->name('renter.update');
     Route::post('destroy/{id}',[RenterOwnerController::class,'destroy'])->name('renter.destroy');
+    //Utlity Controller
+    Route::get('utlity',[UtilityController::class,'utlity'])->name('owner.utility');
     //Rent Controller
     Route::get('rent',[RentController::class,'rent'])->name('owner.rent');
     Route::post('rent/{id}',[RentController::class,'update'])->name('owner.rent.update');

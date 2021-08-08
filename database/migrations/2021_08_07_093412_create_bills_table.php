@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUtlitiesTable extends Migration
+class CreateBillsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,16 @@ class CreateUtlitiesTable extends Migration
      */
     public function up()
     {
-        Schema::create('utlities', function (Blueprint $table) {
+        Schema::create('bills', function (Blueprint $table) {
             $table->id();
-            $table->double('gas');
-            $table->double('electricity');
-            $table->double('water');
-            $table->double('serviceCharge');
-            $table->double('others');
+
+            $table->integer('renter_flat_id');
+            $table->string('month');
+            $table->string('year');
+            $table->date('date')->nullable();
+            $table->double('month_rent')->default(0);
             $table->integer('status')->default(1);//0=inactive ,1= active 
             $table->integer('dlt')->default(1);// 0=dlt , 1=not dlt
-
 
             $table->timestamps();
         });
@@ -35,6 +35,6 @@ class CreateUtlitiesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('utlities');
+        Schema::dropIfExists('bills');
     }
 }
