@@ -249,7 +249,7 @@
                   required
                   readonly
                 /> --}}
-                <select id="inputState" class="form-input" name="house_id">
+                <select id="inputState" class="form-input" name="house_id" required>
               
                   <option selected value="">Please Choose your House ...</option>
                   @foreach ($houses as $house)  

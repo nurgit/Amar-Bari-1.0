@@ -5,6 +5,7 @@ namespace App\Console\Commands;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
 use App\Models\Rent;
+use App\Models\Bill;
 class everyMonth extends Command
 {
     /**
@@ -40,20 +41,56 @@ class everyMonth extends Command
     {
        // DB::table('rents')->add();
         $renter_flats=DB::table('renter_flats')->get();
+        $flat=DB::table('flats')->get();
        $count=count( $renter_flats);
 
        foreach($renter_flats as $renter_flat){
-        if($renter_flat->dlt==1 && $renter_flat->status==1){
-        $rent= new Rent();
-        $a=$renter_flat->id;
-        $rent->date=date("Y-m-d");
-        $rent->renter_flat_id=$a;
-        $rent->amount=0;
-        $save=$rent->save();
-      }
-       }
+            if($renter_flat->dlt==1 && $renter_flat->status==1){
+
+    //for bill table 
+                $flats=DB::table('flats')
+                ->where('flats.id',$renter_flat->flat_id)
+                //->select('flats.rent')
+                ->get();
+                foreach($flats as $flat )
+                {
+                    $bill= new Bill();
+                    $bill->renter_flat_id=$renter_flat->id;
+                    $bill->month=date("m");
+                    $bill->year=date("Y");
+                    $bill->date=date("Y-m-d");
+                    $bill->month_rent=$flat->rent;
+                    $bill->gas=0;
+                    $bill->electricity=0;
+                    $bill->water=0;
+                    $bill->serviceCharge=0;
+                    $bill->others=0;
+                    $save=$bill->save();
+                }
+                
+                
+            
+        //for rent table 
+                $rent= new Rent();
+             
+                $rent->month=date("m");
+                $rent->year=date("Y");
+                $rent->date=date("Y-m-d");
+                $rent->renter_flat_id=$renter_flat->id;
+                $rent->month_rent=0;
+                $rent->gas=0;
+                $rent->electricity=0;
+                $rent->water=0;
+                $rent->serviceCharge=0;
+                $rent->others=0;
+                $save=$rent->save();
 
 
-        echo"operation done ";
+            
+            }
+        }
+
+
+            echo"operation done ";
     }
 }
