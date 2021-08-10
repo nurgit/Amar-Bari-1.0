@@ -6,23 +6,67 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\User;
-use App\Models\Renter; 
+use App\Models\Renter;
+use App\Models\Utility;
 
 class UtilityController extends Controller
 {
     public function utlity(){
 
+
+
         $data=User::where('id','=',session('LoggedUser'))-> first();
         
-        $renters=DB::table('renters')
-        ->join('renter_flats','renters.username','renter_flats.renter_username')
+        $bills=DB::table('bills')
+        ->join('renter_flats','bills.renter_flat_id','renter_flats.id')
         ->join('flats','renter_flats.flat_id','flats.id')
         ->join('houses','flats.house_id','houses.id')
         ->join('users','houses.owner_username','users.username')
          ->where('users.username',$data->username)
-         ->select('houses.holding_no','houses.name','flats.flat_no','flats.house_id','renters.id','renters.name','renters.username','renters.email','renters.phone','renters.NID','renters.Permanent_address','renters.dlt','renter_flats.start_date','renter_flats.leave_date','renter_flats.flat_id')
+         ->select('bills.id','bills.month','bills.year','houses.holding_no','houses.name','flats.flat_no')
         ->get();
+       // return $bills;
 
-        return view('owner.utility');
+       $utilities=DB::table('utilities')
+       ->select('utilities.bill_id')
+       ->get();
+      // return $utilities;
+        return view('owner.utility',compact('bills','utilities'));
     }
+
+    public function add(Request $request){
+        $request->validate([
+            'bill_id'=> ['required'],
+            'gas'=> ['required','integer'],
+            'electricity'=> ['required','integer'],
+            'water'=> ['required','integer'],
+            'serviceCharge'=> ['required','integer'],
+            'others'=> ['required','integer'],
+
+
+            
+        ]);
+
+
+        $utlity= new Utility();
+
+        $utlity->bill_id=$request->bill_id;
+        $utlity->month=date('m');
+        $utlity->year=date('Y');
+        $utlity->date=date('Y-m-d');
+        $utlity->gas=$request->gas;
+        $utlity->electricity=$request->electricity;
+        $utlity->water=$request->water;
+        $utlity->serviceCharge=$request->serviceCharge;
+        $utlity->others=$request->others;
+
+        $save=$utlity->save();
+
+        if($save){
+            return back()->with('successCreateOne' , 'Utility add Successfully'); 
+        }else{   
+            return back()->with('faillCreateOne' , 'Utility add Fail');
+        }
+    }
+
 }

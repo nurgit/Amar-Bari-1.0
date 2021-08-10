@@ -60,11 +60,6 @@ class everyMonth extends Command
                     $bill->year=date("Y");
                     $bill->date=date("Y-m-d");
                     $bill->month_rent=$flat->rent;
-                    $bill->gas=0;
-                    $bill->electricity=0;
-                    $bill->water=0;
-                    $bill->serviceCharge=0;
-                    $bill->others=0;
                     $save=$bill->save();
                 }
                 

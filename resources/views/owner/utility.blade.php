@@ -38,13 +38,26 @@
         <!--              top bar              -->
         <div class="tab-bar">
 
+  
               <div class="modal-content add-modal-content"> 
                 <div style="margin:2% 0% 0% 2%" style="margin-left: 5%"><b><p> Add Utlity for
                    <?php echo Date('M-Y') ?>
                   </p> </b></div> 
+                  <p   >
+                    @if (Session::get('successCreateOne'))
+                   <div style="margin-right: 17%" class="alert alert-success">
+                     {{Session::get('successCreateOne')}}
+                   </div>
+                   @endif
+           
+                   @if (Session::get('faillCreateOne'))
+                   <div class="alert alert-danger">
+                     {{Session::get('faillCreateOne')}}
+                   </div>
+                   @endif</p>
                 <div class="modal-body">
                   
-                  <form  action="{{route('addFlat')}}"  method="POST" class="row form mb-2 mb-md-4">
+                  <form  action="{{route('owner.utility.add')}}"  method="POST" class="row form mb-2 mb-md-4">
                     @csrf
                     <div class="col-sm-12 col-lg-6 half-inputt input-con">
                       <input
@@ -61,82 +74,84 @@
                     </div>
             
                     <div class="col-sm-12 col-lg-6 half-input input-con">
-                      {{-- <input
-                        type="text"
-                        name="house_id"
-                        id=" acc-input"
-                        class="form-input"
-                        value="{{$house->id}}"
-                        
-                        required
-                        readonly
-                      /> --}}
-                      <select id="inputState" class="form-input" name="house_id" required>
+                      <select id="inputState" class="form-input" name="bill_id" required>
+                        <option selected value="">Please Choose your House & Flat  .......</option>
+                        @foreach ($bills as $bill)  
+                        {{-- @foreach ($utilities as $utility) --}}
+                       
                     
-                        <option selected value="">Please Choose your House & Flat  ..</option>
+                        @if ($bill->year==date('Y') && $bill->month==date('m')  )
+                        <option value="{{$bill->id}}">House_Holding_No: {{$bill->name}} &  Flat_No: {{$bill->flat_no}} </option>
+                      @endif
+                            
                     
-                           <option value=""> </option>
-                  
+{{-- 
+                        @endforeach --}}
+
+                        @endforeach 
                       </select>
-                      {{-- <label for="acc-input" class="label">house ID:{{$house->id}} & house Name: {{$house->name}} </label> --}}
                     </div>
             
                     <div class="col-sm-12 col-lg-2 quad-input input-con">
                       <input
                         type="text"
-                        name="size"
+                        name="gas"
                         id=" acc-input"
                         class="form-input"
                         required
                       />
                       <label for="acc-input" class="label">Gas</label>
+                      <span for="acc-input"class="text-danger">@error('gas'){{$message}} @enderror</span>
                     </div>
                     <div class="col-sm-12 col-lg-2 quad-input input-con">
                       <input
                         type="text"
-                        name="flat_no"
+                        name="electricity"
                         id=" acc-input"
                         class="form-input"
                         required
                       />
                       <label for="acc-input" class="label">Electricity</label>
+                      <span for="acc-input"class="text-danger">@error('electricity'){{$message}} @enderror</span>
                     </div>
             
                     <div class="col-sm-12 col-lg-2 quad-input input-con">
                       <input
                         type="text"
-                        name="house_id"
+                        name="water"
                         id=" acc-input"
                         class="form-input"
                         value=""
                         
                         required
-                        readonly
                       /> 
                      <label for="acc-input" class="label">Water </label>
+                     <span for="acc-input"class="text-danger">@error('water'){{$message}} @enderror</span>
                     </div>
             
                     <div class="col-sm-12 col-lg-2 quad-input input-con">
                       <input
                         type="text"
-                        name="size"
+                        name="serviceCharge"
                         id=" acc-input"
                         class="form-input"
                         required
                       />
                       <label for="acc-input" class="label">ServiceCharge</label>
+                      <span for="acc-input"class="text-danger">@error('serviceCharge'){{$message}} @enderror</span>
                     </div>
                     <div class="col-sm-12 col-lg-2 quad-input input-con">
                       <input
                         type="text"
-                        name="size"
+                        name="others"
                         id=" acc-input"
                         class="form-input"
                         required
                       />
                       <label for="acc-input" class="label">Others</label>
+                      <span for="acc-input"class="text-danger">@error('others'){{$message}} @enderror</span>
                     </div>
-            
+                     
                     <div class="btn-modal">
                       <button type="submit" class="confirm text-capitalize">
                         <p>Add Utility</p>
@@ -169,39 +184,43 @@
                       </button>
                     </div>
                   </form>
-            
+
+
+    
+
                 </div>
               </div>
-           
-          
+            </div>
+
           
 
 
-<script >
-  /////// tab functions
-        const tabs = document.querySelectorAll('.cards');
-        const tabBtn = document.querySelectorAll('.tab-btn');
-        
-        tabBtn.forEach(function (btn) {
-          btn.addEventListener('click',function (e) {
+          <script >
+            /////// tab functions
+                  const tabs = document.querySelectorAll('.cards');
+                  const tabBtn = document.querySelectorAll('.tab-btn');
+                  
+                  tabBtn.forEach(function (btn) {
+                    btn.addEventListener('click',function (e) {
+                      
+                      for (let j = 0; j < tabs.length; j++) {
+                        tabs[j].classList.remove('active-tab');
+                      }
+                      
+                      document.getElementById(e.currentTarget.dataset.target).classList.add('active-tab') 
             
-            for (let j = 0; j < tabs.length; j++) {
-              tabs[j].classList.remove('active-tab');
-            }
-            
-            document.getElementById(e.currentTarget.dataset.target).classList.add('active-tab') 
-  
-            for (let i = 0; i < tabBtn.length; i++) {
-              tabBtn[i].classList.remove('tab-btn-active');
-            }
-            
-            e.currentTarget.classList.add('tab-btn-active')
-          })
-        })
-      </script>
-          <script src="{{asset('users/js/link.js')}}">
-  
-          </script>
+                      for (let i = 0; i < tabBtn.length; i++) {
+                        tabBtn[i].classList.remove('tab-btn-active');
+                      }
+                      
+                      e.currentTarget.classList.add('tab-btn-active')
+                    })
+                  })
+                </script>
+                
+                  <script src="{{asset('users/js/link.js')}}">
+              
+                  </script>
 </body>
 </html>
 @endsection

@@ -22,12 +22,6 @@ class CreateBillsTable extends Migration
             $table->date('date')->nullable();
 
             $table->double('month_rent');
-            $table->double('gas')->default(0);
-            $table->double('electricity')->default(0);
-            $table->double('water')->default(0);
-            $table->double('serviceCharge')->default(0);
-            $table->double('others')->default(0);
-
             $table->integer('status')->default(1);//0=inactive ,1= active 
             $table->integer('dlt')->default(1);// 0=dlt , 1=not dlt
 

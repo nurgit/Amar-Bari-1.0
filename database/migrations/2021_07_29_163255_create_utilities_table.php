@@ -15,7 +15,7 @@ class CreateUtilitiesTable extends Migration
     {
         Schema::create('utilities', function (Blueprint $table) {
             $table->id();
-            $table->integer('renter_flat_id');
+            $table->integer('bill_id');
             $table->string('month');
             $table->string('year');
             $table->date('date')->nullable();
