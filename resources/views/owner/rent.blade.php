@@ -79,7 +79,9 @@
                 @foreach ($bills as $bill)
                   @if ($bill->status==1 && $bill->year==date('Y') && $bill->month==date('m') &&  $rent->id==$bill->id)
                    
-                  <form action="{{url('owner/rent',$bill->id)}}"  method="POST">
+                  <div style="margin-bottom: .3%">
+
+                    <form action="{{url('owner/rent',$bill->id)}}"  method="POST">
                       @csrf
                       <div class="rent-card text-capitalize ">
                         <div class="box contact">
@@ -215,6 +217,7 @@
       
                       </div>
                     </form>
+                  </div>
                       
                   @endif
                 
@@ -227,157 +230,155 @@
 
 {{-- -=====================Get Rent sort by building================= --}}
             @foreach ($houses as $house)
-            <div class="cards row " id="{{$house->id}}" style="margin-bottom: 10%">        
-              @if (count($bills)>0 && count($rents)>0)
-              @foreach ($rents as $rent)
-                 @foreach ($bills as $bill)
-                   @if ($bill->status==1 && $bill->year==date('Y') && $bill->month==date('m') &&  $rent->id==$bill->id)
+              <div class="cards row " id="{{$house->id}}" style="margin-bottom: 10%">        
+                @if (count($bills)>0 && count($rents)>0)
+                  @foreach ($rents as $rent)
+                    @foreach ($bills as $bill)
+                        @if ($bill->status==1 && $bill->year==date('Y') && $bill->month==date('m') &&  $rent->id==$bill->id)  
+                          <div style="margin-bottom: .3%">
+                            <form action="{{url('owner/rent',$bill->id)}}"  method="POST">
+                              @csrf
+                              <div class="rent-card text-capitalize ">
+                                <div class="box contact">
+                                  <div class="box-label  ">House</div>
+                                  <div class="box-content  ">{{$bill->name}}</div>
+                                </div>
+        
+                                <div class="box flate">
+                                  <div class="box-label">flat no.</div>
+                                  <div class="box-content  ">{{$bill->flat_no}}</div>
+                                </div>
+              
+                                <div class="box name">
+                                  <div class="box-label">tenant</div>
+                                  <div class="box-content ">{{$bill->name}}</div>
+                                </div>
+              
+                              
+        
+                                {{-- all bill --}}
+                                <div class="box contact">
+                                  <div class="box-label  ">Flat_Rent</div>
+                                  <div class="box-content  ">
+                                    <input  type="checkbox" id="month_rent" name="month_rent" value="{{$bill->month_rent}}"><br>
+                                    <label for="vehicle1">{{$bill->month_rent-$rent->month_rent}}</label><br>
+                                  </div>
+                                </div>
+        
+                                <div class="box contact">
+                                    <div class="box-label  ">ServiceCharge</div>
+                                    <div class="box-content  ">
+                                      <input  type="checkbox" id="serviceCharge" name="serviceCharge" value="{{$bill->serviceCharge}}"><br>
+                                      
+                                      <label for="serviceCharge">{{$bill->serviceCharge-$rent->serviceCharge}}</label><br>
+                                    </div>
+                                </div>
+                                <div class="box contact">
+                                  <div class="box-label  ">Electricity</div>
+                                  <div class="box-content  ">
+                                    <input  type="checkbox" id="electricity" name="electricity" value="{{$bill->electricity}}"><br>
+                                    <label for="electricity">{{$bill->electricity-$rent->electricity}}</label><br>
+                                  </div>
+                                </div>
+        
+                                <div class="box contact">
+                                  <div class="box-label  ">Gas</div>
+                                  <div class="box-content  ">
+                                  
+                                    <input  type="checkbox" id="gas" name="gas" value="{{$bill->gas}}"><br>
+                                    <label for="gas">{{$bill->gas-$rent->gas}}</label><br>
+                                  </div>
+                              </div>
+        
+                              <div class="box contact">
+                                <div class="box-label  ">Water</div>
+                                <div class="box-content  ">
+                                  <input  type="checkbox" id="water" name="water" value="{{$bill->water}}"><br>
+                                  <label for="water">{{$bill->water-$rent->water}}</label><br>
+                                </div>
+                              </div>
+                              
+                                <div class="box contact">
+                                  <div class="box-label  ">Others</div>
+                                  <div class="box-content  ">
+                                    <input  type="checkbox" id="others" name="others" value="{{$bill->others}}"><br>
+                                    <label for="others">{{$bill->others-$rent->others}}</label><br>
+                                  </div>
+                              </div>
+                                    
+                            
+        
+        
+        
+                                <div class=" payment-box due due-payment-box box   box-label">
+                                  <div class="box-label">Total Bill </div>
+                                  @php
+                                  $month_rent=$bill->month_rent;
+                                  $electricity=$bill->electricity;
+                                  $water=$bill->water;
+                                  $serviceCharge=$bill->serviceCharge;
+                                  $others=$bill->others;
+                                  $gas=$bill->gas;
+        
+                                  $total_rent= $month_rent+ $electricity+$water+ $serviceCharge+$others+ $gas;
+                            
+                                  @endphp
+                                  <div class="box-content  ">{{$total_rent}}</div>
+                                </div>
+              
+                                <div class="  payment-box box paid  box-label " style="background-color: green">
+                                  <div class="box-label "> 
+                                    <p>Total Paid</p> 
+                                  </div>
+                                  @php
+                                  $month_rent=$rent->month_rent;
+                                  $electricity=$rent->electricity;
+                                  $water=$rent->water;
+                                  $serviceCharge=$rent->serviceCharge;
+                                  $others=$rent->others;
+                                  $gas=$rent->gas;
+        
+                                  $total_paid= $month_rent+ $electricity+$water+ $serviceCharge+$others+ $gas;
+                            
+                                  @endphp
+                                    <input readonly type="text"  name="total_paid" placeholder="{{$total_paid}}" class="box-content paid-input">
+                                </div>
+              
+                                <div class="  payment-box due due-payment-box box   box-label">
+                                  <div class="box-label">
+                                    <p>due</p> 
+                                  </div>
+                                  
+                                  <div class="box-content">
+                                    {{$total_rent-$total_paid}}</div>
+                                </div>
+              
+                                <div class="box date">
+                                  <div class="box-label">date</div>
+                                  <div class="box-content">{{$bill->month}}-{{$bill->year}}</div>
+                                </div>
+              
+                                <div class="btn-box">
+                                  <button style="background-color: #fafafb; border:none" type="submit" value="Submit">                      
+                                    <div class="save-btn">
+                                    <img src="{{asset('users/icon/save.svg')}}"  alt="" srcset="">
+                                  </div>
+                                  </button>
+              
+                                  <label class="edit-btn" >
+                                  <img src="{{asset('users/icon/edit-pen-colored.svg')}}" alt="" srcset="">
+                                  </label >
+                                </div>
+              
+                              </div>
+                            </form>
+                          </div>   
+                        @endif
                     
-                   <form action="{{url('owner/rent',$bill->id)}}"  method="POST">
-                       @csrf
-                       <div class="rent-card text-capitalize ">
-                         <div class="box contact">
-                           <div class="box-label  ">House</div>
-                           <div class="box-content  ">{{$bill->name}}</div>
-                         </div>
- 
-                         <div class="box flate">
-                           <div class="box-label">flat no.</div>
-                           <div class="box-content  ">{{$bill->flat_no}}</div>
-                         </div>
-       
-                         <div class="box name">
-                           <div class="box-label">tenant</div>
-                           <div class="box-content ">{{$bill->name}}</div>
-                         </div>
-       
-                       
- 
-                         {{-- all bill --}}
-                         <div class="box contact">
-                           <div class="box-label  ">Flat_Rent</div>
-                           <div class="box-content  ">
-                             <input  type="checkbox" id="month_rent" name="month_rent" value="{{$bill->month_rent}}"><br>
-                             <label for="vehicle1">{{$bill->month_rent-$rent->month_rent}}</label><br>
-                           </div>
-                         </div>
- 
-                         <div class="box contact">
-                             <div class="box-label  ">ServiceCharge</div>
-                             <div class="box-content  ">
-                               <input  type="checkbox" id="serviceCharge" name="serviceCharge" value="{{$bill->serviceCharge}}"><br>
-                               
-                               <label for="serviceCharge">{{$bill->serviceCharge-$rent->serviceCharge}}</label><br>
-                             </div>
-                         </div>
-                         <div class="box contact">
-                           <div class="box-label  ">Electricity</div>
-                           <div class="box-content  ">
-                             <input  type="checkbox" id="electricity" name="electricity" value="{{$bill->electricity}}"><br>
-                             <label for="electricity">{{$bill->electricity-$rent->electricity}}</label><br>
-                           </div>
-                         </div>
- 
-                         <div class="box contact">
-                           <div class="box-label  ">Gas</div>
-                           <div class="box-content  ">
-                           
-                             <input  type="checkbox" id="gas" name="gas" value="{{$bill->gas}}"><br>
-                             <label for="gas">{{$bill->gas-$rent->gas}}</label><br>
-                           </div>
-                       </div>
- 
-                       <div class="box contact">
-                         <div class="box-label  ">Water</div>
-                         <div class="box-content  ">
-                           <input  type="checkbox" id="water" name="water" value="{{$bill->water}}"><br>
-                           <label for="water">{{$bill->water-$rent->water}}</label><br>
-                         </div>
-                       </div>
-                       
-                         <div class="box contact">
-                           <div class="box-label  ">Others</div>
-                           <div class="box-content  ">
-                             <input  type="checkbox" id="others" name="others" value="{{$bill->others}}"><br>
-                             <label for="others">{{$bill->others-$rent->others}}</label><br>
-                           </div>
-                       </div>
-                             
-                     
- 
- 
- 
-                         <div class=" payment-box due due-payment-box box   box-label">
-                           <div class="box-label">Total Bill </div>
-                           @php
-                           $month_rent=$bill->month_rent;
-                           $electricity=$bill->electricity;
-                           $water=$bill->water;
-                           $serviceCharge=$bill->serviceCharge;
-                           $others=$bill->others;
-                           $gas=$bill->gas;
- 
-                           $total_rent= $month_rent+ $electricity+$water+ $serviceCharge+$others+ $gas;
-                     
-                           @endphp
-                           <div class="box-content  ">{{$total_rent}}</div>
-                         </div>
-       
-                         <div class="  payment-box box paid  box-label " style="background-color: green">
-                           <div class="box-label "> 
-                             <p>Total Paid</p> 
-                           </div>
-                           @php
-                           $month_rent=$rent->month_rent;
-                           $electricity=$rent->electricity;
-                           $water=$rent->water;
-                           $serviceCharge=$rent->serviceCharge;
-                           $others=$rent->others;
-                           $gas=$rent->gas;
- 
-                          $total_paid= $month_rent+ $electricity+$water+ $serviceCharge+$others+ $gas;
-                     
-                           @endphp
-                             <input readonly type="text"  name="total_paid" placeholder="{{$total_paid}}" class="box-content paid-input">
-                         </div>
-       
-                         <div class="  payment-box due due-payment-box box   box-label">
-                           <div class="box-label">
-                             <p>due</p> 
-                           </div>
-                           
-                           <div class="box-content">
-                             {{$total_rent-$total_paid}}</div>
-                         </div>
-       
-                         <div class="box date">
-                           <div class="box-label">date</div>
-                           <div class="box-content">{{$bill->month}}-{{$bill->year}}</div>
-                         </div>
-       
-                         <div class="btn-box">
-                           <button style="background-color: #fafafb; border:none" type="submit" value="Submit">                      
-                             <div class="save-btn">
-                             <img src="{{asset('users/icon/save.svg')}}"  alt="" srcset="">
-                           </div>
-                           </button>
-       
-                           <label class="edit-btn" >
-                           <img src="{{asset('users/icon/edit-pen-colored.svg')}}" alt="" srcset="">
-                           </label >
-                         </div>
-       
-                       </div>
-                     </form>
-                       
-                   @endif
-                 
-                 @endforeach
-              @endforeach
-             
-                  
-              @endif
-             </div>
+                      @endforeach
+                  @endforeach
+                @endif
+              </div>
                 
             @endforeach
 

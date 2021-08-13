@@ -7,7 +7,7 @@ use App\Models\Flat;
 use App\Models\User;
 use App\Models\House;
 use App\Models\Manager;
-
+use App\Models\Owner;
 use Illuminate\Http\Request;
 use PharIo\Manifest\Manifest;
 
@@ -17,9 +17,10 @@ class AccountController extends Controller
     public function account(){
         // $ms=Manager::with('managers')->get();
           $managers=Manager::where('owner_username','=',session('LoggedUser'))-> get();
+          $owners=Owner::where('owner_username','=',session('LoggedUser'))-> get();
              //return $managers;
           // $data=['LoggedUserInfo'=>User::where('id','=',session('LoggedUser'))-> first()];
-         return view('owner.account',compact('managers'));
+         return view('owner.account',compact('managers','owners'));
     }
     
     public function addManager(Request $request ){
