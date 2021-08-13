@@ -30,8 +30,16 @@ class UtilityController extends Controller
        $utilities=DB::table('utilities')
        ->select('utilities.bill_id')
        ->get();
+
+       $houses=DB::table('houses')
+       ->join('users','houses.owner_username','users.username')
+        ->where('users.username',$data->username)
+        ->select('houses.id','houses.name','houses.holding_no','houses.dlt')
+       ->get();
+      //return $houses;
+
       // return $utilities;
-        return view('owner.utility',compact('bills','utilities'));
+        return view('owner.utility',compact('bills','utilities','houses'));
     }
 
     public function add(Request $request){
