@@ -60,8 +60,8 @@
           <p class="holder">holding: {{ $house->holding_no}}</p>
   
           <p class="body-text">
-            <span>floors:5</span>
-            <span>flats:10</span>
+            <span>Rode No:{{ $house->road_no}}</span>
+            <span>City:{{ $house->city}}</span>
           </p>
   
         <img src="{{asset('users/icon/building- 3D.svg')}}" alt="" class="card-building">
@@ -78,7 +78,7 @@
   </div>
 
     <!-- <p class="caption text-capitalize col-12">manager</p> -->
-    <div class="second-row cards row">
+    {{-- <div class="second-row cards row">
       <div class="month-column  mb-sm-5 mb-5">
         <p class="caption text-capitalize col-12">this month</p>
 
@@ -130,7 +130,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> --}}
 
 </div>
 </div>

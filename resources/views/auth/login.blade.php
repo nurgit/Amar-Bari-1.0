@@ -172,7 +172,8 @@
                   <input
                     type="password"
                     name="password"
-                    id=" acc-input"
+                    id=" password"
+                    
                     class="form-input"
                     required
              
@@ -185,16 +186,17 @@
                   <input
                     type="password"
                     name="confirmPassword"
-                    id=" acc-input"
+                    id="confrm_password  "
+                
                     class="form-input"
                     required
                   />
                   <label for="acc-input" class="label">confirm password</label>
                   {{-- <span class="text-danger">@error('password'){{$message}} @enderror</span> --}}
                 </div>
-              
+                <p id="message"></p>
               <div class="btn-modal">
-                <button type="submit" class="confirm text-capitalize">
+                <button type="submit" class="confirm text-capitalize" onclick="checkPassword()">
                   <p>confirm</p>
                 
                   <svg
@@ -260,6 +262,26 @@
           </div>
         </div>
       </div>
+      <script>
+
+        function checkPassword(){
+          let password =document.getElementById("password").value;
+          let confrmPassword=document.getElementById("confrm_password").value;
+          console.log(password,confrmPassword);
+          let message=document.getElementById("message");
+
+          if(password.length !=0){
+            if(password==confrmPassword)
+            {
+              message.textContent="password Match"
+            }
+            else{
+              message,textContent="Password don't match"
+
+            }
+          }
+        }
+      </script>
     </body>
   </html>
 
