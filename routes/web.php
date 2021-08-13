@@ -88,7 +88,7 @@ Route::group([ 'prefix'=>'owner', 'middleware'=>['Dlt','AuthCheck','Owner']], fu
     Route::post('utlity',[UtilityController::class,'add'])->name('owner.utility.add');
     //Rent Controller
     Route::get('rent',[RentController::class,'rent'])->name('owner.rent');
-    Route::post('rent/{id}',[RentController::class,'update'])->name('owner.rent.update');
+    Route::post('rent/{id}',[RentController::class,'update']);
 
 
 });
