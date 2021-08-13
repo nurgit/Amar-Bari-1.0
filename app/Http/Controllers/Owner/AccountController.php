@@ -17,14 +17,62 @@ class AccountController extends Controller
     public function account(){
         // $ms=Manager::with('managers')->get();
           $managers=Manager::where('owner_username','=',session('LoggedUser'))-> get();
-          $owners=Owner::where('owner_username','=',session('LoggedUser'))-> get();
+          //owners=Owner::where('owner_username','=',session('LoggedUser'))-> get();
              //return $managers;
-          // $data=['LoggedUserInfo'=>User::where('id','=',session('LoggedUser'))-> first()];
+           $owners=Owner::where('id','=',session('LoggedUser'))->get();
+          // return $owners;
          return view('owner.account',compact('managers','owners'));
+    }
+
+    // Edit Owner 
+    public function editOwner(Request $request,manager $manager,$id){
+        $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+         //   'username'=> ['required','unique:users'],
+            'email' => ['required', 'string', 'email', ],
+            'phone' => ['required', 'string', 'min:11', ],
+            'occupation' => ['required'],
+            'home' => ['required'],
+            'district' => ['required' ],
+            'city' => ['required'],
+            'address' => ['required'],
+
+        ]);
+        
+       
+        $user=User::find($id);
+        $user->name=$request->name;
+       // $user->username=$request->username;
+        $user->email=$request->email;
+        $user->phone=$request->phone;
+        $save=$user->save();
+        
+        $owner =Owner::find($id);
+        $owner->name=$request->name;
+       // $owner->username=$request->username;
+        $owner->email=$request->email;
+        $owner->phone=$request->phone;
+        $owner->occupation=$request->occupation;
+        $owner->home=$request->home;
+        $owner->district=$request->district;
+        $owner->city=$request->city;
+        $owner->address=$request->address;
+        $save1=$owner->save();
+
+
+         if( $save  && $save1){
+          
+            return back()->with('success', 'Your Accout Update successfully  ');
+            
+         }else{
+        //     //return back()->with('success' , 'new user has been added successfully');
+            
+            return back()->with('faill' , 'something went wrong, please try agane later');
+         }
+     
     }
     
     public function addManager(Request $request ){
-  
         //  return $request->input();
         $owner=User::where('id','=',session('LoggedUser'))-> first();
         $ownerId=$owner->id;

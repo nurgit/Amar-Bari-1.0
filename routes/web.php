@@ -62,6 +62,7 @@ Route::group([ 'prefix'=>'owner', 'middleware'=>['Dlt','AuthCheck','Owner']], fu
    
     //Account Controller
     Route::get('account',[AccountController::class,'account'])->name('owner.account');
+    Route::post('account/owner/edit/{id}',[AccountController::class,'editOwner'])->name('account.owner.edit');
     Route::post('addManager',[AccountController::class,'addManager'])->name('addManager');
     Route::post('account/manager/edit/{id}',[AccountController::class,'editManager'])->name('account.manager.edit');
     Route::post('account/manager/destroy/{id}',[AccountController::class,'destroyManager'])->name('account.manager.destroy');

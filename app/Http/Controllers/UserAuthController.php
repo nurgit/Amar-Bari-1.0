@@ -91,10 +91,10 @@ class UserAuthController extends Controller
         $owner->username=$request->username;
         $owner->email=$request->email;
         $owner->phone=$request->phone;
-        $save=$owner->save();
+        $save1=$owner->save();
 
 
-         if( $save){
+         if( $save  && $save1){
           
             return redirect('/contact')->with('createSuccess', 'Your Accout your account created successfully. Please Weate For Acctivation Or Contact Us.');
             
