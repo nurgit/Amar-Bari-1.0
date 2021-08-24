@@ -10,6 +10,6 @@ class AdminController extends Controller
     //
     public function index(){
         $data=['LoggedUserInfo'=>User::where('id','=',session('LoggedUser'))-> first()];
-        return view('admin.index', $data);
+        return view('backend.admin.index', $data);
     }
 }

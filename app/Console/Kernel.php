@@ -27,8 +27,8 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         $schedule->command("command:rentAdd")
-        ->everyMinute();   //$ php artisan schedule:work   ###for local host 
-                            //$ php artisan schedule:run  ### for server 
+        ->monthly();   //$ php artisan schedule:work   ###For schedule --------------for local host 
+                            //$ php artisan schedule:run  ### for one time run ....---------------for server 
     }
 
     /**

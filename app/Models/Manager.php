@@ -12,8 +12,10 @@ class Manager extends Model
 
 
     protected $fillable = [
+        'name',
         'username',
         'email',
+        'phone',
         'occupation',
         'home',
         'district',
