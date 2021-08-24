@@ -231,7 +231,19 @@
           {{-- form --}}
           <form action="{{route('addManager')}}"  method="POST" class="row form mb-2 mb-md-4">
             @csrf
-            <div class="col-12 input-con">
+            
+            <div  class="col-sm-12 col-lg-6 input-con half-input">
+              <input
+              type="text"
+              name="name"
+              id=" acc-input"
+              class="form-input"
+              required
+              {{-- value="{{ old('name') }}" --}}
+            />
+              <label for="acc-input" class="label text-uppercase ">Name</label>
+            </div>
+            <div  class="col-sm-12 col-lg-6 input-con half-input">
               <input
                 type="text"
                 name="username"
@@ -252,6 +264,34 @@
               />
               <label for="acc-input" class="label text-uppercase">Email</label>
             </div>
+
+
+            <div class="col-sm-12 col-lg-6 input-con half-input">
+              <input
+              type="text"
+              name="phone"
+              id=" acc-input"
+              class="form-input"
+              required
+              {{-- value="{{ old('phone') }}" --}}
+            />
+              <label for="acc-input" class="label text-uppercase">Phone</label>
+            </div>
+
+            <div class="col-sm-12 col-lg-6 input-con half-input">
+              <input
+              type="password"
+              name="password"
+              id=" password"
+              
+              class="form-input"
+              required
+       
+            />
+              <label for="acc-input" class="label text-uppercase">Password</label>
+            </div>
+
+            
 
             <div class="col-sm-12 col-lg-6 half-input input-con">
               <input

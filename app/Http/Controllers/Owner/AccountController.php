@@ -10,7 +10,7 @@ use App\Models\Manager;
 use App\Models\Owner;
 use Illuminate\Http\Request;
 use PharIo\Manifest\Manifest;
-
+use Illuminate\Support\Facades\Hash;
 class AccountController extends Controller
 {
     // Accout 
@@ -77,26 +77,41 @@ class AccountController extends Controller
         $owner=User::where('id','=',session('LoggedUser'))-> first();
         $ownerId=$owner->id;
             $request->validate([
+             'name' => ['required', 'string', 'max:255'],
             'username'=> ['required','unique:managers'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:managers'],
+            'phone' => ['required', 'string', 'min:11', 'max:13', 'unique:managers'],
             'occupation' => ['required', 'string'],
             'home' => ['required', 'string','unique:managers'],
             'district' => ['required', 'string'],
             'city' => ['required', 'string'],
             'address' => ['required', 'string'],
+
         ]);
+//return($request );
         $manager = new Manager();
+        $manager->name=$request->name;
         $manager->username=$request->username;
         $manager->email=$request->email;
+        $manager->phone=$request->phone;
         $manager->occupation=$request->occupation;
         $manager->home=$request->home;
         $manager->district=$request->district;
         $manager->city=$request->city;
         $manager->address=$request->address;
         $manager->owner_username=$ownerId;
+        $save_menager=$manager->save();
 
-        $save=$manager->save();
-        if( $save){
+        $user = new User();
+        $user->name=$request->name;
+        $user->username=$request->username;
+        $user->email=$request->email;
+        $user->phone=$request->phone;
+        $user->role_id= 2;
+        $user->password= Hash::make($request->password);
+        $save_user=$user->save();
+
+        if( $save_menager &&  $save_user){
                 
                 return back()->with('successCreateOne' , 'new Manager has been added successfully');
                 
