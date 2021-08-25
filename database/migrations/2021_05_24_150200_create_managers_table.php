@@ -26,7 +26,7 @@ class CreateManagersTable extends Migration
             $table->string('address'); 
             $table->integer('status')->default(1);//0=inactive ,1= active 
             $table->integer('dlt')->default(1);// 0=dlt , 1=not dlt
-            $table->integer('owner_username');// for using foreign_key
+            $table->string('owner_username');// for using foreign_key
 
 
             $table->timestamps();
