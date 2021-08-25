@@ -12,8 +12,9 @@ use App\Http\Controllers\Owner\RenterOwnerController;
 use App\Http\Controllers\Owner\RentController;
 use App\Http\Controllers\Owner\UtilityController;
 
-
+//Manager
 use App\Http\Controllers\Manager\ManagerController;
+use App\Http\Controllers\Manager\ManagerHouseController;
 
 use App\Http\Controllers\Renter\RenterController;
 
@@ -93,9 +94,13 @@ Route::group([ 'prefix'=>'owner', 'middleware'=>['Dlt','AuthCheck','Owner']], fu
 
 
 });
-
+//Manager Group 
 Route::group([ 'prefix'=>'manager', 'middleware'=>['AuthCheck']], function(){
     Route::get('dashboard',[ManagerController::class,'index'])->name('manager.dashboard');
+
+     //House Controller
+     Route::get('building',[ManagerHouseController::class,'building'])->name('manager.building');
+     Route::post('addBuilding',[HouseContManagerHouseControllerroller::class,'addBuilding'])->name('addBuilding');
 });
 
 Route::group([ 'prefix'=>'renter', 'middleware'=>['AuthCheck']], function(){

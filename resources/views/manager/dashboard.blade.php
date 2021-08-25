@@ -1,5 +1,5 @@
 
-@extends('layout.owner_nave')
+@extends('layout.manager_nave')
 
 @section('header')
       <!DOCTYPE html>
